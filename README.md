@@ -1,2 +1,0 @@
-# VeteranDiscounts
-#edit readme again

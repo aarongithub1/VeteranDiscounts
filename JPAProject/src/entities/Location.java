@@ -1,10 +1,14 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -28,6 +32,10 @@ public class Location {
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+	@ManyToMany
+	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="discount_id"), inverseJoinColumns=@JoinColumn(name="location_id"))
+	private List<Discount> discounts;
 
 	public int getId() {
 		return id;
@@ -63,6 +71,15 @@ public class Location {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+
+	public List<Discount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<Discount> discounts) {
+		this.discounts = discounts;
 	}
 
 	@Override

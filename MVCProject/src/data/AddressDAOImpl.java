@@ -43,7 +43,7 @@ public class AddressDAOImpl implements AddressDAO{
 			Address newAddress = mapper.readValue(json, Address.class);
 			em.persist(newAddress);
 			em.flush();
-			return newPayment;
+			return newAddress;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

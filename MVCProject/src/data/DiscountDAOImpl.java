@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Discount;
 import entities.Location;
+import entities.User;
 
 @Transactional
 @Repository
@@ -34,10 +35,12 @@ public class DiscountDAOImpl implements DiscountDAO {
 	}
 
 	@Override
-	public Discount createDiscount(String json) {
+	public Discount createDiscount(String json, int userId) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Discount d = mapper.readValue(json, Discount.class);
+			User u = em.find(User.class, userId);
+			d.setCreator(u);
 			em.persist(d);
 			em.flush();
 			return d;

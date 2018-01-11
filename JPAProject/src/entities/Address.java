@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -21,6 +22,8 @@ public class Address {
 	private String lat;
 	@Column(name = "long")
 	private String longitidue;
+	@OneToOne(mappedBy="address")
+	private Location location;
 	
 	/// GETTERS AND SETTERS
 
@@ -76,6 +79,13 @@ public class Address {
 		return id;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
 	//////// EVERYTHING ELSE
 	@Override

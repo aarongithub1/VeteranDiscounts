@@ -31,9 +31,6 @@ public class Company {
 	@OneToMany(mappedBy="company")
 	private List<Location> locations;
 	
-	@OneToOne(mappedBy="address")
-	private Address address;
-	
 	@ManyToOne
 	@JoinColumn(name="type_id")
 	private Type	type;
@@ -87,7 +84,6 @@ public class Company {
 	public int getId() {
 		return id;
 	}
-	
 
 	public List<Location> getLocations() {
 		return locations;

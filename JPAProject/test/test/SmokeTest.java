@@ -16,7 +16,7 @@ public class SmokeTest {
 
 	@Before
 	public void set_up() {
-		this.emf = Persistence.createEntityManagerFactory("RentAFriend");
+		this.emf = Persistence.createEntityManagerFactory("vetPU");
 		this.em = emf.createEntityManager();
 		
 //		this.profile = em.find(Profile.class, 1);

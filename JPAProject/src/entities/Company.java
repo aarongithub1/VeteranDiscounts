@@ -31,12 +31,6 @@ public class Company {
 	@OneToMany(mappedBy="company")
 	private List<Location> locations;
 	
-<<<<<<< HEAD
-=======
-	@OneToOne(mappedBy="company")
-	private Address address;
-	
->>>>>>> 12817f4fc9e3f0d71c7c355a7a3b970e2ab8af3d
 	@ManyToOne
 	@JoinColumn(name="type_id")
 	private Type	type;

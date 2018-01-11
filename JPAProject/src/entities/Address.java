@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Address {
 	@Id
@@ -21,7 +22,7 @@ public class Address {
 	private String street;
 	private String lat;
 	@Column(name = "long")
-	private String longitidue;
+	private String longitude;
 	@OneToOne(mappedBy="address")
 	private Location location;
 	
@@ -67,12 +68,12 @@ public class Address {
 		this.lat = lat;
 	}
 
-	public String getLongitidue() {
-		return longitidue;
+	public String getLongitude() {
+		return longitude;
 	}
 
-	public void setLongitidue(String longitidue) {
-		this.longitidue = longitidue;
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 
 	public int getId() {
@@ -91,6 +92,6 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", state=" + state + ", city=" + city + ", zip=" + zip + ", street=" + street
-				+ ", lat=" + lat + ", longitidue=" + longitidue + "]";
+				+ ", lat=" + lat + ", longitidue=" + longitude + "]";
 	}
 }

@@ -77,7 +77,7 @@ public class AddressDAOImpl implements AddressDAO{
 			managed.setZip(updatedAddress.getZip());
 			managed.setLocation(updatedAddress.getLocation());
 			managed.setLat(updatedAddress.getLat());
-			managed.setLongitidue(updatedAddress.getLongitidue());
+			managed.setLongitude(updatedAddress.getLongitude());
 			return managed;
 		} catch (Exception e) {
 			e.printStackTrace();

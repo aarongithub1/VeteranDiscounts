@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Discount {
 	@Id
@@ -23,9 +25,11 @@ public class Discount {
 	@Column(name = "end_date")
 	private String endDate;
 	private String info;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User creator;
+	@JsonIgnore
 	@ManyToMany(mappedBy="discounts")
 	private List<Location> locations;
 

@@ -14,8 +14,8 @@ public class Type {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "store")
-	private List<Store> stores;
+	@OneToMany(mappedBy = "type")
+	private List<Company> companies;
 	//GETTERS AND SETTERS
 	public String getName() {
 		return name;
@@ -23,11 +23,11 @@ public class Type {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Store> getStores() {
-		return stores;
+	public List<Company> getCompanies() {
+		return companies;
 	}
 	public void setStores(List<Store> stores) {
-		this.stores = stores;
+		this.companies = companies;
 	}
 	public int getId() {
 		return id;

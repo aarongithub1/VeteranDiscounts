@@ -13,7 +13,7 @@ public interface UserDAO {
 
 	public User create(String json);
 
-	public User delete(int id);
+	public Boolean delete(int id);
 
 	public User update(String json, int id);
 

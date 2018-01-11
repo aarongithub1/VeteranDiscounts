@@ -16,11 +16,10 @@ import entities.User;
 
 @Transactional
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
 
 	@Override
 	public List<User> index() {
@@ -28,7 +27,7 @@ public class UserDAOImpl implements UserDAO{
 		String query = "SELECT a from User a";
 		a = em.createQuery(query, User.class).getResultList();
 		return a;
-		
+
 	}
 
 	@Override
@@ -37,48 +36,46 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public Address create(String json) {
+	public User create(String json) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			Address newAddress = mapper.readValue(json, Address.class);
-			em.persist(newAddress);
+			User newUser = mapper.readValue(json, User.class);
+			em.persist(newUser);
 			em.flush();
-			return newAddress;
+			return newUser;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 
 	@Override
 	public Boolean delete(int id) {
-		Address a = em.find(Address.class, id);
-		em.remove(a);
-		if (em.find(Address.class, id) == null) {
+		User user = em.find(User.class, id);
+		em.remove(user);
+		if (em.find(User.class, id) == null) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
-	public Address update(String json, int id) {
+	public User update(String json, int id) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			Address updatedAddress = mapper.readValue(json, Address.class);
-			Address managed = em.find(Address.class, id);
-			managed.setStreet(updatedAddress.getStreet());
-			managed.setCity(updatedAddress.getCity());
-			managed.setState(updatedAddress.getState());
-			managed.setZip(updatedAddress.getZip());
-			managed.setLocation(updatedAddress.getLocation());
-			managed.setLat(updatedAddress.getLat());
-			managed.setLongitidue(updatedAddress.getLongitidue());
+			User updatedUser = mapper.readValue(json, User.class);
+			User managed = em.find(User.class, id);
+			managed.setUsername(updatedUser.getUsername());
+			managed.setEmail(updatedUser.getEmail());
+			managed.setPassword(updatedUser.getPassword());
+			managed.setDiscounts(updatedUser.getDiscounts());
+			managed.setCompany(updatedUser.getCompany());
+			managed.setLocations(updatedUser.getLocations());
 			return managed;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}	
+		}
 	}
 }

@@ -64,20 +64,30 @@ CREATE TABLE `favorite_list` (
 
 GRANT ALL PRIVILEGES ON vetdiscountdb.* TO 'veteran'@'localhost' IDENTIFIED BY 'veteran';
 
+INSERT INTO store_type (name) VALUES ('Education');
+INSERT INTO store_type (name) VALUES ('Bookstore');
+INSERT INTO store_type (name) VALUES ('Liquor');
+INSERT INTO store_type (name) VALUES ('Coffee');
+INSERT INTO store_type (name) VALUES ('Gym');
+INSERT INTO store_type (name) VALUES ('Restaurant');
+INSERT INTO store_type (name) VALUES ('Auto');
+INSERT INTO store_type (name) VALUES ('Clothes');
+INSERT INTO store_type (name) VALUES ('Hardware');
+INSERT INTO store_type (name) VALUES ('Grocery');
+INSERT INTO store_type (name) VALUES ('Drugstore');
+
+
 INSERT INTO user (username, password, email) VALUES ('HunterK', 'password123', 'hunter@SD.com');
 INSERT INTO address (state, city, zip_code, street) VALUES ('CO', 'Denver', '80111', '7400 East Orchard Road');
-INSERT INTO store_type (name) VALUES ('Education');
 INSERT INTO store (name, owner_id, address_id, type_id) VALUES ('Skill Distillery', '1', '1', '1');
 INSERT INTO discount (amount, info, store_id) VALUES ('20% off', 'Vets get 20% off on all white board erasers!', '1');
 
 INSERT INTO user (username, password, email) VALUES ('Aaron', '123', 'a@a.com');
-INSERT INTO store_type (name) VALUES ('Books');
 INSERT INTO address (state, city, zip_code, street) VALUES ('FL', 'Orlando', '33467', '123 Main Street');
 INSERT INTO store (name, owner_id, address_id, type_id) VALUES ('Barnes and Noble', '2', '2', '2');
 INSERT INTO discount (amount, info, store_id, start_date, end_date) VALUES ('Buy 1 get 1', 'You only get one. Pay full price.', '2', '01/10/2018', '01/22/2018');
 
 INSERT INTO user (username, password, email) VALUES ('baby', 'baby', 'babylikes2drink@bbb.com');
-INSERT INTO store_type (name) VALUES ('Liquor');
 INSERT INTO address (state, city, zip_code, street) VALUES ('CO', 'Denver', '80111', '1111 Tipsy Blvd.');
 INSERT INTO store (name, owner_id, address_id, type_id) VALUES ('Baby\'s Booze Boutique', '3', '3', '3');
 INSERT INTO discount (amount, info, store_id, start_date, end_date) VALUES ('15% off everything', 'Baby wants the bottle!', '3', '01/10/2018', '01/30/2018');

@@ -28,7 +28,7 @@ public class Type {
 	public List<Company> getCompanies() {
 		return companies;
 	}
-	public void setStores(List<Store> stores) {
+	public void setStores(List<Company> companies) {
 		this.companies = companies;
 	}
 	public int getId() {

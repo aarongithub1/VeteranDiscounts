@@ -14,11 +14,8 @@ public class Type {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-
 	@OneToMany(mappedBy = "type")
 	private List<Company> companies;
-	
-
 	//GETTERS AND SETTERS
 	public String getName() {
 		return name;

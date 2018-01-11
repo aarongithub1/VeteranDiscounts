@@ -1,13 +1,18 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+@Entity
 public class Company {
 	
 	@Id
@@ -29,6 +34,9 @@ public class Company {
 	
 	@Column(name="chain_bool")
 	private Boolean isChain;
+	
+	@OneToMany(mappedBy="company")
+	private List<Location> locations;
 
 	public String getName() {
 		return name;
@@ -72,6 +80,15 @@ public class Company {
 
 	public int getId() {
 		return id;
+	}
+	
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
 	}
 
 	@Override

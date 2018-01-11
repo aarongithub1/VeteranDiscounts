@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Address;
+import entities.Location;
 
 
 @Transactional
@@ -37,10 +38,12 @@ public class AddressDAOImpl implements AddressDAO{
 	}
 
 	@Override
-	public Address create(String json) {
+	public Address create(String json, int locationId) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Address newAddress = mapper.readValue(json, Address.class);
+			Location l = em.find(Location.class, locationId);
+			newAddress.setLocation(l);
 			em.persist(newAddress);
 			em.flush();
 			return newAddress;

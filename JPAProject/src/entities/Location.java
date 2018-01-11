@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,9 @@ public class Location {
 	private int id;
 	
 	private String hours;
+	
+	@Column(name="phone_number")
+	private String phoneNumber;
 	
 	@ManyToOne
 	@JoinColumn(name="owner_id")
@@ -47,6 +51,14 @@ public class Location {
 
 	public void setHours(String hours) {
 		this.hours = hours;
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public User getOwner() {
@@ -84,7 +96,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", hours=" + hours + ", owner=" + owner + ", address=" + address + "]";
+		return "Location [id=" + id + ", hours=" + hours + ", phoneNumber=" + phoneNumber + ", owner=" + owner + ", address=" + address + "]";
 	}
 	
 	

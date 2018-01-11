@@ -23,9 +23,6 @@ public class Discount {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User creator;
-	@ManyToOne()
-	@JoinColumn(name = "store_id")
-	private Store store;
 
 	// GETTERS AND SETTERS
 	public String getAmount() {
@@ -60,14 +57,6 @@ public class Discount {
 		this.info = info;
 	}
 
-	public Store getStore() {
-		return store;
-	}
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -84,7 +73,7 @@ public class Discount {
 	@Override
 	public String toString() {
 		return "Discount [id=" + id + ", amount=" + amount + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", info=" + info + ", store=" + store + ", creator=" + creator + "]";
+				+ ", info=" + info + ", creator=" + creator + "]";
 	}
 
 }

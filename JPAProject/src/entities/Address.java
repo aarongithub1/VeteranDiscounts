@@ -21,9 +21,7 @@ public class Address {
 	private String lat;
 	@Column(name = "long")
 	private String longitidue;
-	@ManyToOne
-	@JoinColumn(name = "store_id")
-	private Store store;
+	
 	/// GETTERS AND SETTERS
 
 	public String getState() {
@@ -78,13 +76,6 @@ public class Address {
 		return id;
 	}
 
-	public Store getStore() {
-		return store;
-	}
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
 
 	//////// EVERYTHING ELSE
 	@Override

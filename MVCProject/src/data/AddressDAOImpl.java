@@ -1,7 +1,9 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,11 +26,12 @@ public class AddressDAOImpl implements AddressDAO{
 	
 
 	@Override
-	public List<Address> index() {
+	public Set<Address> index() {
 		List<Address> a = new ArrayList<>();
 		String query = "SELECT a from Address a";
 		a = em.createQuery(query, Address.class).getResultList();
-		return a;
+		Set<Address> set = new HashSet<>(a);
+		return set;
 		
 	}
 

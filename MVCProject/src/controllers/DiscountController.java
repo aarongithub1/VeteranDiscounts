@@ -1,6 +1,6 @@
 package controllers;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +26,7 @@ public class DiscountController {
 	}
 	
 	@RequestMapping(path = "discount/location/{lid}", method = RequestMethod.GET)
-	public List<Discount> discountsByLocation(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid){
+	public Set<Discount> discountsByLocation(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid){
 		return dao.getDiscountsForLocation(lid);
 	}
 	

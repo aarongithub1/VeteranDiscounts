@@ -1,7 +1,7 @@
 package data;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,7 +28,7 @@ public class DiscountDAOImpl implements DiscountDAO {
 	}
 
 	@Override
-	public List<Discount> getDiscountsForLocation(int locationId) {
+	public Set<Discount> getDiscountsForLocation(int locationId) {
 		String q = "SELECT l FROM Location l JOIN FETCH l.discounts WHERE l.id = :id ";
 		Location l = em.createQuery(q, Location.class).setParameter("id", locationId).getResultList().get(0);
 		return l.getDiscounts();

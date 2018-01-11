@@ -1,6 +1,6 @@
 package controllers;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,7 @@ public class LocationController {
 	
 //  Index - GET - location
 	@RequestMapping(path="location", method=RequestMethod.GET)
-	public List<Location> index(HttpServletRequest req, HttpServletResponse res){
+	public Set<Location> index(HttpServletRequest req, HttpServletResponse res){
 		return locationDAO.index();
 	}
 

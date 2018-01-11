@@ -1,8 +1,9 @@
 package data;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,11 +11,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import entities.Address;
 import entities.Company;
 
 @Transactional
@@ -25,11 +23,12 @@ public class CompanyDAOImpl implements CompanyDAO {
 	EntityManager em;
 
 	@Override
-	public List<Company> index() {
+	public Set<Company> index() {
 		List c = new ArrayList<>();
 		String query = "SELECT c from Company c";
 		c = em.createQuery(query, Company.class).getResultList();
-		return c;
+		Set<Company> set = new HashSet<>(c);
+		return set;
 	}
 
 	@Override

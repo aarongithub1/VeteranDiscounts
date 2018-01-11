@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,9 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Discount {
 	@Id
@@ -32,7 +30,7 @@ public class Discount {
 	private User creator;
 	@JsonIgnore
 	@ManyToMany(mappedBy="discounts" , cascade=CascadeType.REMOVE)
-	private List<Location> locations;
+	private Set<Location> locations;
 
 	// GETTERS AND SETTERS
 	public String getAmount() {
@@ -79,11 +77,11 @@ public class Discount {
 		this.creator = creator;
 	}
 
-	public List<Location> getLocations() {
+	public Set<Location> getLocations() {
 		return locations;
 	}
 
-	public void setLocations(List<Location> locations) {
+	public void setLocations(Set<Location> locations) {
 		this.locations = locations;
 	}
 

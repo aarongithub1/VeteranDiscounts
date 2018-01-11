@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Location {
 	
@@ -46,7 +44,7 @@ public class Location {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="discount_id"), inverseJoinColumns=@JoinColumn(name="location_id"))
-	private List<Discount> discounts;
+	private Set<Discount> discounts;
 
 	public int getId() {
 		return id;
@@ -93,11 +91,11 @@ public class Location {
 	}
 	
 
-	public List<Discount> getDiscounts() {
+	public Set<Discount> getDiscounts() {
 		return discounts;
 	}
 
-	public void setDiscounts(List<Discount> discounts) {
+	public void setDiscounts(Set<Discount> discounts) {
 		this.discounts = discounts;
 	}
 

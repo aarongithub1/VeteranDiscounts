@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class User {
 	@Id
@@ -24,7 +22,7 @@ public class User {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="creator" ,fetch = FetchType.EAGER)
-	private List<Discount> discounts;
+	private Set<Discount> discounts;
 	
 	@JsonIgnore
 	@OneToOne(mappedBy="owner")
@@ -32,7 +30,7 @@ public class User {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="owner")
-	private List<Location> locations;
+	private Set<Location> locations;
 	
 	///GETTERS AND SETTERS
 	public String getUsername() {
@@ -56,10 +54,10 @@ public class User {
 	public int getId() {
 		return id;
 	}
-	public List<Discount> getDiscounts() {
+	public Set<Discount> getDiscounts() {
 		return discounts;
 	}
-	public void setDiscounts(List<Discount> discounts) {
+	public void setDiscounts(Set<Discount> discounts) {
 		this.discounts = discounts;
 	}
 	public Company getCompany() {
@@ -69,10 +67,10 @@ public class User {
 		this.company = company;
 	}
 	
-	public List<Location> getLocations() {
+	public Set<Location> getLocations() {
 		return locations;
 	}
-	public void setLocations(List<Location> locations) {
+	public void setLocations(Set<Location> locations) {
 		this.locations = locations;
 	}
 	////Everything else

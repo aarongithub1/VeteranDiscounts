@@ -1,6 +1,8 @@
 package data;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,12 +24,12 @@ public class LocationDAOImpl implements LocationDAO {
 	
 	// index - show all locations
 	@Override
-	public List<Location> index() {
+	public Set<Location> index() {
 		String query = "SELECT DISTINCT l FROM Location l";
 		List<Location> locations = em.createQuery(query, Location.class)
 				.getResultList();
-		
-		return locations;
+		Set<Location> set = new HashSet<>(locations);
+		return set;
 	}
 	
 	// show a location by id

@@ -30,7 +30,7 @@ public class Type {
 	}
 	public void setStores(List<Store> stores) {
 		this.companies = companies;
-	}s
+	}
 	public int getId() {
 		return id;
 	}

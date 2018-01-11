@@ -12,6 +12,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Location {
 	
@@ -21,6 +24,7 @@ public class Location {
 	
 	private String hours;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="owner_id")
 	private User owner;
@@ -29,6 +33,8 @@ public class Location {
 	@JoinColumn(name="company_id")
 	private Company company;
 	
+//	@JsonManagedReference
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;

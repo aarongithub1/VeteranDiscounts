@@ -3,12 +3,16 @@ package entities;
 import java.util.List;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class User {
@@ -18,13 +22,15 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-
-	@OneToMany(mappedBy="creator")
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="creator" ,fetch = FetchType.EAGER)
 	private List<Discount> discounts;
 	
 	@OneToOne(mappedBy="owner")
 	private Company company;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy="owner")
 	private List<Location> locations;
 	

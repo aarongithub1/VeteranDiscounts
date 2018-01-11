@@ -25,9 +25,6 @@ public class Company {
 	@JoinColumn(name="owner_id")
 	private User owner;
 	
-	@OneToMany(mappedBy="owner")
-	private List<User> users;
-	
 	@OneToMany(mappedBy="company")
 	private List<Location> locations;
 	

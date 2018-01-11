@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="store_type")
 public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class Type {
 	}
 	public void setStores(List<Store> stores) {
 		this.companies = companies;
-	}
+	}s
 	public int getId() {
 		return id;
 	}

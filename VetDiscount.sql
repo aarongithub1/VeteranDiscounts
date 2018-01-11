@@ -100,7 +100,7 @@ INSERT INTO store_type (name) VALUES ('Drugstore');
 INSERT INTO user (username, password, email) VALUES ('HunterK', 'password123', 'hunter@SD.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Skill Distillery', '1', '1');
 INSERT INTO address (state, city, zip_code, street) VALUES ('CO', 'Denver', '80111', '7400 East Orchard Road');
-INSERT INTO location (company_id, address_id) VALUES ('1', '1');
+INSERT INTO location (company_id, address_id, owner_id) VALUES ('1', '1', '1');
 INSERT INTO discount (amount, info, user_id) VALUES ('20% off', 'Vets get 20% off on all white board erasers!', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('1', '1');
 

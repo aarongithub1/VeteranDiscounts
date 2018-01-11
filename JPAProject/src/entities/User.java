@@ -19,13 +19,14 @@ public class User {
 	private String email;
 	private String password;
 
-	
-
 	@OneToMany(mappedBy="creator")
 	private List<Discount> discounts;
 	
 	@OneToOne(mappedBy="owner")
 	private Company company;
+	
+	@OneToMany(mappedBy="owner")
+	private List<Location> locations;
 	
 	///GETTERS AND SETTERS
 	public String getUsername() {
@@ -48,6 +49,25 @@ public class User {
 	}
 	public int getId() {
 		return id;
+	}
+	public List<Discount> getDiscounts() {
+		return discounts;
+	}
+	public void setDiscounts(List<Discount> discounts) {
+		this.discounts = discounts;
+	}
+	public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	
+	public List<Location> getLocations() {
+		return locations;
+	}
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
 	}
 	////Everything else
 	@Override

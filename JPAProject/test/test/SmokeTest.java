@@ -35,32 +35,32 @@ public class SmokeTest {
 		assertEquals(true, test);
 	}
 	
-//	@Test
-//	public void CompanyMappings() {
-//		Company c = em.find(Company.class, 1);
-//		assertEquals("Skill Distillery",c.getName());
-//		
-//		String email = c.getOwner().getEmail();
-//		
-//		assertEquals("hunter@SD.com",email);
-//		
-//		int size =  c.getLocations().size();	
-//		
-//		assertEquals(size,1);
-//	}
+	@Test
+	public void CompanyMappings() {
+		Company c = em.find(Company.class, 1);
+		assertEquals("Skill Distillery",c.getName());
+		
+		String email = c.getOwner().getEmail();
+		
+		assertEquals("hunter@SD.com",email);
+		
+		int size =  c.getLocations().size();	
+		
+		assertEquals(size,1);
+	}
 	
 	
-//	@Test 
-//	public void TypeMappings() {
-//		Company c = em.find(Company.class, 1);
-//		
-//		assertEquals(c.getType().getName(),"Education");
-//		
-//		Type t = em.find(Type.class, 1);
-//		
-//		assertEquals(t.getCompanies().size(),1);
-//		
-//		assertEquals(t.getName(),"Education");
-//	}
-//	
+	@Test 
+	public void TypeMappings() {
+		Company c = em.find(Company.class, 1);
+		
+		assertEquals(c.getType().getName(),"Education");
+		
+		Type t = em.find(Type.class, 1);
+		
+		assertEquals(t.getCompanies().size(),1);
+		
+		assertEquals(t.getName(),"Education");
+	}
+	
 }

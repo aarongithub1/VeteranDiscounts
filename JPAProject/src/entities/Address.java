@@ -5,20 +5,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	String state;
-	String city;
+	private int id;
+	private String state;
+	private String city;
 	@Column(name = "zip_code")
-	int zip;
-	String street;
-	String lat;
+	private int zip;
+	private String street;
+	private String lat;
 	@Column(name = "long")
-	String longitidue;
+	private String longitidue;
+	@ManyToOne
+	@JoinColumn(name = "store_id")
+	private Store store;
+
 	/// GETTERS AND SETTERS
 
 	public String getState() {
@@ -71,6 +77,14 @@ public class Address {
 
 	public int getId() {
 		return id;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	//////// EVERYTHING ELSE

@@ -4,15 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	String username;
-	String email;
-	String password;
+	private int id;
+	private String username;
+	private String email;
+	private String password;
+	@OneToOne(mappedBy="owner")
+	private Store store;
 	///GETTERS AND SETTERS
 	public String getUsername() {
 		return username;

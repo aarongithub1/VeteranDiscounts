@@ -24,7 +24,7 @@ public class DiscountDAOImpl implements DiscountDAO {
 	
 	@Override
 	public Discount showDiscount(int discountId) {
-		return em.find(Discount.class, 1);
+		return em.find(Discount.class, discountId);
 	}
 
 	@Override

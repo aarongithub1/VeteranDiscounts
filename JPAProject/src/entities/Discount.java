@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Discount {
 	@JoinColumn(name = "user_id")
 	private User creator;
 	@JsonIgnore
-	@ManyToMany(mappedBy="discounts")
+	@ManyToMany(mappedBy="discounts" , cascade=CascadeType.REMOVE)
 	private List<Location> locations;
 
 	// GETTERS AND SETTERS

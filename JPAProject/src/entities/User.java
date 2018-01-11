@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,6 +18,9 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	@OneToMany(mappedBy="creator")
+	private List<Discount> films;
+	private Discount discount;
 	@OneToOne(mappedBy="owner")
 	private Store store;
 	///GETTERS AND SETTERS

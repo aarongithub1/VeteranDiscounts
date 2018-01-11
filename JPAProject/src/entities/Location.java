@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,6 @@ public class Location {
 	
 	private String hours;
 	
-	@JsonManagedReference
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
@@ -33,17 +33,17 @@ public class Location {
 	@JoinColumn(name="owner_id")
 	private User owner;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="company_id")
 	private Company company;
 	
-//	@JsonManagedReference
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="discount_id"), inverseJoinColumns=@JoinColumn(name="location_id"))
 	private List<Discount> discounts;
 

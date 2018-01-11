@@ -22,8 +22,6 @@ public class Address {
 	private String lat;
 	@Column(name = "long")
 	private String longitude;
-//	@JsonBackReference
-	
 	@OneToOne(mappedBy="address")
 	private Location location;
 	

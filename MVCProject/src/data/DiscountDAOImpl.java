@@ -28,7 +28,7 @@ public class DiscountDAOImpl implements DiscountDAO {
 
 	@Override
 	public List<Discount> getDiscountsForLocation(int locationId) {
-		String q = "SELECT l FROM Location l WHERE l.id = :id JOIN FETCH l.discounts";
+		String q = "SELECT l FROM Location l JOIN FETCH l.discounts WHERE l.id = :id ";
 		Location l = em.createQuery(q, Location.class).setParameter("id", locationId).getResultList().get(0);
 		return l.getDiscounts();
 	}

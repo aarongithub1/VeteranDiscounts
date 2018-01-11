@@ -15,8 +15,9 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	
 	@OneToOne(mappedBy="owner")
-	private Store store;
+	private Company company;
 	///GETTERS AND SETTERS
 	public String getUsername() {
 		return username;

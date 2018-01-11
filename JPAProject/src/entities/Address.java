@@ -24,7 +24,6 @@ public class Address {
 	@ManyToOne
 	@JoinColumn(name = "store_id")
 	private Store store;
-
 	/// GETTERS AND SETTERS
 
 	public String getState() {

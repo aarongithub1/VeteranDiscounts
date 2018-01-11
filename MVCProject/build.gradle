@@ -59,6 +59,7 @@ repositories {
 
 dependencies {
 	compile project(":JPAProject")
+	compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
     compile "org.springframework:spring-webmvc:$springVersion"
     compile "org.springframework:spring-orm:$springVersion"
     compile "org.springframework:spring-test:$springVersion"

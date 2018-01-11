@@ -44,9 +44,6 @@ public class Company {
 	@Column(name="chain_bool")
 	private Boolean isChain;
 	
-	@OneToMany(mappedBy="company")
-	private List<Location> locations;
-
 	public String getName() {
 		return name;
 	}

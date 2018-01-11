@@ -53,14 +53,32 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public Boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Address update(String json, int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Address a = em.find(Address.class, id);
+		em.remove(a);
+		if (em.find(Address.class, id) == null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
+	@Override
+	public Address update(String json, int id) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			Address updatedAddress = mapper.readValue(json, Address.class);
+			Address managed = em.find(Address.class, id);
+			managed.setStreet(updatedAddress.getStreet());
+			managed.setCity(updatedAddress.getCity());
+			managed.setState(updatedAddress.getState());
+			managed.setZip(updatedAddress.getZip());
+			managed.setLocation(updatedAddress.getLocation());
+			managed.setLat(updatedAddress.getLat());
+			managed.setLongitidue(updatedAddress.getLongitidue());
+			return managed;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
 }

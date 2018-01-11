@@ -14,7 +14,7 @@ public class Type {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "type")
+	@OneToMany(mappedBy = "store_type")
 	private List<Store> stores;
 	//GETTERS AND SETTERS
 	public String getName() {

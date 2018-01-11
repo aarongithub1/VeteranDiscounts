@@ -25,7 +25,7 @@ public class DiscountController {
 	  return dao.showDiscount(did);
 	}
 	
-	@RequestMapping(path = "discount/{lid}", method = RequestMethod.GET)
+	@RequestMapping(path = "discount/location/{lid}", method = RequestMethod.GET)
 	public List<Discount> discountsByLocation(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid){
 		return dao.getDiscountsForLocation(lid);
 	}
@@ -40,6 +40,19 @@ public class DiscountController {
 		return discount;
 	}
 	
+	@RequestMapping(path = "discount/{did}", method = RequestMethod.DELETE)
+	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int did) {
+		return dao.deleteDiscount(did);
+	}
+	
+	@RequestMapping(path = "discount", method = RequestMethod.PUT)
+	public Discount update(HttpServletRequest req, HttpServletResponse res, @PathVariable int did, @RequestBody String stringJson) {
+		Discount discount = dao.updateDiscount(did, stringJson);
+		if(discount == null) {
+			res.setStatus(400);
+		}
+		return discount;
+	}
 	
 	
 }

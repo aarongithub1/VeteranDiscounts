@@ -31,7 +31,7 @@ public class Company {
 	@OneToMany(mappedBy="company")
 	private List<Location> locations;
 	
-	@OneToOne(mappedBy="address")
+	@OneToOne(mappedBy="company")
 	private Address address;
 	
 	@ManyToOne

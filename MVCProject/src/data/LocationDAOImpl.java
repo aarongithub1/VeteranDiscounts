@@ -92,10 +92,8 @@ public class LocationDAOImpl implements LocationDAO {
 			oldLocation = em.find(Location.class, lid);
 			
 			oldLocation.setHours(updateLocation.getHours());
-			oldLocation.setOwner(updateLocation.getOwner());
+//			oldLocation.setOwner(updateLocation.getOwner());
 			oldLocation.setPhoneNumber(updateLocation.getPhoneNumber());
-			oldLocation.setCompany(updateLocation.getCompany());
-			oldLocation.setAddress(updateLocation.getAddress());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

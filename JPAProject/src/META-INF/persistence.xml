@@ -11,6 +11,9 @@
         <class>entities.Type</class>
         <class>entities.Store</class>
         <class>entities.Discount</class>
+        <class>entities.Location</class>
+        <class>entities.Company</class>
+        <class>entities.StoreType</class>
         
 
         <properties>

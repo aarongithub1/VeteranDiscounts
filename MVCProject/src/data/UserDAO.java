@@ -1,13 +1,12 @@
 package data;
 
-import java.util.List;
+import java.util.Set;
 
-import entities.Address;
 import entities.User;
 
 public interface UserDAO {
 
-	public List<User> index();
+	public Set<User> index();
 
 	public User show(int id);
 

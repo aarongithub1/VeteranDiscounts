@@ -1,12 +1,12 @@
 package data;
 
-import java.util.List;
+import java.util.Set;
 
 import entities.Address;
 
 public interface AddressDAO {
 	
-	public List<Address> index();
+	public Set<Address> index();
 	public Address show(int id);
 	public Address create(String json, int locationId);
 	public Boolean delete(int id);

@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ public class Type {
 	private String name;
 	@JsonIgnore
 	@OneToMany(mappedBy = "type")
-	private List<Company> companies;
+	private Set<Company> companies;
 	//GETTERS AND SETTERS
 	public String getName() {
 		return name;
@@ -28,10 +28,10 @@ public class Type {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Company> getCompanies() {
+	public Set<Company> getCompanies() {
 		return companies;
 	}
-	public void setStores(List<Company> companies) {
+	public void setStores(Set<Company> companies) {
 		this.companies = companies;
 	}
 	public int getId() {

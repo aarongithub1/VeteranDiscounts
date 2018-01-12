@@ -1,6 +1,6 @@
 package controllers;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +21,7 @@ public class AddressController {
 	private AddressDAO dao;
 
 	@RequestMapping(path = "address", method = RequestMethod.GET)
-	public List<Address> todo(HttpServletRequest req, HttpServletResponse res) {
+	public Set<Address> todo(HttpServletRequest req, HttpServletResponse res) {
 		return dao.index();
 	}
 

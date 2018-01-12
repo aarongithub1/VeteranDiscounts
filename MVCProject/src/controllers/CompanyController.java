@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +22,7 @@ public class CompanyController {
 	private CompanyDAO dao;
 
 	@RequestMapping(path = "company", method = RequestMethod.GET)
-	public List<Company> index() {
+	public Set<Company> index() {
 		return dao.index();
 
 	}

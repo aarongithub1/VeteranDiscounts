@@ -1,7 +1,7 @@
 package data;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Discount;
 import entities.Location;
+import entities.User;
 
 @Transactional
 @Repository
@@ -23,21 +24,23 @@ public class DiscountDAOImpl implements DiscountDAO {
 	
 	@Override
 	public Discount showDiscount(int discountId) {
-		return em.find(Discount.class, 1);
+		return em.find(Discount.class, discountId);
 	}
 
 	@Override
-	public List<Discount> getDiscountsForLocation(int locationId) {
-		String q = "SELECT l FROM Location l WHERE l.id = :id JOIN FETCH l.discounts";
+	public Set<Discount> getDiscountsForLocation(int locationId) {
+		String q = "SELECT l FROM Location l JOIN FETCH l.discounts WHERE l.id = :id ";
 		Location l = em.createQuery(q, Location.class).setParameter("id", locationId).getResultList().get(0);
 		return l.getDiscounts();
 	}
 
 	@Override
-	public Discount createDiscount(String json) {
+	public Discount createDiscount(String json, int userId) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Discount d = mapper.readValue(json, Discount.class);
+			User u = em.find(User.class, userId);
+			d.setCreator(u);
 			em.persist(d);
 			em.flush();
 			return d;

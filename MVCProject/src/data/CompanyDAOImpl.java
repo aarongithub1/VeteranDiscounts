@@ -1,7 +1,9 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,11 +25,12 @@ public class CompanyDAOImpl implements CompanyDAO {
 	EntityManager em;
 
 	@Override
-	public List<Company> index() {
-		List<Company> c = new ArrayList<>();
-		String query = "SELECT c from Company c JOIN FETCH c.locations l";
+	public Set<Company> index() {
+		List c = new ArrayList<>();
+		String query = "SELECT c from Company c";
 		c = em.createQuery(query, Company.class).getResultList();
-		return c;
+		Set<Company> set = new HashSet<>(c);
+		return set;
 	}
 
 	@Override

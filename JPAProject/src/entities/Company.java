@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
 @Entity
 public class Company {
 	
@@ -30,9 +33,10 @@ public class Company {
 	@JoinColumn(name="owner_id")
 	private User owner;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy="company")
-	private List<Location> locations;
+
+//	@JsonBackReference
+	@OneToMany(mappedBy="company", fetch=FetchType.EAGER)
+	private Set<Location> locations;
 	
 	@ManyToOne
 	@JoinColumn(name="type_id")
@@ -88,11 +92,11 @@ public class Company {
 		return id;
 	}
 
-	public List<Location> getLocations() {
+	public Set<Location> getLocations() {
 		return locations;
 	}
 
-	public void setLocations(List<Location> locations) {
+	public void setLocations(Set<Location> locations) {
 		this.locations = locations;
 	}
 

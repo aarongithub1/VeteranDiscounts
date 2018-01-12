@@ -1,7 +1,9 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import entities.Address;
 import entities.User;
 
 @Transactional
@@ -22,11 +23,12 @@ public class UserDAOImpl implements UserDAO {
 	private EntityManager em;
 
 	@Override
-	public List<User> index() {
+	public Set<User> index() {
 		List<User> a = new ArrayList<>();
 		String query = "SELECT a from User a";
 		a = em.createQuery(query, User.class).getResultList();
-		return a;
+		Set<User> set = new HashSet<>(a);
+		return set;
 
 	}
 

@@ -30,6 +30,13 @@ angular.module('appModule').factory('vetService', function($http) {
 	//create discount
 	service.create = function(discount) {
 		var user = checkLogin();
+		if (isNull(discount.company)) {
+			if (isNull(discount.address)){
+				if (isNull(discount.location)) {
+					
+				}
+			}
+		}
 
 		return $http({
 			method : 'POST',

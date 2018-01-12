@@ -115,9 +115,10 @@ public class LocationDAOImpl implements LocationDAO {
 		return em.createQuery(query, Location.class)
 				.setParameter("company", keyword)
 				.setParameter("phoneNumber", keyword)
+				.setParameter("street", keyword)
+				.setParameter("city", keyword)
 				.setParameter("state", keyword)
-				.setParameter("desc", keyword)
-				.setParameter("activity",keyword)
+				.setParameter("zip",keyword)
 				.getResultList();
 	}
 

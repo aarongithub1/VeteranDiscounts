@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import entities.Address;
 import entities.Company;
 import entities.Location;
 
@@ -54,8 +55,13 @@ public class LocationDAOImpl implements LocationDAO {
 		try {
 
 			location = mapper.readValue(json, Location.class);
+			
+//			Address address = location.getAddress();
 			Company company = em.find(Company.class, cid);
+			
 			location.setCompany(company);
+//			location.setAddress(address);
+			
 			em.persist(location);
 			em.flush();
 
@@ -115,9 +121,10 @@ public class LocationDAOImpl implements LocationDAO {
 		return em.createQuery(query, Location.class)
 				.setParameter("company", keyword)
 				.setParameter("phoneNumber", keyword)
+				.setParameter("street", keyword)
+				.setParameter("city", keyword)
 				.setParameter("state", keyword)
-				.setParameter("desc", keyword)
-				.setParameter("activity",keyword)
+				.setParameter("zip",keyword)
 				.getResultList();
 	}
 

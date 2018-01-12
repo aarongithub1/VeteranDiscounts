@@ -59,9 +59,12 @@ public class CompanyDAOImpl implements CompanyDAO {
 	@Override
 	public Boolean delete(int id) {
 		Company c = em.find(Company.class, id);
-		String query = "Select FROM Location l WHERE l.company.id=:cid";
-		List<Location> l = em.createQuery(query,Location.class).setParameter("cid",id).getResultList();
-		em.remove(l);
+		String query = "Select l.id FROM Location l WHERE l.company.id=:cid";
+		List<Integer> l = em.createQuery(query).setParameter("cid",id).getResultList();
+		for(Integer child: l) {
+			em.createQuery("DELETE from Location l where l.id = :id").setParameter("id", child).executeUpdate();
+			
+		};
 		em.remove(c);
 		if (em.find(Company.class, id) == null) {
 			return true;

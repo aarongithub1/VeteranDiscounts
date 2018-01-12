@@ -21,10 +21,17 @@ public class DiscountDAOImpl implements DiscountDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public Discount showDiscount(int discountId) {
-		return em.find(Discount.class, discountId);
+
+		Discount d = em.find(Discount.class, discountId);
+		if (d != null) {
+			return d;
+
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -51,30 +58,44 @@ public class DiscountDAOImpl implements DiscountDAO {
 	}
 
 	@Override
-	public boolean deleteDiscount(int discountId) {
+	public boolean deleteDiscount(int discountId, int userId) {
+		Boolean b = false;
 		Discount d = em.find(Discount.class, discountId);
-		em.remove(d);
-		if (em.find(Discount.class, discountId) == null) {
-			return true;
+		if (d.getCreator().getId() == userId) {
+			em.remove(d);
+			if (em.find(Discount.class, discountId) == null) {
+				b = true;
+				return b;
+			} else {
+
+				return b;
+			}
+
+		} else {
+
+			return b;
 		}
-		return false;
 	}
 
 	@Override
-	public Discount updateDiscount(int discountId, String json) {
+	public Discount updateDiscount(int discountId, int uid, String json) {
 		Discount discountToUpdate = em.find(Discount.class, discountId);
 		ObjectMapper mapper = new ObjectMapper();
-		try {
-			Discount updated = mapper.readValue(json, Discount.class);
-			discountToUpdate.setAmount(updated.getAmount());
-			discountToUpdate.setStartDate(updated.getStartDate());
-			discountToUpdate.setEndDate(updated.getEndDate());
-			discountToUpdate.setInfo(updated.getInfo());
-			return discountToUpdate;
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (discountToUpdate.getCreator().getId() == uid) {
+			try {
+				Discount updated = mapper.readValue(json, Discount.class);
+				discountToUpdate.setAmount(updated.getAmount());
+				discountToUpdate.setStartDate(updated.getStartDate());
+				discountToUpdate.setEndDate(updated.getEndDate());
+				discountToUpdate.setInfo(updated.getInfo());
+				return discountToUpdate;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return null;
+		} else {
+			return null;
 		}
-		return null;
 	}
 
 }

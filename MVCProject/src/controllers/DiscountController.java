@@ -19,40 +19,57 @@ import entities.Discount;
 public class DiscountController {
 	@Autowired
 	private DiscountDAO dao;
-	
+
 	@RequestMapping(path = "discount/{did}", method = RequestMethod.GET)
 	public Discount show(HttpServletRequest req, HttpServletResponse res, @PathVariable int did) {
-	  return dao.showDiscount(did);
+		Discount d = dao.showDiscount(did);
+		if (d == null) {
+			res.setStatus(404);
+			return null;
+		} else {
+			return d;
+
+		}
+
 	}
-	
+
 	@RequestMapping(path = "discount/location/{lid}", method = RequestMethod.GET)
-	public Set<Discount> discountsByLocation(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid){
+	public Set<Discount> discountsByLocation(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid) {
 		return dao.getDiscountsForLocation(lid);
 	}
-	
-	@RequestMapping(path = "discount/{cid}", method = RequestMethod.POST)
-	public Discount create(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,  @RequestBody String stringJson) {
-		
-		Discount discount = dao.createDiscount(stringJson,cid);
-		if(discount ==null ) {
+
+	@RequestMapping(path = "{uid}/discount/", method = RequestMethod.POST)
+	public Discount create(HttpServletRequest req, HttpServletResponse res, @RequestBody String stringJson,
+			@PathVariable int uid) {
+
+		Discount discount = dao.createDiscount(stringJson, uid);
+		if (discount == null) {
 			res.setStatus(400);
 		}
 		return discount;
 	}
-	
-	@RequestMapping(path = "discount/{did}", method = RequestMethod.DELETE)
-	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int did) {
-		return dao.deleteDiscount(did);
+
+	@RequestMapping(path = "{uid}/discount/{did}", method = RequestMethod.DELETE)
+	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int did,
+			@PathVariable int uid) {
+		Boolean b = dao.deleteDiscount(did, uid);
+		if (b == true) {
+			res.setStatus(201);
+			return b;
+		} else {
+			res.setStatus(400);
+			return false;
+		}
 	}
-	
-	@RequestMapping(path = "discount/{did}", method = RequestMethod.PUT)
-	public Discount update(HttpServletRequest req, HttpServletResponse res, @PathVariable int did, @RequestBody String stringJson) {
-		Discount discount = dao.updateDiscount(did, stringJson);
-		if(discount == null) {
+
+	@RequestMapping(path = "{uid}/discount/{did}", method = RequestMethod.PUT)
+	public Discount update(HttpServletRequest req, HttpServletResponse res, @PathVariable int did,
+			@PathVariable int uid, @RequestBody String stringJson) {
+		Discount discount = dao.updateDiscount(did, uid, stringJson);
+		if (discount == null) {
 			res.setStatus(400);
 		}
 		return discount;
 	}
-	
-	
+
 }

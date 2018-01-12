@@ -2,6 +2,7 @@ package entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class Location {
 	private Address address;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="discount_id"), inverseJoinColumns=@JoinColumn(name="location_id"))
+	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="location_id"), inverseJoinColumns=@JoinColumn(name="discount_id"))
 	private Set<Discount> discounts;
 
 	public int getId() {

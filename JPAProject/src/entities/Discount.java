@@ -35,7 +35,7 @@ public class Discount {
 	@ManyToMany(
     cascade =
     {
-            CascadeType.DETACH,
+    			CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.PERSIST

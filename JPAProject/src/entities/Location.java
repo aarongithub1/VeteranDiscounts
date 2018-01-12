@@ -51,7 +51,7 @@ public class Location {
 	
 //	@ManyToMany(fetch=FetchType.EAGER)
 //	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="location_id"), inverseJoinColumns=@JoinColumn(name="discount_id"))
-	@ManyToMany(fetch = FetchType.LAZY,
+	@ManyToMany(fetch = FetchType.EAGER,
 	        cascade =
 	        {
 	                CascadeType.DETACH,

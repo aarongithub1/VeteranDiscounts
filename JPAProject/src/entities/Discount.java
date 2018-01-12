@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -29,7 +30,20 @@ public class Discount {
 	@JoinColumn(name = "user_id")
 	private User creator;
 	@JsonIgnore
-	@ManyToMany(mappedBy="discounts" , cascade=CascadeType.REMOVE)
+	//@ManyToMany(mappedBy="discounts" , cascade=CascadeType.REMOVE)
+	
+	@ManyToMany(
+    cascade =
+    {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST
+    },
+    targetEntity = Location.class)
+@JoinTable(name = "participating_locations",
+    inverseJoinColumns = @JoinColumn(name = "location_id"),
+    joinColumns = @JoinColumn(name = "discount_id"))
 	private Set<Location> locations;
 
 	// GETTERS AND SETTERS

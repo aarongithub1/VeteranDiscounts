@@ -49,8 +49,20 @@ public class Location {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="location_id"), inverseJoinColumns=@JoinColumn(name="discount_id"))
+//	@ManyToMany(fetch=FetchType.EAGER)
+//	@JoinTable(name="participating_locations", joinColumns=@JoinColumn(name="location_id"), inverseJoinColumns=@JoinColumn(name="discount_id"))
+	@ManyToMany(fetch = FetchType.LAZY,
+	        cascade =
+	        {
+	                CascadeType.DETACH,
+	                CascadeType.MERGE,
+	                CascadeType.REFRESH,
+	                CascadeType.PERSIST
+	        },
+	        targetEntity = Discount.class)
+	@JoinTable(name = "participating_locations",
+    joinColumns = @JoinColumn(name = "location_id"),
+    inverseJoinColumns = @JoinColumn(name = "discount_id"))
 	private Set<Discount> discounts;
 
 	public int getId() {

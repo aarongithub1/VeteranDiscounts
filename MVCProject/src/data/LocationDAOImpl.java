@@ -47,7 +47,7 @@ public class LocationDAOImpl implements LocationDAO {
 
 	// create a location for a company
 	@Override
-	public Location create(String json, int cid) {
+	public Location create(String json, int cid, int aid) {
 
 		ObjectMapper mapper = new ObjectMapper();
 		Location location = null;
@@ -56,11 +56,11 @@ public class LocationDAOImpl implements LocationDAO {
 
 			location = mapper.readValue(json, Location.class);
 			
-//			Address address = location.getAddress();
 			Company company = em.find(Company.class, cid);
+			Address address = em.find(Address.class, aid);
 			
 			location.setCompany(company);
-//			location.setAddress(address);
+			location.setAddress(address);
 			
 			em.persist(location);
 			em.flush();

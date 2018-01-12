@@ -1,4 +1,7 @@
-<!-- ---------- Create New discount -------------- -->
+<!----------- Create New discount ---------------->
+
+	<!-- company search bar -->
+
 
 	<!-- company form -->
 	<form ng-show="!vm.showCompany">
@@ -7,7 +10,7 @@
 		<input type="text" ng-model="company.url" placeholder="Company URL" /><br />
 		<input type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" />
 	</form>
-	
+
 	<!-- address form -->
 	<form ng-show="vm.showAddress">
 		<input type="text" ng-model="address.city" placeholder="City" /><br />
@@ -16,14 +19,14 @@
 		<input type="text" ng-model="address.zip" placeholder="Zip Code" /><br />
 		<input type="submit" ng-click="vm.addAddress(address); address = {}" value="Add Address" />
 	</form>
-	
+
 	<!-- location form -->
 	<form ng-show="vm.showLocation">
 		<input type="text" ng-model="location.hours" placeholder="Business Hours" /><br />
 		<input type="text" ng-model="location.phone" placeholder="Phone Number" /><br />
 		<input type="submit" ng-click="vm.addLocation(location); location = {}" value="Add Location" />
 	</form>
-	
+
 	<!-- discount form -->
 	<form ng-show="vm.showDiscount">
 		<input type="text" ng-model="discount.amount" placeholder="Amount" /><br />
@@ -31,34 +34,10 @@
 		<input type="text" ng-model="discount.duration" placeholder="Start/End Date" /><br />
 		<input type="submit" ng-click="vm.addDiscount(discount); discount = {}" value="Add Discount" />
 	</form>
-	
+
 	<!-- submit button - Persist all forms -->
 	<div ng-show="vm.showButton">
 		<button ng-click="vm.addAllForms()">Create Discount</button>
 	</div>
-	
+
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -27,7 +27,7 @@ angular.module('appModule').factory('vetService', function($http) {
 				url : 'rest/location'
 			});
 		}
-		
+
 		return $http({
 			method : 'GET',
 			url : 'rest/location/search/' + searchTerm
@@ -35,30 +35,50 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 
 	//create discount
-	service.create = function(discount) {
+	service.createDiscount = function(discount, companyId) {
 		var user = checkLogin();
-		if (isNull(discount.company)) {
-			if (isNull(discount.address)){
-				if (isNull(discount.location)) {
-					return $http({
-						method : 'POST',
-						url : 'rest/discount/' + cid,
-						headers : {
-					        'Content-Type' : 'application/json'
-					     },
-					})
-				}
-			}
-		}
 
 		return $http({
 			method : 'POST',
-			url : 'rest/location/discount' + user.id,
+			url : 'rest/discount' + companyId,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },
-		      data : discount
+		     data : discount
 		})
+	};
+
+	service.createCompany = function(company) {
+		return $http({
+			method : 'POST',
+			url : 'rest/company',
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : company
+		});
+	};
+
+	service.createLocation = function(location, companyId, addressId) {
+		return $http({
+			method : 'POST',
+			url : 'rest/location/' + companyId + '/' + addressId,
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : location
+		})
+	};
+
+	service.createAddress = function(address) {
+		return $http({
+			method : 'POST',
+			url : 'rest/address',
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : address
+		});
 	};
 
 	//distance between two points

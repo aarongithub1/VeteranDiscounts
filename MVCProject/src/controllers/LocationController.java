@@ -50,13 +50,13 @@ public class LocationController {
 	}
 
 //  Create - POST - location/{cid}
-	@RequestMapping(path="location/{aid}/{cid}", method=RequestMethod.POST)
+	@RequestMapping(path="location/{cid}/{aid}", method=RequestMethod.POST)
 	public Location create(HttpServletRequest req, HttpServletResponse res, 
 			@PathVariable int cid,
 			@PathVariable int aid,
 			@RequestBody String locationJson) {
 		
-		Location location = locationDAO.create(locationJson, cid);
+		Location location = locationDAO.create(locationJson, cid, aid);
 		
 		if(location == null) {
 			res.setStatus(400);

@@ -27,7 +27,7 @@ angular.module('appModule').factory('vetService', function($http) {
 				url : 'rest/location'
 			});
 		}
-		
+
 		return $http({
 			method : 'GET',
 			url : 'rest/location/search/' + searchTerm
@@ -59,10 +59,10 @@ angular.module('appModule').factory('vetService', function($http) {
 		});
 	};
 
-	service.createLocation = function(location, companyId) {
+	service.createLocation = function(location, companyId, addressId) {
 		return $http({
 			method : 'POST',
-			url : 'rest/location/' + companyId,
+			url : 'rest/location/' + companyId + '/' + addressId,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },

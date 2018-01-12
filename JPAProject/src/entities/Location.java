@@ -42,7 +42,7 @@ public class Location {
 	@JoinColumn(name="company_id")
 	private Company company;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;

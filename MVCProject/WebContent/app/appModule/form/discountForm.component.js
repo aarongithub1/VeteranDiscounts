@@ -11,6 +11,7 @@ angular.module('appModule')
 		vm.showDiscount = null;
 		vm.showButton = null;
 		vm.discounts = {};
+		vm.companyId = null;
 
 		// Display Updated List
 		var reload = function() {
@@ -75,10 +76,13 @@ angular.module('appModule')
                //
 			// })
 			vetService.createCompany(vm.discounts.company).then(function(response) {
+				vm.companyId = response.data.id;
 				vetService.createAddress(vm.discounts.address).then(function(response) {
-					vetservice.createLocation(vm.discounts.location).then(function(response) {
-						vetService.createDiscount(vm.discounts.discount).then(function(response) {
-
+					vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {
+						vetService.createDiscount(vm.discounts.discount, vm.companyId).then(function(response) {
+							//do something with new discount at new company
+							vm.showButton = null;
+							reload();
 						})
 					})
 				})

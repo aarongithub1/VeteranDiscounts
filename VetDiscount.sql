@@ -34,7 +34,7 @@ CREATE TABLE `address` (
 	`zip_code` INT(5) NOT NULL,
 	`street` VARCHAR(255) NOT NULL,
 	`lat` VARCHAR(255),
-	`long` VARCHAR(255),
+	`longitude` VARCHAR(255),
 	PRIMARY KEY (`id`)
 );
 

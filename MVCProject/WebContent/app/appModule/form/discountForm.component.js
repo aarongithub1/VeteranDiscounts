@@ -10,7 +10,7 @@ angular.module('appModule')
 		vm.showLocation = null;
 		vm.showDiscount = null;
 		vm.showButton = null;
-		vm.discounts = [];
+		vm.discounts = {};
 		
 		// Display Updated List
 		var reload = function() {
@@ -27,6 +27,11 @@ angular.module('appModule')
 		vm.addCompany = function(company) {
 			vm.showCompany = company;
 			vm.showAddress = company;
+			vm.discounts.company = company;
+			console.log(company);
+			console.log(vm.discounts);
+//			if company exists, don't add company
+			
 			
 		}
 		
@@ -34,28 +39,39 @@ angular.module('appModule')
 		vm.addAddress = function(address) {
 			vm.showAddress = null;
 			vm.showLocation = address;
+			vm.discounts.address = address;
+			console.log(address);
+			console.log(vm.discounts);
+//			if address exists, don't add address
 		}
 		
 		//on Location form submit - show Discount form / hide Location form
 		vm.addLocation = function(location) {
 			vm.showLocation = null;
 			vm.showDiscount = location;
+			vm.discounts.location = location;
+			console.log(location);
+			console.log(vm.discounts);
+//			if location exists, don't add location
 		}
 		
 		//on Discount form submit - show AddAllButton / hide Discount form
 		vm.addDiscount = function(discount) {
 			vm.showDiscount = null;
 			vm.showButton = discount;
+			vm.discounts.discount = discount;
+			console.log(discount);
+			console.log(vm.discounts);
 		}
 		
 		// Create Discount - All forms
-		vm.addAllForms = function(discount) {
-			var discountCopy = angular.copy(discount);
+		vm.addAllForms = function() {
+//			var discountCopy = angular.copy(discount);
 			
-			vetService.createDiscount(discountCopy)
+			vetService.create(vm.discounts)
 			.then(function(res){
+				
 				reload();
-//				$location.path('/discounts');
 				
 			})
 		}

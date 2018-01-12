@@ -41,12 +41,10 @@ public class AddressDAOImpl implements AddressDAO{
 	}
 
 	@Override
-	public Address create(String json, int locationId) {
+	public Address create(String json) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Address newAddress = mapper.readValue(json, Address.class);
-			Location l = em.find(Location.class, locationId);
-			newAddress.setLocation(l);
 			em.persist(newAddress);
 			em.flush();
 			return newAddress;

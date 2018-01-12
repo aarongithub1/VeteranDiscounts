@@ -21,6 +21,13 @@ angular.module('appModule').factory('vetService', function($http) {
 
 	// search
 	service.search = function(searchTerm){
+		if(searchTerm.trim()===null ||searchTerm.trim()===""){
+			return $http({
+				method : 'GET',
+				url : 'rest/location'
+			});
+		}
+		
 		return $http({
 			method : 'GET',
 			url : 'rest/location/search/' + searchTerm

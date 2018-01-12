@@ -37,10 +37,11 @@ public class AddressController {
 		return address;
 	}
 	
-	@RequestMapping(path = "address/{lid}", method = RequestMethod.POST)
-	public Address create(HttpServletRequest req, HttpServletResponse res, @PathVariable int lid,@RequestBody String stringJson) {
+	@RequestMapping(path = "address", method = RequestMethod.POST)
+	public Address create(HttpServletRequest req, HttpServletResponse res,
+			@RequestBody String stringJson) {
 		
-		Address address = dao.create(stringJson,lid);
+		Address address = dao.create(stringJson);
 		if(address == null ) {
 			res.setStatus(400);
 		}

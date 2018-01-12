@@ -1,0 +1,92 @@
+angular.module('appModule')
+.component('discountForm', {
+	templateUrl : 'app/appModule/form/discountForm.component.html',
+	controllerAs : 'vm',
+	controller : function(vetService, $filter, $location, $routeParams, $cookies) {
+
+		var vm = this;
+		vm.showComany = null;
+		vm.showAddress = null;
+		vm.showLocation = null;
+		vm.showDiscount = null;
+		vm.showButton = null;
+		vm.discounts = {};
+
+		// Display Updated List
+		var reload = function() {
+			vetService.index()
+			.then(function(res){
+				vm.discounts = res.data;
+			})
+		}
+
+		reload();
+
+
+		//on Company form submit - show address form / hide company form
+		vm.addCompany = function(company) {
+			vm.showCompany = company;
+			vm.showAddress = company;
+			vm.discounts.company = company;
+			console.log(company);
+			console.log(vm.discounts);
+//			if company exists, don't add company
+
+
+		}
+
+		//on Address form submit - show Location form / hide Company form
+		vm.addAddress = function(address) {
+			vm.showAddress = null;
+			vm.showLocation = address;
+			vm.discounts.address = address;
+			console.log(address);
+			console.log(vm.discounts);
+//			if address exists, don't add address
+		}
+
+		//on Location form submit - show Discount form / hide Location form
+		vm.addLocation = function(location) {
+			vm.showLocation = null;
+			vm.showDiscount = location;
+			vm.discounts.location = location;
+			console.log(location);
+			console.log(vm.discounts);
+//			if location exists, don't add location
+		}
+
+		//on Discount form submit - show AddAllButton / hide Discount form
+		vm.addDiscount = function(discount) {
+			vm.showDiscount = null;
+			vm.showButton = discount;
+			vm.discounts.discount = discount;
+			console.log(discount);
+			console.log(vm.discounts);
+		}
+
+		// Create Discount - All forms
+		vm.addAllForms = function() {
+//			var discountCopy = angular.copy(discount);
+
+			// vetService.create(vm.discounts)
+			// .then(function(res){
+               //
+			// 	reload();
+               //
+			// })
+			vetService.createCompany(vm.discounts.company).then(function(response) {
+				vetService.createAddress(vm.discounts.address).then(function(response) {
+					vetservice.createLocation(vm.discounts.location).then(function(response) {
+						vetService.createDiscount(vm.discounts.discount).then(function(response) {
+
+						})
+					})
+				})
+			})
+		}
+
+
+
+
+	}
+})

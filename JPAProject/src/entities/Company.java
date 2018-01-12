@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Company {
@@ -29,7 +30,7 @@ public class Company {
 	@JoinColumn(name="owner_id")
 	private User owner;
 	
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(mappedBy="company")
 	private List<Location> locations;
 	

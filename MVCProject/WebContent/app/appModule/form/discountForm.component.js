@@ -45,7 +45,7 @@ angular.module('appModule')
 		//on Discount form submit - show AddAllButton / hide Discount form
 		vm.addDiscount = function(discount) {
 			vm.showDiscount = null;
-			
+			vm.showButton = discount;
 		}
 		
 		// Create Discount - All forms
@@ -55,7 +55,7 @@ angular.module('appModule')
 			vetService.createDiscount(discountCopy)
 			.then(function(res){
 				reload();
-				$location.path('/discounts');
+//				$location.path('/discounts');
 				
 			})
 		}

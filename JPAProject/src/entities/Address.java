@@ -26,7 +26,6 @@ public class Address {
 	private int zip;
 	private String street;
 	private String lat;
-	@Column(name="long")
 	private String longitude;
 	
 	@OneToOne(mappedBy="address")

@@ -21,6 +21,13 @@ angular.module('appModule').factory('vetService', function($http) {
 
 	// search
 	service.search = function(searchTerm){
+		if(searchTerm.trim()===null ||searchTerm.trim()===""){
+			return $http({
+				method : 'GET',
+				url : 'rest/location'
+			});
+		}
+		
 		return $http({
 			method : 'GET',
 			url : 'rest/location/search/' + searchTerm
@@ -28,21 +35,29 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 
 	//create discount
-	service.create = function(discounts) {
+	service.create = function(discount) {
 		var user = checkLogin();
-//		if discount.company = null then
-//			if discount.address = null
-//				if discount.location = null;
-//		then only put discount into db
-//		if discount.company !null
-		
+		if (isNull(discount.company)) {
+			if (isNull(discount.address)){
+				if (isNull(discount.location)) {
+					return $http({
+						method : 'POST',
+						url : 'rest/discount/' + cid,
+						headers : {
+					        'Content-Type' : 'application/json'
+					     },
+					})
+				}
+			}
+		}
+
 		return $http({
 			method : 'POST',
-			url : 'rest/location/discount/company' + user.id,
+			url : 'rest/location/discount' + user.id,
 			headers : {
 		        'Content-Type' : 'application/json'
-		      },
-		      data : discounts
+		     },
+		      data : discount
 		})
 	};
 

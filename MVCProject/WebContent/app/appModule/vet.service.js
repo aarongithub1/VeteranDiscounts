@@ -41,6 +41,23 @@ angular.module('appModule').factory('vetService', function($http) {
 		})
 	};
 	
+	//distance between two points
+	service.distance = function(origin,destination) {
+		var parsedOrigin = origin.split(' ').join('+');
+		var parsedDestination = destination.split(' ').join('+');
+		//maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=518+West+14th+Street+Houston+TX&destinations=12411+Wedgehill+Lane+Houston+TX
+		return $http({
+			method : 'GET',
+			url : 'maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + parsedOrigin +'&destinations=' + parsedDestination + '&key=AIzaSyC23b9B6TuJDmGsOOJCGimRY0sJMcD4MK8'
+
+			headers : {
+		        'Content-Type' : 'application/json'
+		      }
+		})
+	};
+	
+	
+	
 	
 	return service;
 })

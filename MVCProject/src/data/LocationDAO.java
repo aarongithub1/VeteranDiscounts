@@ -1,5 +1,6 @@
 package data;
 
+import java.util.List;
 import java.util.Set;
 
 import entities.Location;
@@ -10,6 +11,7 @@ public interface LocationDAO {
 	public Location create(String json, int cid);
 	public Boolean delete(int lid);
 	public Location update(String json, int lid);
+	List<Location> getAllLocationsByKeyword(String keyword);
 
 
 }

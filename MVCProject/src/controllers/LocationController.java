@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,20 @@ public class LocationController {
 	
 	@Autowired
 	private LocationDAO locationDAO;
+	
+	//Search by location
+	@RequestMapping(path="location/search/{searchString}", method=RequestMethod.GET)
+	public List<Location> search(HttpServletRequest req, HttpServletResponse res, 
+			@PathVariable String searchString) {
+		List<Location> searchedLocations = locationDAO.getAllLocationsByKeyword(searchString);
+		if(searchedLocations== null) {
+			res.setStatus(400);
+		}
+		else {
+			res.setStatus(201);
+		}
+		return searchedLocations;
+	}
 	
 //  Index - GET - location
 	@RequestMapping(path="location", method=RequestMethod.GET)

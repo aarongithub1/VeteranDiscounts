@@ -101,5 +101,25 @@ public class LocationDAOImpl implements LocationDAO {
 		
 		return oldLocation;
 	}
+	
+	//Event search by keyword
+	@Override
+	public List<Location> getAllLocationsByKeyword(String keyword) {
+		String query = "SELECT l FROM Location l WHERE l.company.name"
+				+ " LIKE CONCAT('%', :keyword,'%')"
+				+ " OR l.company.name LIKE CONCAT('%', :company,'%')"
+				+ " OR l.address.street LIKE CONCAT('%', :street,'%')"
+				+ " OR l.address.city LIKE CONCAT('%', :city,'%')"
+				+ " OR l.address.state LIKE CONCAT('%', :state,'%')"
+				+ " OR l.address.zip LIKE CONCAT('%', :zip,'%')";
+		
+		return em.createQuery(query, Location.class)
+				.setParameter("company", keyword)
+				.setParameter("phoneNumber", keyword)
+				.setParameter("state", keyword)
+				.setParameter("desc", keyword)
+				.setParameter("activity",keyword)
+				.getResultList();
+	}
 
 }

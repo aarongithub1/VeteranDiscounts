@@ -1,7 +1,7 @@
 angular.module('appModule').component('results', {
 	templateUrl : 'app/appModule/results/results.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService) {
+	controller : function(vetService,$scope) {
 		var vm = this;
 		vm.results = [];
 		reload();
@@ -13,5 +13,10 @@ angular.module('appModule').component('results', {
 				  console.log(error);
 			  });
 		  }
+		
+		$scope.$on('search-event', function(e,args){
+			console.log('scope hit');
+			vm.results = args.searchResults;
+		})
 	}
 });

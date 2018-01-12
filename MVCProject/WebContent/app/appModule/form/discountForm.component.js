@@ -12,6 +12,8 @@ angular.module('appModule')
 		vm.showButton = null;
 		vm.discounts = {};
 		vm.companyId = null;
+		var companyExists = false;
+		var locationExists = false
 
 		// Display Updated List
 		var reload = function() {
@@ -67,26 +69,38 @@ angular.module('appModule')
 
 		// Create Discount - All forms
 		vm.addAllForms = function() {
-//			var discountCopy = angular.copy(discount);
-
-			// vetService.create(vm.discounts)
-			// .then(function(res){
-               //
-			// 	reload();
-               //
-			// })
-			vetService.createCompany(vm.discounts.company).then(function(response) {
-				vm.companyId = response.data.id;
-				vetService.createAddress(vm.discounts.address).then(function(response) {
-					vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {
-						vetService.createDiscount(vm.discounts.discount, vm.companyId).then(function(response) {
-							//do something with new discount at new company
-							vm.showButton = null;
-							reload();
+			if (companyExists) {
+				if (locationExists) {
+					vetService.createDiscount(vm.discounts.discount, vm.discounts.company.id).then(function() {
+						//do something
+					});
+				}
+				else {
+					vetService.createAddress(vm.discounts.address).then(function(response) {
+						vetService.createLocation(vm.discounts.location, vm.discounts.company.id, response.data.id).then(function(response) {
+							vetService.createDiscount(vm.discounts.discount, vm.discounts.company.id).then(function(response) {
+								//do something with new discount at new company
+								vm.showButton = null;
+								reload();
+							})
+						})
+					})
+				}
+			}
+			else {
+				vetService.createCompany(vm.discounts.company).then(function(response) {
+					vm.companyId = response.data.id;
+					vetService.createAddress(vm.discounts.address).then(function(response) {
+						vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {
+							vetService.createDiscount(vm.discounts.discount, vm.companyId).then(function(response) {
+								//do something with new discount at new company
+								vm.showButton = null;
+								reload();
+							})
 						})
 					})
 				})
-			})
+			}
 		}
 
 

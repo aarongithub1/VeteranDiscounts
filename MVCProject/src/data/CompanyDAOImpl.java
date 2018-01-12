@@ -11,9 +11,11 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Company;
+import entities.Location;
 
 @Transactional
 @Repository
@@ -33,8 +35,10 @@ public class CompanyDAOImpl implements CompanyDAO {
 
 	@Override
 	public Company show(int id) {
-
-		return em.find(Company.class, id);
+	
+		Company c = em.find(Company.class, id);
+		c.getLocations().size();
+		return c;
 	}
 
 	@Override
@@ -55,6 +59,9 @@ public class CompanyDAOImpl implements CompanyDAO {
 	@Override
 	public Boolean delete(int id) {
 		Company c = em.find(Company.class, id);
+		String query = "Select FROM Location l WHERE l.company.id=:cid";
+		List<Location> l = em.createQuery(query,Location.class).setParameter("cid",id).getResultList();
+		em.remove(l);
 		em.remove(c);
 		if (em.find(Company.class, id) == null) {
 			return true;

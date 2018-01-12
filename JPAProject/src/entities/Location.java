@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -36,13 +37,13 @@ public class Location {
 	@ManyToOne
 	@JoinColumn(name="owner_id")
 	private User owner;
-	
-//	@JsonManagedReference
+
+
 	@ManyToOne
 	@JoinColumn(name="company_id")
 	private Company company;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;

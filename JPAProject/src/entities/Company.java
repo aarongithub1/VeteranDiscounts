@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
@@ -32,6 +33,7 @@ public class Company {
 	@JoinColumn(name="owner_id")
 	private User owner;
 	
+
 //	@JsonBackReference
 	@OneToMany(mappedBy="company", fetch=FetchType.EAGER)
 	private Set<Location> locations;

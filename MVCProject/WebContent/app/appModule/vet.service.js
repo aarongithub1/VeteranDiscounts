@@ -37,13 +37,26 @@ angular.module('appModule').factory('vetService', function($http) {
 	//create discount
 	service.create = function(discount) {
 		var user = checkLogin();
+		if (isNull(discount.company)) {
+			if (isNull(discount.address)){
+				if (isNull(discount.location)) {
+					return $http({
+						method : 'POST',
+						url : 'rest/discount/' + cid,
+						headers : {
+					        'Content-Type' : 'application/json'
+					     },
+					})
+				}
+			}
+		}
 
 		return $http({
 			method : 'POST',
 			url : 'rest/location/discount' + user.id,
 			headers : {
 		        'Content-Type' : 'application/json'
-		      },
+		     },
 		      data : discount
 		})
 	};

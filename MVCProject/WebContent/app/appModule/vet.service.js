@@ -28,16 +28,21 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 
 	//create discount
-	service.create = function(discount) {
+	service.create = function(discounts) {
 		var user = checkLogin();
-
+//		if discount.company = null then
+//			if discount.address = null
+//				if discount.location = null;
+//		then only put discount into db
+//		if discount.company !null
+		
 		return $http({
 			method : 'POST',
-			url : 'rest/location/discount' + user.id,
+			url : 'rest/location/discount/company' + user.id,
 			headers : {
 		        'Content-Type' : 'application/json'
 		      },
-		      data : discount
+		      data : discounts
 		})
 	};
 

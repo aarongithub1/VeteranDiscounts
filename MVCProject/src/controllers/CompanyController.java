@@ -39,9 +39,9 @@ public class CompanyController {
 		}
 	}
 
-	@RequestMapping(path="company",method=RequestMethod.POST)
-	public Company create(@RequestBody String json, HttpServletResponse res) {
-		Company c = dao.create(json);
+	@RequestMapping(path="{uid}/company",method=RequestMethod.POST)
+	public Company create(@RequestBody String json, HttpServletResponse res, @PathVariable int uid) {
+		Company c = dao.create(uid, json);
 		if (c == null) {
 			res.setStatus(400);
 
@@ -51,10 +51,10 @@ public class CompanyController {
 		return c;
 	}
 	
-	@RequestMapping(path = "company/{cid}", method = RequestMethod.PUT)
+	@RequestMapping(path = "{uid}/company/{cid}", method = RequestMethod.PUT)
 	public Company update(@RequestBody String json, HttpServletResponse res,
-			@PathVariable int cid) {
-		Company c = dao.update(json, cid);
+			@PathVariable int cid, @PathVariable int uid) {
+		Company c = dao.update(json, cid, uid);
 		if (c == null) {
 			res.setStatus(400);
 		} else {
@@ -63,14 +63,15 @@ public class CompanyController {
 		return c;
 	}
 	
-	@RequestMapping(path="company/{cid}",method = RequestMethod.DELETE)
-	public Boolean delete(HttpServletResponse res, @PathVariable int cid) {
-		Boolean b = dao.delete(cid);
+	@RequestMapping(path="{uid}/company/{cid}",method = RequestMethod.DELETE)
+	public Boolean delete(HttpServletResponse res, @PathVariable int cid, @PathVariable int uid) {
+		Boolean b = dao.delete(cid,uid);
 		if (b == true){
 			res.setStatus(201);
 			return b;
 		} else {
 			res.setStatus(400);
-		return false;}
+		return false;
+		}
 	}
 }

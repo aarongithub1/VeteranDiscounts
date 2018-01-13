@@ -11,11 +11,11 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Company;
 import entities.Location;
+import entities.User;
 
 @Transactional
 @Repository
@@ -35,17 +35,19 @@ public class CompanyDAOImpl implements CompanyDAO {
 
 	@Override
 	public Company show(int id) {
-	
+
 		Company c = em.find(Company.class, id);
 		c.getLocations().size();
 		return c;
 	}
 
 	@Override
-	public Company create(String json) {
+	public Company create(int uid, String json) {
+		User u = em.find(User.class, uid);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Company newCompany = mapper.readValue(json, Company.class);
+			newCompany.setOwner(u);
 			em.persist(newCompany);
 			em.flush();
 			return newCompany;
@@ -53,43 +55,48 @@ public class CompanyDAOImpl implements CompanyDAO {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 
 	@Override
-	public Boolean delete(int id) {
-		Company c = em.find(Company.class, id);
-		String query = "Select l.id FROM Location l WHERE l.company.id=:cid";
-		List<Integer> l = em.createQuery(query).setParameter("cid",id).getResultList();
-		for(Integer child: l) {
-			em.createQuery("DELETE from Location l where l.id = :id").setParameter("id", child).executeUpdate();
-			
-		};
-		em.remove(c);
-		if (em.find(Company.class, id) == null) {
-			return true;
+	public Boolean delete(int cid, int uid) {
+		Company c = em.find(Company.class, cid);
+		if (uid == c.getOwner().getId()) {
+			String query = "Select l.id FROM Location l WHERE l.company.id=:cid";
+			List<Integer> l = em.createQuery(query).setParameter("cid", cid).getResultList();
+			for (Integer child : l) {
+				em.createQuery("DELETE from Location l where l.id = :id").setParameter("id", child).executeUpdate();
+			}
+			;
+			em.remove(c);
+			if (em.find(Company.class, cid) == null) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
 	}
 
 	@Override
-	public Company update(String json, int id) {
+	public Company update(String json, int cid, int uid) {
 		ObjectMapper mapper = new ObjectMapper();
-		try {
-			Company updatedCompany = mapper.readValue(json, Company.class);
-
-			Company managed = em.find(Company.class, id);
-			managed.setName(updatedCompany.getName());
-			managed.setOwner(updatedCompany.getOwner());
-			managed.setType(updatedCompany.getType());
-			managed.setStoreUrl(updatedCompany.getStoreUrl());
-			managed.setIsChain(updatedCompany.getIsChain());
-			managed.setLocations(updatedCompany.getLocations());
-
-			return managed;
-		} catch (Exception e) {
-			e.printStackTrace();
+		User u = em.find(User.class, uid);
+		if (u.getId() == uid) {
+			try {
+				Company updatedCompany = mapper.readValue(json, Company.class);
+				Company managed = em.find(Company.class, cid);
+				managed.setName(updatedCompany.getName());
+				managed.setType(updatedCompany.getType());
+				managed.setStoreUrl(updatedCompany.getStoreUrl());
+				managed.setIsChain(updatedCompany.getIsChain());
+				managed.setLocations(updatedCompany.getLocations());
+				return managed;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		} else {
 			return null;
 		}
 	}

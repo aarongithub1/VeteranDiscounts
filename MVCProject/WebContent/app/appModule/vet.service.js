@@ -34,6 +34,21 @@ angular.module('appModule').factory('vetService', function($http) {
 		});
 	}
 
+	// search
+	service.searchCompany = function(searchCompany){
+		if(searchTerm.trim()===null ||searchTerm.trim()===""){
+			return $http({
+				method : 'GET',
+				url : 'rest/discount'
+			});
+		}
+		
+		return $http({
+			method : 'GET',
+			url : 'rest/discount/search/' + searchCompany
+		});
+	}
+	
 	//create discount
 	service.createDiscount = function(discount, companyId) {
 		var user = checkLogin();

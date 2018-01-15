@@ -2,7 +2,7 @@ angular.module('appModule')
 .component('discountForm', {
 	templateUrl : 'app/appModule/form/discountForm.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService, $filter, $location, $routeParams, $cookies) {
+	controller : function(vetService, $filter, $location, $routeParams, $cookies, $rootScope) {
 
 		var vm = this;
 		vm.showComany = null;
@@ -24,6 +24,17 @@ angular.module('appModule')
 		}
 
 		reload();
+		
+		//Search for company - 
+		vm.searchCompany = function(company) {
+			vetService.searchCompany(company)
+				.then(function(response) {
+					//console.log(response.data);
+				$rootScope.$broadcast('search-company',{
+					companySearchResult : response.data
+				})
+			});
+		}
 
 
 		//on Company form submit - show address form / hide company form
@@ -102,9 +113,7 @@ angular.module('appModule')
 				})
 			}
 		}
-
-
-
+		
 
 	}
 })

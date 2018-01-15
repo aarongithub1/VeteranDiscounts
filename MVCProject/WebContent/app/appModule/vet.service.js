@@ -36,16 +36,16 @@ angular.module('appModule').factory('vetService', function($http) {
 
 	// search company
 	service.searchCompany = function(searchCompany){
-		if(searchTerm.trim()===null ||searchTerm.trim()===""){
+		if(searchCompany.trim()===null || searchCompany.trim()===""){
 			return $http({
 				method : 'GET',
-				url : 'rest/discount'
+				url : 'rest/location/discount'
 			});
 		}
 		
 		return $http({
 			method : 'GET',
-			url : 'rest/discount/search/' + searchCompany
+			url : 'rest/location/discount/search/' + searchCompany
 		});
 	}
 	

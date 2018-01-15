@@ -11,7 +11,7 @@ angular.module('appModule').component('results', {
 		function reload(){
 		vetService.index().then(function(res){
 			vm.results = res.data;
-			vm.active = vm.results[0];
+			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
 		  });

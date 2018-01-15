@@ -4,6 +4,7 @@ angular.module('appModule').component('results', {
 	controller : function(vetService,$scope) {
 		var vm = this;
 		vm.results = [];
+		vm.active = null;
 		reload();
 		
 		function reload(){
@@ -12,7 +13,15 @@ angular.module('appModule').component('results', {
 			  }).catch(function(error){
 				  console.log(error);
 			  });
+			 
+			  if(vm.active == false && vm.results[0] == true){
+				  vm.active = vm.results[0];
+			  }
 		  }
+		
+		vm.makeActive = function(result){
+			vm.active = result;
+		}	
 		
 		$scope.$on('search-event', function(e,args){
 			console.log('scope hit');

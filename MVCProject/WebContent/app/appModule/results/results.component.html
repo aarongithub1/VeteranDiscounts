@@ -1,6 +1,4 @@
-
-
-	<div class="resultCard" ng-repeat="location in vm.results">
+<div class="resultCard" ng-repeat="location in vm.results" ng-click="vm.makeActive(location)">
 		<h3>{{location.company.name}}</h3>
 		{{location.address.street}}, {{location.address.city}}
 		{{location.address.state}} {{location.address.zip}}

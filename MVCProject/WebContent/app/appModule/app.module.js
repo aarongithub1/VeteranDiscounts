@@ -5,8 +5,18 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 	.when('/location/discount', {
 		template : '<discount-form></discount-form>'
 	})
-	.when('/location/discount/search', {
-		template : '<company-search-result></company-search-result>'
+
+	.when('/register', {
+			template : '<register></register>'
+		})
+		
+	.when('/login', {
+			template : '<login></login>'
+		})
+		
+	.when('/redirect',{
+		template:'<redirect></redirect>'
 	})
 	
+
 });

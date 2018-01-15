@@ -4,8 +4,18 @@ angular.module('appModule').component('results', {
 	controller : function(vetService,$scope,$rootScope) {
 		var vm = this;
 		vm.results = [];
-		vm.searchTerm = null;
+		//vm.searchTerm = null;
 		vm.active = null;
+		reload();
+		
+		function reload(){
+		vetService.index().then(function(res){
+			vm.results = res.data;
+			vm.makeActive(vm.results[0]);
+		  }).catch(function(error){
+			  console.log(error);
+		  });
+		}
 		
 		vm.makeActive = function(result){
 			vm.active = result;

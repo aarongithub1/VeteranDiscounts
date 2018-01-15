@@ -11,10 +11,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
-	<script src="app/appModule/app.module.js"></script>
-	<script src="app/appModule/vet.service.js"></script>
+	
+	<!--auth module and components here because they are dependency of app module and must be present before that is loaded   -->
 	<script src="app/authModule/auth.module.js"></script>
 	<script src="app/authModule/auth.service.js"></script>
+	<script src="app/authModule/login/login.component.js"> </script>
+	<script src="app/authModule/logout/logout.component.js"> </script>
+	<script src="app/authModule/register/register.component.js"> </script>
+	<script src="app/authModule/redirect/redirect.component.js"> </script>
+	
+	<script src="app/appModule/app.module.js"></script>
+	<script src="app/appModule/vet.service.js"></script>
+	
 	<script src="app/appModule/navbar/navbar.component.js"></script>
 	<script src="app/appModule/location/location.component.js"></script>
 	<script src="app/appModule/discount/discount.component.js"></script>
@@ -27,7 +35,7 @@
 <body>
 	<navbar>loading navbar</navbar>
 	<div class="row">
-		<div class="col">
+		<div class="col results">
 			<results>loading results</results>
 		</div>
 		<div class="col">

@@ -2,3 +2,12 @@
 	border-style: dashed;
 	border-width: 2px;
 }
+
+.resultCard{
+	background-color: grey;
+	margin: 2em;
+	padding: 1em;
+}
+#map {
+	height: 100%;
+}

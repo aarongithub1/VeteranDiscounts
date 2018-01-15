@@ -50,10 +50,9 @@ public class LocationController {
 	}
 
 //  Create - POST - location/{cid}
-	@RequestMapping(path="location/{cid}/{aid}", method=RequestMethod.POST)
+	@RequestMapping(path="{cid}/location/{aid}", method=RequestMethod.POST)
 	public Location create(HttpServletRequest req, HttpServletResponse res, 
-			@PathVariable int cid,
-			@PathVariable int aid,
+			@PathVariable int cid, @PathVariable int aid,
 			@RequestBody String locationJson) {
 		
 		Location location = locationDAO.create(locationJson, cid, aid);
@@ -69,12 +68,12 @@ public class LocationController {
 	}
 
 //  Update - PUT - location/{lid}
-	@RequestMapping(path="location/{lid}", method=RequestMethod.PUT)
+	@RequestMapping(path="{cid}/location/{lid}", method=RequestMethod.PUT)
 	public Location update(HttpServletRequest req, HttpServletResponse res, 
-			@PathVariable int lid,
+			@PathVariable int lid, @PathVariable int cid,
 			@RequestBody String locationJson) {
 		
-		Location location = locationDAO.update(locationJson, lid);
+		Location location = locationDAO.update(locationJson, lid, cid);
 		
 		if(location == null) {
 			res.setStatus(400);
@@ -87,11 +86,11 @@ public class LocationController {
 	}
 
 //  Delete - DELETE - location/{lid}
-	@RequestMapping(path="location/{lid}", method=RequestMethod.DELETE)
+	@RequestMapping(path="{cid}/location/{lid}", method=RequestMethod.DELETE)
 	public Boolean delete(HttpServletRequest req, HttpServletResponse res, 
-			@PathVariable int lid) {
+			@PathVariable int lid, @PathVariable int cid) {
 		
-		boolean result = locationDAO.delete(lid);
+		boolean result = locationDAO.delete(lid, cid);
 		
 		if(result == false) {
 			res.setStatus(400);

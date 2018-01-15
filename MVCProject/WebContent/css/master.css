@@ -10,4 +10,8 @@
 }
 #map {
 	height: 100%;
+
+}
+.activeSelection{
+	background-color: red;
 }

@@ -34,22 +34,10 @@ angular.module('appModule')
 		vm.searchCompany = function(company) {
 			vetService.searchCompany(company)
 				.then(function(response) {
-					vm.searchResult = response.data;
+					vm.locationResults = response.data.name.locations;
 					vm.showCompanySearch = response.data;
 				})
 		}
-
-//		//Search for company - 
-//		vm.searchCompany = function(company) {
-//			vetService.searchCompany(company)
-//			.then(function(response) {
-//				//console.log(response.data);
-//				$rootScope.$broadcast('search-company',{
-//					companySearchResult : response.data
-//				})
-//			});
-//		}
-//		
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {

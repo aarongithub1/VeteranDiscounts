@@ -19,7 +19,7 @@ import entities.Discount;
 public class DiscountController {
 	@Autowired
 	private DiscountDAO dao;
-
+	
 	@RequestMapping(path = "discount/{did}", method = RequestMethod.GET)
 	public Discount show(HttpServletRequest req, HttpServletResponse res, @PathVariable int did) {
 		Discount d = dao.showDiscount(did);

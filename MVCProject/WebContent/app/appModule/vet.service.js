@@ -45,7 +45,7 @@ angular.module('appModule').factory('vetService', function($http) {
 		
 		return $http({
 			method : 'GET',
-			url : 'rest/location/discount/search/' + searchCompany
+			url : 'rest/company/search/{searchString}' + searchCompany
 		});
 	}
 	

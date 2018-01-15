@@ -2,3 +2,25 @@
 	border-style: dashed;
 	border-width: 2px;
 }
+
+.resultCard{
+	background-color: grey;
+	margin: 2em;
+	padding: 1em;
+}
+#map {
+	height: 500px;
+}
+.activeSelection{
+	background-color: red;
+}
+.infoDisplay{
+	background-color:aqua;
+	padding: 0.5em;
+	margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.results {
+	height : 100%;
+}

@@ -15,4 +15,10 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 	.when('/redirect',{
 		template:'<redirect></redirect>'
 	})
+
+	.when('/location/discount', {
+		template : '<company-search-result></company-search-result>'
+	})
+	
+
 });

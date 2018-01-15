@@ -40,7 +40,6 @@ public class CompanyController {
 	@RequestMapping(path = "company", method = RequestMethod.GET)
 	public Set<Company> index() {
 		return companyDAO.index();
-
 	}
 
 	@RequestMapping(path = "company/{cid}", method = RequestMethod.GET)

@@ -1,7 +1,14 @@
 angular.module('appModule').component('location', {
 	templateUrl : 'app/appModule/location/location.component.html',
 	controllerAs : 'vm',
-	controller : function() {
+	controller : function($scope) {
 		var vm = this;
+		vm.location = null;
+		
+		$scope.$on('activeSelection', function(e,arg){
+			//console.log('scope hit in discount');
+			console.log(arg);
+			vm.location = arg;
+		});
 	}
 });

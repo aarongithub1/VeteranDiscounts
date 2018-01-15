@@ -42,15 +42,17 @@ public class DiscountDAOImpl implements DiscountDAO {
 	}
 
 	@Override
-	public Discount createDiscount(String json, int userId) {
+	public Discount createDiscount(String json, int uid, int lid) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			Discount d = mapper.readValue(json, Discount.class);
-			User u = em.find(User.class, userId);
-			d.setCreator(u);
-			em.persist(d);
+			Discount discount = mapper.readValue(json, Discount.class);
+			User user = em.find(User.class, uid);
+			Location location = em.find(Location.class, lid);
+			discount.setCreator(user);
+			location.getDiscounts().add(discount);
+			em.persist(discount);
 			em.flush();
-			return d;
+			return discount;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

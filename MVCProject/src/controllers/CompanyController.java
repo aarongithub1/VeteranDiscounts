@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,32 @@ import entities.Company;
 public class CompanyController {
 
 	@Autowired
-	private CompanyDAO dao;
+	private CompanyDAO companyDAO;
+	
+	//Search by Company
+	@RequestMapping(path="company/discount/search/{searchString}", method=RequestMethod.GET)
+	public List<Company> searchCompany(HttpServletRequest req, HttpServletResponse res, 
+			@PathVariable String searchString) {
+		List<Company> company = companyDAO.getLocationsByCompany(searchString);
+		
+		if(company == null) {
+			res.setStatus(400);
+		}
+		else {
+			res.setStatus(201);
+		}
+		return company;
+	}
 
 	@RequestMapping(path = "company", method = RequestMethod.GET)
 	public Set<Company> index() {
-		return dao.index();
+		return companyDAO.index();
 
 	}
 
 	@RequestMapping(path = "company/{cid}", method = RequestMethod.GET)
 	public Company show(@PathVariable int cid, HttpServletResponse res) {
-		Company c = dao.show(cid);
+		Company c = companyDAO.show(cid);
 		if (c == null) {
 			res.setStatus(400);
 			return c;
@@ -41,7 +57,7 @@ public class CompanyController {
 
 	@RequestMapping(path="{uid}/company",method=RequestMethod.POST)
 	public Company create(@RequestBody String json, HttpServletResponse res, @PathVariable int uid) {
-		Company c = dao.create(uid, json);
+		Company c = companyDAO.create(uid, json);
 		if (c == null) {
 			res.setStatus(400);
 
@@ -54,7 +70,7 @@ public class CompanyController {
 	@RequestMapping(path = "{uid}/company/{cid}", method = RequestMethod.PUT)
 	public Company update(@RequestBody String json, HttpServletResponse res,
 			@PathVariable int cid, @PathVariable int uid) {
-		Company c = dao.update(json, cid, uid);
+		Company c = companyDAO.update(json, cid, uid);
 		if (c == null) {
 			res.setStatus(400);
 		} else {
@@ -65,7 +81,7 @@ public class CompanyController {
 	
 	@RequestMapping(path="{uid}/company/{cid}",method = RequestMethod.DELETE)
 	public Boolean delete(HttpServletResponse res, @PathVariable int cid, @PathVariable int uid) {
-		Boolean b = dao.delete(cid,uid);
+		Boolean b = companyDAO.delete(cid,uid);
 		if (b == true){
 			res.setStatus(201);
 			return b;

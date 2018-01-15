@@ -101,4 +101,13 @@ public class CompanyDAOImpl implements CompanyDAO {
 		}
 	}
 
+	@Override
+	public List<Company> getLocationsByCompany(String keyword) {
+		String query = "SELECT c FROM Company c WHERE c.name LIKE CONCAT('%', :company,'%')";
+
+		return em.createQuery(query, Company.class)
+				.setParameter("company", keyword)
+				.getResultList();
+	}
+
 }

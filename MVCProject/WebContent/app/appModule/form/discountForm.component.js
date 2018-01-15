@@ -119,7 +119,7 @@ angular.module('appModule')
 					})
 				})
 			}
-		}
+		}//end of addAllForms method
 		
 
 	}

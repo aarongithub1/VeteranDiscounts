@@ -11,26 +11,28 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 	var saveToken = function(user) {
 		$cookies.put('uid', user.id);
 		$cookies.put('email', user.email);
+		$cookies.put('username',user.username);
 	}
 
 	
 	service.register = function(user) {
 		return $http({
 			method : 'POST',
-			url : 'api/auth/register',
+			url : 'rest/auth/register',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
 			data : user
 		}).then(function(response) {
 			saveToken(response.data);
-			$location.path('/todos');
+			$location.path('/redirect');
 		})
 	}
 
 	var removeToken = function() {
 		$cookies.remove('uid');
 		$cookies.remove('email');
+		$cookies.remove('username');
 	}
 
 	service.login = function(user) {

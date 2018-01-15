@@ -13,6 +13,7 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 		$cookies.put('email', user.email);
 	}
 
+	
 	service.register = function(user) {
 		return $http({
 			method : 'POST',

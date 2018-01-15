@@ -5,15 +5,20 @@ angular.module('appModule')
 	controller : function(vetService, $filter, $location, $routeParams, $cookies, $rootScope) {
 
 		var vm = this;
-		vm.showComany = null;
+		vm.showCompanySearch = null;
+		vm.showCompany = null;
 		vm.showAddress = null;
 		vm.showLocation = null;
 		vm.showDiscount = null;
 		vm.showButton = null;
-		vm.discounts = {};
 		vm.companyId = null;
+		vm.discounts = {};
+		vm.companySearchResult = "";
+		vm.locationResults = [];
+		
 		var companyExists = false;
-		var locationExists = false
+		var locationExists = false;
+		
 
 		// Display Updated List
 		var reload = function() {
@@ -29,13 +34,22 @@ angular.module('appModule')
 		vm.searchCompany = function(company) {
 			vetService.searchCompany(company)
 				.then(function(response) {
-					//console.log(response.data);
-				$rootScope.$broadcast('search-company',{
-					companySearchResult : response.data
+					vm.searchResult = response.data;
+					vm.showCompanySearch = response.data;
 				})
-			});
 		}
 
+//		//Search for company - 
+//		vm.searchCompany = function(company) {
+//			vetService.searchCompany(company)
+//			.then(function(response) {
+//				//console.log(response.data);
+//				$rootScope.$broadcast('search-company',{
+//					companySearchResult : response.data
+//				})
+//			});
+//		}
+//		
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {

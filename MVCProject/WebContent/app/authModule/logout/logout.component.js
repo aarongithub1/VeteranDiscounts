@@ -10,7 +10,7 @@ angular.module('authModule').component('logout', {
 		}
 
 		vm.goBack = function() {
-			$location.path('/todos');
+			$location.path('/index');
 		}
 	}
 });

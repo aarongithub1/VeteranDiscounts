@@ -5,5 +5,8 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 	.when('/location/discount', {
 		template : '<discount-form></discount-form>'
 	})
+	.when('/location/discount', {
+		template : '<company-search-result></company-search-result>'
+	})
 	
 });

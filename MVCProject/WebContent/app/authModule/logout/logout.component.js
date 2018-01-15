@@ -9,8 +9,5 @@ angular.module('authModule').component('logout', {
 			console.log('cookie removed');
 		}
 
-		vm.goBack = function() {
-			$location.path('/index');
-		}
 	}
 });

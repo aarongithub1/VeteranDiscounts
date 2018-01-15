@@ -1,3 +1,6 @@
+
+<div class="resultCard" ng-show="vm.results.length == 0"><h3>Sorry no Results found</h3></div>
+
 <div ng-repeat="location in vm.results">
 	<div class="resultCard"   ng-click="vm.makeActive(location)" 
 	ng-class="{activeSelection : vm.active === location}">

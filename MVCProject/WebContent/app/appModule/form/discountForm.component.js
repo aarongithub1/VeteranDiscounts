@@ -16,6 +16,7 @@ angular.module('appModule')
 		vm.companySearchResult = "";
 		vm.locationResults = [];
 		vm.companyResults = [];
+		vm.company = "";
 		
 		var companyExists = false;
 		var locationExists = false;
@@ -32,13 +33,10 @@ angular.module('appModule')
 		reload();
 		
 		//Search for company - 
-		vm.searchCompany = function(company) {
-			vetService.searchCompany(company)
+		vm.searchCompany = function() {
+			vetService.searchCompany(vm.company)
 				.then(function(response) {
-					console.log("in searchCompany");
 					vm.companyResults = response.data;
-					
-					console.log(vm.companyResults);
 //					vm.locationResults = response.data;
 					vm.showCompanySearch = response.data;
 				})

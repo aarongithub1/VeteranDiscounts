@@ -4,20 +4,8 @@ angular.module('appModule').component('results', {
 	controller : function(vetService,$scope) {
 		var vm = this;
 		vm.results = [];
+		vm.searchTerm = null;
 		vm.active = null;
-		reload();
-		
-		function reload(){
-			  vetService.index().then(function(res){
-				  vm.results = res.data;
-			  }).catch(function(error){
-				  console.log(error);
-			  });
-			 
-			  if(vm.active == false && vm.results[0] == true){
-				  vm.active = vm.results[0];
-			  }
-		  }
 		
 		vm.makeActive = function(result){
 			vm.active = result;
@@ -26,6 +14,7 @@ angular.module('appModule').component('results', {
 		$scope.$on('search-event', function(e,args){
 			console.log('scope hit');
 			vm.results = args.searchResults;
+			vm.active = vm.results[0];
 		})
 	}
 });

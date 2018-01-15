@@ -35,8 +35,8 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 
 	// search company
-	service.searchCompany = function(searchCompany){
-		if(searchCompany.trim()===null || searchCompany.trim()===""){
+	service.searchCompany = function(searchCompany, uid, ){
+		if(searchCompany.trim() === null || searchCompany.trim() === ""){
 			return $http({
 				method : 'GET',
 				url : 'rest/location/discount'
@@ -45,17 +45,17 @@ angular.module('appModule').factory('vetService', function($http) {
 		
 		return $http({
 			method : 'GET',
-			url : 'rest/company/search/{searchString}' + searchCompany
+			url : 'rest/location/discount/search/' + searchCompany
 		});
 	}
 	
 	//create discount
-	service.createDiscount = function(discount, companyId) {
+	service.createDiscount = function(discount, uid, lid) {
 		var user = checkLogin();
 
 		return $http({
 			method : 'POST',
-			url : 'rest/discount' + companyId,
+			url : 'rest/' + uid + '/discount/location/' + lid,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },

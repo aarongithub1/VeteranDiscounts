@@ -38,11 +38,13 @@ public class DiscountController {
 		return dao.getDiscountsForLocation(lid);
 	}
 
-	@RequestMapping(path = "{uid}/discount/", method = RequestMethod.POST)
-	public Discount create(HttpServletRequest req, HttpServletResponse res, @RequestBody String stringJson,
-			@PathVariable int uid) {
+	@RequestMapping(path = "{uid}/discount/location/{lid}", method = RequestMethod.POST)
+	public Discount create(HttpServletRequest req, HttpServletResponse res, 
+			@RequestBody String stringJson,
+			@PathVariable int uid,
+			@PathVariable int lid) {
 
-		Discount discount = dao.createDiscount(stringJson, uid);
+		Discount discount = dao.createDiscount(stringJson, uid, lid);
 		if (discount == null) {
 			res.setStatus(400);
 		}

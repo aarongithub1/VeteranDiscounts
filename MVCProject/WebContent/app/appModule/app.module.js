@@ -2,7 +2,7 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 .config(function($routeProvider) {
 	
 	$routeProvider
-	.when('/location/discount', {
+	.when('/company/discount', {
 		template : '<discount-form></discount-form>'
 	})
 

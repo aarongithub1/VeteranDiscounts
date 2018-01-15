@@ -34,7 +34,7 @@ angular.module('appModule')
 		vm.searchCompany = function(company) {
 			vetService.searchCompany(company)
 				.then(function(response) {
-					vm.locationResults = response.data.name.locations;
+					vm.locationResults = response.data.name.location;
 					vm.showCompanySearch = response.data;
 				})
 		}

@@ -23,7 +23,7 @@ public class CompanyController {
 	private CompanyDAO companyDAO;
 	
 	//Search by Company
-	@RequestMapping(path="company/discount/search/{searchString}", method=RequestMethod.GET)
+	@RequestMapping(path="company/search/{searchString}", method=RequestMethod.GET)
 	public List<Company> searchCompany(HttpServletRequest req, HttpServletResponse res, 
 			@PathVariable String searchString) {
 		List<Company> company = companyDAO.getLocationsByCompany(searchString);

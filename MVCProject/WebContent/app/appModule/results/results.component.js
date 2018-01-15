@@ -1,7 +1,7 @@
 angular.module('appModule').component('results', {
 	templateUrl : 'app/appModule/results/results.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService,$scope) {
+	controller : function(vetService,$scope,$rootScope) {
 		var vm = this;
 		vm.results = [];
 		vm.searchTerm = null;
@@ -9,12 +9,14 @@ angular.module('appModule').component('results', {
 		
 		vm.makeActive = function(result){
 			vm.active = result;
+			$rootScope.$broadcast('activeSelection', vm.active);
 		}	
 		
 		$scope.$on('search-event', function(e,args){
-			console.log('scope hit');
+			//console.log('scope hit in results');
 			vm.results = args.searchResults;
-			vm.active = vm.results[0];
+			vm.makeActive(vm.results[0]);
 		})
+		
 	}
 });

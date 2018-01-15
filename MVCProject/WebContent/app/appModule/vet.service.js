@@ -35,17 +35,10 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 
 	// search company
-	service.searchCompany = function(searchCompany, uid, lid){
-		if(searchCompany.trim() === null || searchCompany.trim() === ""){
-			return $http({
-				method : 'GET',
-				url : 'rest/location/discount'
-			});
-		}
-		
+	service.searchCompany = function(searchCompany){
 		return $http({
 			method : 'GET',
-			url : 'rest/' + uid + '/location/discount/search/' + searchCompany
+			url : 'rest/company/search/' + searchCompany
 		});
 	}
 	

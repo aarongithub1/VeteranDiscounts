@@ -1,14 +1,23 @@
 <!----------- Create New discount ---------------->
 
 	<!-- company search bar -->
-	<form ng-show="!vm.showCompanySearch">
+<!-- 	<form ng-show="!vm.showCompanySearch"> -->
+	<form>
 		<input type="text" ng-model="company.search" placeholder="Search Company" />
 		<input type="submit" ng-click="vm.searchCompany(company); company = {}" value="Search" />
 	</form>
 	
-	<form ng-show="!vm.showCompanySearch">
-		<input type="text" value="{{vm.searchResult}}" placeholder="Search Result" readonly />
-	</form>
+<!-- 	<form ng-show="!vm.showCompanySearch"> -->
+	<!-- <form> -->
+		<ul>
+<!-- 			<li ng-repeat="company in vm.companyResults | orderBy:'id'"> -->
+			<li ng-repeat="company in vm.companyResults">
+				{{company.name}}
+				<!-- <a href="{{vm.locationResults}}"></a> -->
+			</li>
+		</ul>
+		<!-- <input type="text" value="{{vm.searchResult}}" placeholder="Search Result" readonly /> -->
+	<!-- </form> -->
 	
 	<!-- iterate over locations list based on search result -->
 	<!-- ng-repeat -->

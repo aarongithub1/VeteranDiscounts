@@ -15,6 +15,7 @@ angular.module('appModule')
 		vm.discounts = {};
 		vm.companySearchResult = "";
 		vm.locationResults = [];
+		vm.companyResults = [];
 		
 		var companyExists = false;
 		var locationExists = false;
@@ -34,8 +35,11 @@ angular.module('appModule')
 		vm.searchCompany = function(company) {
 			vetService.searchCompany(company)
 				.then(function(response) {
-					console.log(response.data.location)
-					vm.locationResults = response.data.location;
+					console.log("in searchCompany");
+					vm.companyResults = response.data;
+					
+					console.log(vm.companyResults);
+//					vm.locationResults = response.data;
 					vm.showCompanySearch = response.data;
 				})
 		}

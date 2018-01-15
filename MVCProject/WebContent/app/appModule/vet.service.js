@@ -19,7 +19,7 @@ angular.module('appModule').factory('vetService', function($http) {
         });
     }
 
-	// search
+	// search navbar
 	service.search = function(searchTerm){
 		if(searchTerm.trim()===null ||searchTerm.trim()===""){
 			return $http({
@@ -34,7 +34,7 @@ angular.module('appModule').factory('vetService', function($http) {
 		});
 	}
 
-	// search
+	// search company
 	service.searchCompany = function(searchCompany){
 		if(searchTerm.trim()===null ||searchTerm.trim()===""){
 			return $http({

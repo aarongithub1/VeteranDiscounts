@@ -8,7 +8,7 @@ angular.module('appModule').component('navbar', {
 		vm.selected = null;
 		
 		vm.checkLogin = function() {
-			console.log(authService.getToken().id);
+			//console.log(authService.getToken().id);
 			if(authService.getToken().id) {
 				return true;
 			}
@@ -17,7 +17,7 @@ angular.module('appModule').component('navbar', {
 		
 		vm.search = function() {
 			vetService.search(vm.searchTerm).then(function(response) {
-				console.log(response.data);
+				//console.log(response.data);
 				$rootScope.$broadcast('search-event',{
 					searchResults : response.data
 				})

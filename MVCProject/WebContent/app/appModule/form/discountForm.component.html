@@ -9,19 +9,15 @@
 	
 	<!-- 	<form ng-show="!vm.showCompanySearch"> -->
 	<ul>
-		<li ng-repeat="company in vm.companyResults">
-			{{company.name}} -->
-			<!-- <a href="{{vm.locationResults}}">{{company.name}}</a> -->
+		<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company)">
+			{{company.name}}
 		</li>
 	</ul>
-	<!-- <input type="text" value="{{vm.searchResult}}" placeholder="Search Result" readonly /> -->
 	
 	<!-- iterate over locations list based on search result -->
-	<!-- ng-repeat -->
 	<ul>
 		<li ng-repeat="location in vm.locationResults">
-			{{location}}
-			<!-- <a href="{{vm.locationResults}}"></a> -->
+			{{location.id}}
 		</li>
 	</ul>
 	

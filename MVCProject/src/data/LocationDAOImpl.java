@@ -136,5 +136,15 @@ public class LocationDAOImpl implements LocationDAO {
 				.setParameter("phoneNumber", keyword).setParameter("street", keyword).setParameter("city", keyword)
 				.setParameter("state", keyword).setParameter("zip", keyword).getResultList();
 	}
+	
+	// Get Locations by company id
+	@Override
+	public List<Location> getLocationsByCompanyId(int cid) {
+		String query = "SELECT l FROM Location l WHERE l.company.id = cid";
+		
+		return em.createQuery(query, Location.class)
+				.setParameter("cid", cid)
+				.getResultList();
+	}
 
 }

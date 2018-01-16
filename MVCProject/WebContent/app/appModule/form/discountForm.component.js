@@ -37,9 +37,20 @@ angular.module('appModule')
 			vetService.searchCompany(vm.company)
 				.then(function(response) {
 					vm.companyResults = response.data;
-//					vm.locationResults = response.data;
 					vm.showCompanySearch = response.data;
 				})
+		}
+		
+		vm.getLocations = function(company) {
+			console.log("inside getLocations");
+			console.log(company.id);
+			vetService.getLocations(company.id)
+				.then(function(response) {
+					console.log(response.data);
+					vm.locationResults = response.data;
+					
+				})
+			
 		}
 
 		//on Company form submit - show address form / hide company form

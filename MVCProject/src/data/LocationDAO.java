@@ -11,7 +11,7 @@ public interface LocationDAO {
 	public Location create(String json, int cid, int aid);
 	public Boolean delete(int lid, int cid);
 	public Location update(String json, int lid, int cid);
-	List<Location> getAllLocationsByKeyword(String keyword);
-
+	public List<Location> getAllLocationsByKeyword(String keyword);
+	public List<Location> getLocationsByCompanyId(int cid);
 
 }

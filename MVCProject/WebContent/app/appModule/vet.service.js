@@ -42,13 +42,21 @@ angular.module('appModule').factory('vetService', function($http) {
 		});
 	}
 	
+	// get locations by company id
+	service.getLocations = function(cid){
+		return $http({
+			method : 'GET',
+			url : 'rest/' + cid + '/location'
+		});
+	}
+	
 	//create discount
 	service.createDiscount = function(discount, uid, lid) {
 		var user = checkLogin();
 
 		return $http({
 			method : 'POST',
-			url : 'rest/' + uid + '/discount/location/' + lid,
+			url : 'rest/' + user.id + '/discount/location/' + lid,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },

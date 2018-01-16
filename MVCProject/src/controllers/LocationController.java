@@ -36,6 +36,22 @@ public class LocationController {
 		return searchedLocations;
 	}
 	
+	//Get Locations by company id
+	@RequestMapping(path="{cid}/location", method=RequestMethod.GET)
+	public List<Location> getLocations(HttpServletRequest req, HttpServletResponse res,
+			@PathVariable int cid) {
+		List<Location> locations = locationDAO.getLocationsByCompanyId(cid);
+		
+		if(locations == null) {
+			res.setStatus(400);
+		}
+		else {
+			res.setStatus(201);
+		}
+		
+		return locations;
+	}
+	
 //  Index - GET - location
 	@RequestMapping(path="location", method=RequestMethod.GET)
 	public Set<Location> index(HttpServletRequest req, HttpServletResponse res){

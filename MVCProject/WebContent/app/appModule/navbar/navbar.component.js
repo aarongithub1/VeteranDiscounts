@@ -24,8 +24,8 @@ angular.module('appModule').component('navbar', {
 			return false;
 		}
 		
-		vm.search = function() {
-			vetService.search(vm.searchTerm).then(function(response) {
+		vm.search = function(type,distance) {
+			vetService.searchWithFilters(vm.searchTerm,type,distance).then(function(response) {
 				$rootScope.$broadcast('search-event',{
 					searchResults : response.data
 				})

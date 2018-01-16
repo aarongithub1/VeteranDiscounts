@@ -123,7 +123,7 @@ public class LocationDAOImpl implements LocationDAO {
 		}
 	}
 
-	// Event search by keyword
+	// Location search by keyword
 	@Override
 	public List<Location> getAllLocationsByKeyword(String keyword) {
 		String query = "SELECT l FROM Location l WHERE l.company.name" + " LIKE CONCAT('%', :company,'%')"
@@ -136,15 +136,37 @@ public class LocationDAOImpl implements LocationDAO {
 				.setParameter("phoneNumber", keyword).setParameter("street", keyword).setParameter("city", keyword)
 				.setParameter("state", keyword).setParameter("zip", keyword).getResultList();
 	}
-	
+
+	// Location search by keyword with filters
+	@Override
+	public List<Location> getAllLocationsByKeywordWithFilters(String keyword, String distance, String typeId) {
+		String filter = "";
+		int distanceInt;
+		int typeIdInt;
+
+		try {
+			distanceInt = Integer.parseInt(distance);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			distanceInt = 3;
+		}
+
+		try {
+			typeIdInt = Integer.parseInt(typeId);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			typeIdInt = 0;
+		}
+		
+		return null;
+	}
+
 	// Get Locations by company id
 	@Override
 	public List<Location> getLocationsByCompanyId(int cid) {
 		String query = "SELECT l FROM Location l WHERE l.company.id = :cid";
-		
-		return em.createQuery(query, Location.class)
-				.setParameter("cid", cid)
-				.getResultList();
+
+		return em.createQuery(query, Location.class).setParameter("cid", cid).getResultList();
 	}
 
 }

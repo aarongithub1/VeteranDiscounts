@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Address;
-import entities.Location;
 
 
 @Transactional

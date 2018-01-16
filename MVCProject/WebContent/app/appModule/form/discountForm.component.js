@@ -78,6 +78,16 @@ angular.module('appModule')
 
 		}
 
+		//on Location form submit - show Discount form / hide Location form
+		vm.addLocation = function(location) {
+			vm.showLocation = null;
+			vm.showDiscount = location;
+			vm.discounts.location = location;
+			console.log("This is in location: " + location);
+			console.log(vm.discounts);
+//			if location exists, don't add location
+		}
+		
 		//on Address form submit - show Location form / hide Company form
 		vm.addAddress = function(address) {
 			vm.showAddress = null;
@@ -86,16 +96,6 @@ angular.module('appModule')
 			console.log(address);
 			console.log(vm.discounts);
 //			if address exists, don't add address
-		}
-
-		//on Location form submit - show Discount form / hide Location form
-		vm.addLocation = function(location) {
-			vm.showLocation = null;
-			vm.showDiscount = location;
-			vm.discounts.location = location;
-			console.log(location);
-			console.log(vm.discounts);
-//			if location exists, don't add location
 		}
 
 		//on Discount form submit - show AddAllButton / hide Discount form

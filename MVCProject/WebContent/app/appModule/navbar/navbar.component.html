@@ -12,7 +12,7 @@
 				<option ng-repeat="distance in vm.distances" value="{{distance}}">{{distance}}</option>
 			</select>
 			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search()">Search</button>
-			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.createDiscount()">Create Discount</button>
+			<button ng-show="vm.checkLogin()" class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.createDiscount()">Create Discount</button>
 		</form>
 		<ul class="navbar-nav mr-auto">
 			<!-- <li class="nav-item dropdown">

@@ -27,8 +27,9 @@
 	<!-- company form -->
 	<form ng-show="vm.showCompanyForm">
 		<input type="text" ng-model="company.name" placeholder="Company Name" /><br />
-			<select name="types">
-			    <option ng-model="company.type.id" value="1">Education</option>
+			<select name="types" ng-model="vm.typeId">
+			    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
+			    <!-- <option ng-model="typeId" value="1">Education</option>
 			    <option ng-model="company.type" value="2">Bookstore</option>
 			    <option ng-model="company.type" value="3">Liquor</option>
 			    <option ng-model="company.type" value="4">Coffee</option>
@@ -38,7 +39,7 @@
 			    <option ng-model="company.type" value="8">Clothes</option>
 			    <option ng-model="company.type" value="9">Hardware</option>
 			    <option ng-model="company.type" value="10">Grocery</option>
-			    <option ng-model="company.type" value="11">Drug Store</option>
+			    <option ng-model="company.type" value="11">Drug Store</option> -->
 		  	</select><br />
 		<input type="text" ng-model="company.url" placeholder="Company URL" /><br />
 		<input type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" />

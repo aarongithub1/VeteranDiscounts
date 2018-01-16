@@ -56,9 +56,12 @@ public class CompanyController {
 		}
 	}
 
-	@RequestMapping(path="{uid}/company",method=RequestMethod.POST)
-	public Company create(@RequestBody String json, HttpServletResponse res, @PathVariable int uid) {
-		Company c = companyDAO.create(uid, json);
+	@RequestMapping(path="{uid}/company/{tid}",method=RequestMethod.POST)
+	public Company create(@RequestBody String json, HttpServletResponse res, 
+			@PathVariable int tid,
+			@PathVariable int uid) {
+		
+		Company c = companyDAO.create(uid, json, tid);
 		if (c == null) {
 			res.setStatus(400);
 

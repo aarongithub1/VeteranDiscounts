@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Company;
-import entities.Location;
+import entities.Type;
 import entities.User;
 
 @Transactional
@@ -31,6 +31,14 @@ public class CompanyDAOImpl implements CompanyDAO {
 		c = em.createQuery(query, Company.class).getResultList();
 		Set<Company> set = new HashSet<>(c);
 		return set;
+	}
+	
+	@Override
+	public List<Type> getAllTypes(){
+		List t = new ArrayList<>();
+		String query = "SELECT t from Type t";
+		t = em.createQuery(query, Type.class).getResultList();
+		return t;
 	}
 
 	@Override

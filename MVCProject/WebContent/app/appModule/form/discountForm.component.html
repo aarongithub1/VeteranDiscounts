@@ -6,45 +6,50 @@
 		<input type="submit" ng-click="vm.showNewCompanyForm()" value="Create New Company" />
 	</form>
 	
+	<!-- show Company List -->
 	<ul ng-show="!vm.companyClick">
 		<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company)">
 			{{company.name}}
 		</li>
 	</ul>
 	
-	<!-- iterate over locations list based on search result -->
+	<!-- show locations list based on search result -->
+	<!-- Button - Create new location -->
+	<input type="submit" ng-click="vm.showNewLocationForm()" value="Create New Location" />
 	<ul>
-		<li ng-repeat="location in vm.locationResults">
+		<li ng-hide="vm.showLocation" ng-repeat="location in vm.locationResults" 
+			ng-click="vm.addLocation(location)">
+			ID : {{location.id}}
 			{{location.address.street}}
 			{{location.address.city}}
 			{{location.address.state}}
 			{{location.address.zip}}
 			{{location.phone}}
-			{{location.id}}
+			{{location.hours}}
+			
 		</li>
 	</ul>
 	
 	<!-- company form -->
 	<form ng-show="vm.showCompanyForm">
 		<input type="text" ng-model="company.name" placeholder="Company Name" /><br />
+			
+			<!-- type drop down -->
 			<select name="types" ng-model="vm.typeId">
 			    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
-			    <!-- <option ng-model="typeId" value="1">Education</option>
-			    <option ng-model="company.type" value="2">Bookstore</option>
-			    <option ng-model="company.type" value="3">Liquor</option>
-			    <option ng-model="company.type" value="4">Coffee</option>
-			    <option ng-model="company.type" value="5">Gym</option>
-			    <option ng-model="company.type" value="6">Restaurant</option>
-			    <option ng-model="company.type" value="7">Auto</option>
-			    <option ng-model="company.type" value="8">Clothes</option>
-			    <option ng-model="company.type" value="9">Hardware</option>
-			    <option ng-model="company.type" value="10">Grocery</option>
-			    <option ng-model="company.type" value="11">Drug Store</option> -->
 		  	</select><br />
-		<input type="text" ng-model="company.url" placeholder="Company URL" /><br />
+		  	
+		<input type="text" ng-model="company.storeUrl" placeholder="Company URL" /><br />
 		<input type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" />
 	</form>
-
+	
+	<!-- location form -->
+	<form ng-show="vm.showLocation">
+		<input type="text" ng-model="location.hours" placeholder="Business Hours" /><br />
+		<input type="text" ng-model="location.phoneNumber" placeholder="Phone Number" /><br />
+		<input type="submit" ng-click="vm.addLocation(location); location = {}" value="Add Location" />
+	</form>
+	
 	<!-- address form -->
 	<form ng-show="vm.showAddress">
 		<input type="text" ng-model="address.city" placeholder="City" /><br />
@@ -53,19 +58,15 @@
 		<input type="text" ng-model="address.zip" placeholder="Zip Code" /><br />
 		<input type="submit" ng-click="vm.addAddress(address); address = {}" value="Add Address" />
 	</form>
+	
 
-	<!-- location form -->
-	<form ng-show="vm.showLocation">
-		<input type="text" ng-model="location.hours" placeholder="Business Hours" /><br />
-		<input type="text" ng-model="location.phone" placeholder="Phone Number" /><br />
-		<input type="submit" ng-click="vm.addLocation(location); location = {}" value="Add Location" />
-	</form>
 
 	<!-- discount form -->
 	<form ng-show="vm.showDiscount">
 		<input type="text" ng-model="discount.amount" placeholder="Amount" /><br />
 		<input type="text" ng-model="discount.info" placeholder="Details" /><br />
-		<input type="text" ng-model="discount.duration" placeholder="Start/End Date" /><br />
+		<input type="text" ng-model="discount.startDate" placeholder="Start (mm/dd/yyy)" /><br />
+		<input type="text" ng-model="discount.endDate" placeholder="End (mm/dd/yyy)" /><br />
 		<input type="submit" ng-click="vm.addDiscount(discount); discount = {}" value="Add Discount" />
 	</form>
 

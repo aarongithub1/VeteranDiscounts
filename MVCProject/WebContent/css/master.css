@@ -42,8 +42,15 @@ body{
 }
 
 .results {
-	height : 100%;
+	height : 635px;
+	overflow: scroll;
 }
+
+.display{
+	height: 635px;
+	overflow: scroll;
+}
+
 
 
 #dropit {

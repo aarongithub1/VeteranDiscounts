@@ -18,7 +18,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/location'
         });
     }
-	
+
 	// get types
 //	service.getTypes = function() {
 //		return $http({
@@ -49,7 +49,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/company/search/' + searchCompany
 		});
 	}
-	
+
 	// get locations by company id
 	service.getLocations = function(cid){
 		return $http({
@@ -57,11 +57,11 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/' + cid + '/location'
 		});
 	}
-	
+
 	//create discount
 	service.createDiscount = function(discount, lid) {
 		var user = checkLogin();
-		
+
 		return $http({
 			method : 'POST',
 			url : 'rest/' + user.id + '/discount/location/' + lid,
@@ -74,7 +74,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 
 	service.createCompany = function(company, tid) {
 		var user = checkLogin();
-		
+
 		return $http({
 			method : 'POST',
 			url : 'rest/' + user.id + '/company/' + tid,
@@ -120,12 +120,24 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		      }
 		})
 	};
-	
-	
+
+
 	service.allTypes = function(){
 		return $http({
 			method : 'GET',
 			url : 'rest/company/all/types'
+		})
+	}
+
+	service.getLatLong = function(address) {
+		var street = address.street.split(' ').join('+');
+		var city = address.city.split(' ').join('+');
+		return $http({
+			method : 'GET',
+			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip,
+			headers : {
+		        'Content-Type' : 'application/json'
+		     }
 		})
 	}
 

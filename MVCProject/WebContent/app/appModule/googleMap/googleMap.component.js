@@ -6,6 +6,7 @@ angular.module('appModule').component('googleMap', {
 		vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs';
 		vm.mapOptions = null;
 		vm.pos = null;
+		vm.results = null;
 
 		geolocator.geolocate().then(function(position){
         		vm.mapOptions = {
@@ -15,5 +16,10 @@ angular.module('appModule').component('googleMap', {
           	}
         		$scope.$apply();
       	})
+
+		$scope.$on('search-event', function(e,args){
+			vm.results = args.searchResults;
+			console.log(vm.results);
+		})
 	}
 });

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.sql.Types;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.CompanyDAO;
 import entities.Company;
+import entities.Type;
 
 @RestController
 public class CompanyController {
@@ -88,5 +90,10 @@ public class CompanyController {
 			res.setStatus(400);
 		return false;
 		}
+	}
+	
+	@RequestMapping(path="company/all/types",method = RequestMethod.GET)
+	public List<Type> getAllTypes(HttpServletResponse res) {
+		return companyDAO.getAllTypes();
 	}
 }

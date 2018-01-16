@@ -41,12 +41,10 @@ angular.module('appModule')
 				})
 		}
 		
+		// get locations by company id
 		vm.getLocations = function(company) {
-			console.log("inside getLocations");
-			console.log(company.id);
 			vetService.getLocations(company.id)
 				.then(function(response) {
-					console.log(response.data);
 					vm.locationResults = response.data;
 					
 				})

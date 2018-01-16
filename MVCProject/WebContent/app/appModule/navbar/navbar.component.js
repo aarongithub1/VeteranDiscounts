@@ -1,10 +1,11 @@
 angular.module('appModule').component('navbar', {
 	templateUrl : 'app/appModule/navbar/navbar.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService, authService, $rootScope) {
+	controller : function(vetService, authService, $rootScope, $location) {
 		var vm = this;
 		vm.distances = ['3', '5', '10', '10+']
 		vm.searchTerm = "";
+		vm.selected = null;
 		
 		vm.checkLogin = function() {
 			console.log(authService.getToken().id);
@@ -22,5 +23,10 @@ angular.module('appModule').component('navbar', {
 				})
 			});
 		}
+		
+		vm.createDiscount = function() {
+			$location.path('/company/discount')
+		}
+		
 	}
 });

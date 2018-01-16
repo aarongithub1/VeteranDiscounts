@@ -16,7 +16,12 @@
 	
 	<!-- iterate over locations list based on search result -->
 	<ul>
-		<li ng-repeat="location in vm.locationResults">
+		<li ng-repeat="location in vm.locationResults" ng-click="">
+			{{location.address.street}}
+			{{location.address.city}}
+			{{location.address.state}}
+			{{location.address.zip}}
+			{{location.phone}}
 			{{location.id}}
 		</li>
 	</ul>

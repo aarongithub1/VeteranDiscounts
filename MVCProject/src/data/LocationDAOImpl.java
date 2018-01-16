@@ -140,7 +140,7 @@ public class LocationDAOImpl implements LocationDAO {
 	// Get Locations by company id
 	@Override
 	public List<Location> getLocationsByCompanyId(int cid) {
-		String query = "SELECT l FROM Location l WHERE l.company.id = cid";
+		String query = "SELECT l FROM Location l WHERE l.company.id = :cid";
 		
 		return em.createQuery(query, Location.class)
 				.setParameter("cid", cid)

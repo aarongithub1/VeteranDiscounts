@@ -40,7 +40,7 @@ public class Company {
 	
 	@ManyToOne
 	@JoinColumn(name="type_id")
-	private Type	type;
+	private Type type;
 	
 	@Column(name="store_url")
 	private String storeUrl;

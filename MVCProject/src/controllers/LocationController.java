@@ -66,7 +66,7 @@ public class LocationController {
 	}
 
 //  Create - POST - location/{cid}
-	@RequestMapping(path="{cid}/location/{aid}", method=RequestMethod.POST)
+	@RequestMapping(path="location/{cid}/{aid}", method=RequestMethod.POST)
 	public Location create(HttpServletRequest req, HttpServletResponse res, 
 			@PathVariable int cid, @PathVariable int aid,
 			@RequestBody String locationJson) {

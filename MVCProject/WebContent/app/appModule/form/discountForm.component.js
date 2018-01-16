@@ -19,6 +19,7 @@ angular.module('appModule')
 		vm.discounts = {};
 		vm.companyResults = [];
 		vm.locationResults = [];
+		//vm.typesArr = [];
 		
 		var companyExists = false;
 		var locationExists = false;
@@ -124,7 +125,7 @@ angular.module('appModule')
 					vm.companyId = response.data.id;
 					vetService.createAddress(vm.discounts.address).then(function(response) {
 						vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {
-							vetService.createDiscount(vm.discounts.discount, vm.companyId).then(function(response) {
+							vetService.createDiscount(vm.discounts.discount, response.data.id).then(function(response) {
 								//do something with new discount at new company
 								vm.showButton = null;
 								reload();

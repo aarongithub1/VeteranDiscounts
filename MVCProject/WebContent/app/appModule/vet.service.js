@@ -1,4 +1,4 @@
-angular.module('appModule').factory('vetService', function($http) {
+angular.module('appModule').factory('vetService', function($http, authService) {
 	var service = {};
 
 	// login Auth
@@ -18,6 +18,14 @@ angular.module('appModule').factory('vetService', function($http) {
             url : 'rest/location'
         });
     }
+	
+	// get types
+//	service.getTypes = function() {
+//		return $http({
+//			method : 'GET',
+//			url : 'rest/company/' + cid
+//		})
+//	}
 
 	// search navbar
 	service.search = function(searchTerm){
@@ -51,9 +59,9 @@ angular.module('appModule').factory('vetService', function($http) {
 	}
 	
 	//create discount
-	service.createDiscount = function(discount, uid, lid) {
+	service.createDiscount = function(discount, lid) {
 		var user = checkLogin();
-
+		
 		return $http({
 			method : 'POST',
 			url : 'rest/' + user.id + '/discount/location/' + lid,
@@ -65,9 +73,11 @@ angular.module('appModule').factory('vetService', function($http) {
 	};
 
 	service.createCompany = function(company) {
+		var user = checkLogin();
+		
 		return $http({
 			method : 'POST',
-			url : 'rest/company',
+			url : 'rest/' + user.id + '/company',
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },
@@ -110,6 +120,14 @@ angular.module('appModule').factory('vetService', function($http) {
 		      }
 		})
 	};
+	
+	
+	service.allTypes = function(){
+		return $http({
+			method : 'POST',
+			url : 'rest/company/all/types'
+		})
+	}
 
 
 

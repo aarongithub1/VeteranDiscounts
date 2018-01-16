@@ -112,6 +112,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		      }
 		})
 	};
+	
+	
+	service.allTypes = function(){
+		return $http({
+			method : 'POST',
+			url : 'rest/company/all/types'
+		})
+	}
 
 
 

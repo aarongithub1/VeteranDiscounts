@@ -19,6 +19,7 @@ angular.module('appModule')
 		vm.discounts = {};
 		vm.companyResults = [];
 		vm.locationResults = [];
+		//vm.typesArr = [];
 		
 		var companyExists = false;
 		var locationExists = false;

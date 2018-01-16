@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">VetDiscount</a>
+	<a class="navbar-brand" href="#/">VetDiscount</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -15,30 +15,38 @@
 			<button ng-show="vm.checkLogin()" class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.createDiscount()">Create Discount</button>
 		</form>
 		<ul class="navbar-nav mr-auto">
-			<!-- <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Dropdown
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Something else here</a>
-				</div>
-			</li> -->
+
+				
 		</ul>
 	</div>
-	<div>
-		<button ng-hide="vm.checkLogin()" onclick="location.href='#/register'" type="button">
-		Register</button> 
-			
-		<button ng-hide="vm.checkLogin()" onclick="location.href='#/login'" type="button">
-		Login</button>
-		
-		<div ng-show="vm.checkLogin()">
+
+	<ul class="nav navbar-nav navbar-right">
+	
+	    <li ng-hide="vm.checkLogin()" class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
+          <div  id="dropit" class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+   			
+   			<login> </login>
+            
+          </div>
+        </li>
+	
+	    <li ng-hide="vm.checkLogin()" class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Register <span class="caret"></span></a>
+          <div id="dropit" class="dropdown-menu dropdown-lr animated flipInX" role="menu">
+       
+       <register></register>
+          
+          </div>
+        </li>
+	   
+	
+       
+        <li ng-show="vm.checkLogin()" class="dropdown">
+         <a href="" class="dropdown-toggle" data-toggle="dropdown">Log Out <span class="caret"></span></a>
+          <div id="dropit" class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+        
 			<logout></logout>
 		</div>
-	
-	</div>
-	
+	</li>
 </nav>

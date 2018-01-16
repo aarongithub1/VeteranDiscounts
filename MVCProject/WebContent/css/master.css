@@ -1,26 +1,64 @@
+body{
+	background-color:#ebebeb;
+}
 .border1{
 	border-style: dashed;
 	border-width: 2px;
 }
 
 .resultCard{
-	background-color: grey;
-	margin: 2em;
+	background-color: #102940;
+	color: #ffffff;
+	margin: 1em;
+	margin-left: 3.5em;
 	padding: 1em;
 }
 #map {
 	height: 500px;
+	margin: 1em;
+	margin-right: 3.5em;
 }
+
+.redColor{
+	background-color: #7f000a;
+	color: #7f000a;
+}
+
+.lightRedColor{
+	background-color: #ac090e;
+	color: #ac090e;
+}
+
 .activeSelection{
-	background-color: hotpink;
+	background-color: #284664;
 }
 .infoDisplay{
-	background-color:aqua;
+	font-size: 1em;
+	background-color: #7b7b46;
+	color: #fefefe;
 	padding: 0.5em;
-	margin-top: 1em;
-    margin-bottom: 1em;
+	margin: 1em;
+    margin-right: 3.5em;
 }
 
 .results {
 	height : 100%;
+}
+
+
+#dropit {
+
+	width: 400px;
+	
+}
+
+@media (max-width: 768px) {
+	.dropdown-lr h3 {
+		color: #eee;
+	}
+	.dropdown-lr label {
+		color: #eee;
+	}
+.navbar{
+	background-color: #23252e;
 }

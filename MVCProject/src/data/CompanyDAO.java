@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import entities.Company;
+import entities.Type;
 
 public interface CompanyDAO {
 	
@@ -13,5 +14,6 @@ public interface CompanyDAO {
 	public Boolean delete(int id, int uid);
 	public Company update(String json, int cid, int uid);
 	public List<Company> getLocationsByCompany(String json);
+	List<Type> getAllTypes();
 
 }

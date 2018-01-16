@@ -18,6 +18,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/location'
         });
     }
+	
+	// get types
+//	service.getTypes = function() {
+//		return $http({
+//			method : 'GET',
+//			url : 'rest/company/' + cid
+//		})
+//	}
 
 	// search navbar
 	service.search = function(searchTerm){
@@ -112,6 +120,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		      }
 		})
 	};
+	
+	
+	service.allTypes = function(){
+		return $http({
+			method : 'POST',
+			url : 'rest/company/all/types'
+		})
+	}
 
 
 

@@ -6,17 +6,21 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 		template : '<discount-form></discount-form>'
 	})
 
-	.when('/register', {
-			template : '<register></register>'
-		})
+//	.when('/register', {
+//			template : '<register></register>'
+//		})
 		
-	.when('/login', {
-			template : '<login></login>'
-		})
+//	.when('/login', {
+//			template : '<login></login>'
+//		})
 		
 	.when('/redirect',{
 		template:'<redirect></redirect>'
 	})
+	
+	.when('/', {
+			template : '<results></results>'
+		})
 	
 
 });

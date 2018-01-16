@@ -1,52 +1,39 @@
 <!doctype html>
 <html lang="en" ng-app="appModule">
+     <head>
+     <title>Vet Discounts</title>
+         <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="http://cdn.phpoll.com/css/animate.css" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
+
+	<!--auth module and components here because they are dependency of app module and must be present before that is loaded   -->
+
+	<script src="app/authModule/auth.module.js"></script>
+	<script src="app/authModule/auth.service.js"></script>
+	<script src="app/authModule/login/login.component.js"> </script>
+	<script src="app/authModule/logout/logout.component.js"> </script>
+	<script src="app/authModule/register/register.component.js"> </script>
+	<script src="app/authModule/redirect/redirect.component.js"> </script>
+	<script src="app/appModule/app.module.js"></script>
+	<script src="app/appModule/vet.service.js"></script>
+	<script src="app/appModule/navbar/navbar.component.js"></script>
+	<script src="app/appModule/location/location.component.js"></script>
+	<script src="app/appModule/discount/discount.component.js"></script>
+	<script src="app/appModule/results/results.component.js"></script>
+	<script src="app/appModule/form/discountForm.component.js"></script>
+	<script src="app/appModule/googleMap/googleMap.component.js"></script>
+	<script src="app/appModule/googleMap/googleMap.script.js"></script>
+	<link rel="stylesheet" href="css/master.css">
 <head>
-<title>Vet Discounts</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-	crossorigin="anonymous">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
-
-<!--auth module and components here because they are dependency of app module and must be present before that is loaded   -->
-<script src="app/authModule/auth.module.js"></script>
-<script src="app/authModule/auth.service.js"></script>
-<script src="app/authModule/login/login.component.js">
-	
-</script>
-<script src="app/authModule/logout/logout.component.js">
-	
-</script>
-<script src="app/authModule/register/register.component.js">
-	
-</script>
-<script src="app/authModule/redirect/redirect.component.js">
-	
-</script>
-<script src="app/appModule/app.module.js"></script>
-<script src="app/appModule/vet.service.js"></script>
-<script src="app/appModule/navbar/navbar.component.js"></script>
-<script src="app/appModule/location/location.component.js"></script>
-<script src="app/appModule/discount/discount.component.js"></script>
-<script src="app/appModule/results/results.component.js"></script>
-<script src="app/appModule/form/discountForm.component.js"></script>
-<script src="app/appModule/googleMap/googleMap.component.js"></script>
-<script src="app/appModule/home/home.component.js"></script>
-<link rel="stylesheet" href="css/master.css">
-</head>
 <body>
-
 	<navbar>loading navbar</navbar>
 	<div class="row">
 		<div class="col results">
@@ -54,59 +41,9 @@
 		</div>
 		<div class="col">
 			<location>loading location</location>
-			<discount>loading discount</discount>
-			<!-- <div><google-map>loading map</google-map></div> -->
+			<div><discount>loading discount</discount></div>
 			<div id="map"></div>
-			<script>
-				// Note: This example requires that you consent to location sharing when
-				// prompted by your browser. If you see the error "The Geolocation service
-				// failed.", it means you probably did not give permission for the browser to
-				// locate you.
-				var map, pos;
-				function initMap() {
-					map = new google.maps.Map(document.getElementById('map'), {
-						center : {
-							lat : -34.397,
-							lng : 150.644
-						},
-						zoom : 10
-					});
-
-					// Try HTML5 geolocation.
-					if (navigator.geolocation) {
-						navigator.geolocation.getCurrentPosition(function(
-								position) {
-							pos = {
-								lat : position.coords.latitude,
-								lng : position.coords.longitude
-							};
-
-							map.setCenter(pos);
-							marker = new google.maps.Marker({
-								position : pos,
-								map : map
-							})
-						}, function() {
-							handleLocationError(true, infoWindow, map
-									.getCenter());
-						});
-					} else {
-						// Browser doesn't support Geolocation
-						handleLocationError(false, infoWindow, map.getCenter());
-					}
-				}
-
-				function handleLocationError(browserHasGeolocation, infoWindow,
-						pos) {
-					infoWindow.setPosition(pos);
-					infoWindow
-							.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
-									: 'Error: Your browser doesn\'t support geolocation.');
-					infoWindow.open(map);
-				}
-			</script>
-			<script async defer
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs&callback=initMap"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs&callback=initMap"></script>
 		</div>
 	</div>
 	<!-- Optional JavaScript -->

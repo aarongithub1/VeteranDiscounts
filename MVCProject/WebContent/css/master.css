@@ -45,6 +45,20 @@ body{
 	height : 100%;
 }
 
+
+#dropit {
+
+	width: 400px;
+	
+}
+
+@media (max-width: 768px) {
+	.dropdown-lr h3 {
+		color: #eee;
+	}
+	.dropdown-lr label {
+		color: #eee;
+	}
 .navbar{
 	background-color: #23252e;
 }

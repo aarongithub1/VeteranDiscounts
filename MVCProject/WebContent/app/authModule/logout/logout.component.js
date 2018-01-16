@@ -7,7 +7,7 @@ angular.module('authModule').component('logout', {
 		vm.logout = function() {
 			authService.logout();
 			console.log('cookie removed');
-			user={};
+			
 		}
 
 	}

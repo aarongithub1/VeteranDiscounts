@@ -13,13 +13,14 @@ angular.module('appModule')
 		vm.showDiscount = null;
 		vm.showButton = null;
 		vm.companyId = null;
+		vm.typeId = null;
 		
 		vm.company = "";
 		vm.companySearchResult = "";
 		vm.discounts = {};
 		vm.companyResults = [];
 		vm.locationResults = [];
-		//vm.typesArr = [];
+		vm.typesArr = [];
 		
 		var companyExists = false;
 		var locationExists = false;
@@ -30,6 +31,11 @@ angular.module('appModule')
 			vetService.index()
 			.then(function(res){
 				vm.discounts = res.data;
+				
+				vetService.allTypes()
+					.then(function(res) {
+						vm.typesArr = res.data;
+					})
 			})
 		}
 
@@ -61,6 +67,7 @@ angular.module('appModule')
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {
+			console.log(vm.typeId);
 			vm.showCompanyForm = null;
 			vm.showAddress = company;
 			vm.discounts.company = company;
@@ -121,7 +128,7 @@ angular.module('appModule')
 				}
 			}
 			else {
-				vetService.createCompany(vm.discounts.company).then(function(response) {
+				vetService.createCompany(vm.discounts.company, vm.typeId).then(function(response) {
 					vm.companyId = response.data.id;
 					vetService.createAddress(vm.discounts.address).then(function(response) {
 						vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {

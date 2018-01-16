@@ -47,9 +47,7 @@ body{
 
 
 #dropit {
-
-	width: 400px;
-
+	width: 333px;
 }
 
 @media (max-width: 768px) {

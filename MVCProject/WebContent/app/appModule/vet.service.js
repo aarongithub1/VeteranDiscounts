@@ -72,12 +72,12 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	};
 
-	service.createCompany = function(company) {
+	service.createCompany = function(company, tid) {
 		var user = checkLogin();
 		
 		return $http({
 			method : 'POST',
-			url : 'rest/' + user.id + '/company',
+			url : 'rest/' + user.id + '/company/' + tid,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     },
@@ -124,7 +124,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 	
 	service.allTypes = function(){
 		return $http({
-			method : 'POST',
+			method : 'GET',
 			url : 'rest/company/all/types'
 		})
 	}

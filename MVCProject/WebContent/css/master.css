@@ -14,7 +14,7 @@ body{
 	padding: 1em;
 }
 #map {
-	height: 500px;
+	height: 400px;
 	margin: 1em;
 	margin-right: 3.5em;
 }
@@ -48,8 +48,7 @@ body{
 
 #dropit {
 
-	width: 300px;
-	
+	width: 333px;
 }
 
 @media (max-width: 768px) {

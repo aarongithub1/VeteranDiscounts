@@ -8,6 +8,9 @@
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-model="vm.searchTerm">
 			<input class="form-control mr-sm-2" type="search" placeholder="Zipcode" aria-label="Zipcode">
+			<select class="" name="typeFilter">
+				<option ng-repeat="type in vm.typeArr" value="type.id">{{type.name}}</option>
+			</select>
 			<select class="" name="">
 				<option ng-repeat="distance in vm.distances" value="{{distance}}">{{distance}}</option>
 			</select>

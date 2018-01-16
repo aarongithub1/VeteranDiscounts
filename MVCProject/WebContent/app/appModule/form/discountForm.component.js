@@ -92,6 +92,12 @@ angular.module('appModule')
 		vm.addAddress = function(address) {
 			vm.showAddress = null;
 			vm.showLocation = address;
+			vetService.getLatLong(address)
+				.then(function(res){
+					console.log(res.data);
+					address.lat = res.data.results[0].geometry.location.lat;
+					address.longitude = res.data.results[0].geometry.location.lng;
+				})
 			vm.discounts.address = address;
 			console.log(address);
 			console.log(vm.discounts);

@@ -129,12 +129,12 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	}
 
-	service.getLatLong = function(location) {
-		var street = location.address.street.split(' ').join('+');
-		var city = location.address.city.split(' ').join('+');
+	service.getLatLong = function(address) {
+		var street = address.street.split(' ').join('+');
+		var city = address.city.split(' ').join('+');
 		return $http({
 			method : 'GET',
-			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + location.address.state + '+' + location.address.zip,
+			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip,
 			headers : {
 		        'Content-Type' : 'application/json'
 		     }

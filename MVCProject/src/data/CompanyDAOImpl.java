@@ -50,12 +50,22 @@ public class CompanyDAOImpl implements CompanyDAO {
 	}
 
 	@Override
-	public Company create(int uid, String json) {
+	public Company create(int uid, String json, int tid) {
 		User u = em.find(User.class, uid);
+		Type t = null;
+		
+		if(tid > 0) {
+			t = em.find(Type.class, tid);
+			
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Company newCompany = mapper.readValue(json, Company.class);
 			newCompany.setOwner(u);
+			if(t != null) {
+				newCompany.setType(t);
+				
+			}
 			em.persist(newCompany);
 			em.flush();
 			return newCompany;

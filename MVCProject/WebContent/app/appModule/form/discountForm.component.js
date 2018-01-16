@@ -6,17 +6,19 @@ angular.module('appModule')
 
 		var vm = this;
 		vm.showCompanySearch = null;
-		vm.showCompany = null;
+		vm.showCompanyForm = null;
+		vm.companyClick = null;
 		vm.showAddress = null;
 		vm.showLocation = null;
 		vm.showDiscount = null;
 		vm.showButton = null;
 		vm.companyId = null;
-		vm.discounts = {};
-		vm.companySearchResult = "";
-		vm.locationResults = [];
-		vm.companyResults = [];
+		
 		vm.company = "";
+		vm.companySearchResult = "";
+		vm.discounts = {};
+		vm.companyResults = [];
+		vm.locationResults = [];
 		
 		var companyExists = false;
 		var locationExists = false;
@@ -32,28 +34,33 @@ angular.module('appModule')
 
 		reload();
 		
+		vm.showNewCompanyForm = function() {
+			vm.showCompanyForm = "show";
+			vm.companyClick = "hide";
+		}
+		
 		//Search for company - 
 		vm.searchCompany = function() {
 			vetService.searchCompany(vm.company)
 				.then(function(response) {
 					vm.companyResults = response.data;
-					vm.showCompanySearch = response.data;
+//					vm.showCompanySearch = response.data;
 				})
 		}
 		
-		// get locations by company id
+		// on Company Click - get locations by company id
 		vm.getLocations = function(company) {
 			vetService.getLocations(company.id)
 				.then(function(response) {
 					vm.locationResults = response.data;
-					
+					vm.companyClick = response.data;
 				})
 			
 		}
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {
-			vm.showCompany = company;
+			vm.showCompanyForm = null;
 			vm.showAddress = company;
 			vm.discounts.company = company;
 			console.log(company);

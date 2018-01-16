@@ -18,5 +18,9 @@ angular.module('appModule', ['ngRoute', 'authModule'])
 		template:'<redirect></redirect>'
 	})
 	
+	.when('/', {
+			template : '<results></results>'
+		})
+	
 
 });

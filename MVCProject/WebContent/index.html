@@ -13,6 +13,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs"></script>
+	<script src="app/appModule/googleMap/googleMap.script.js"></script>
 
 	<!--auth module and components here because they are dependency of app module and must be present before that is loaded   -->
 
@@ -29,21 +31,21 @@
 	<script src="app/appModule/discount/discount.component.js"></script>
 	<script src="app/appModule/results/results.component.js"></script>
 	<script src="app/appModule/form/discountForm.component.js"></script>
+	<script src="app/appModule/googleMap/geolocator.service.js"></script>
 	<script src="app/appModule/googleMap/googleMap.component.js"></script>
-	<script src="app/appModule/googleMap/googleMap.script.js"></script>
 	<link rel="stylesheet" href="css/master.css">
 <head>
 <body>
 	<navbar>loading navbar</navbar>
+	<br>
 	<div class="row">
 		<div class="col results">
 			<ng-view></ng-view>
 		</div>
-		<div class="col">
+		<div class="col display">
 			<location>loading location</location>
 			<div><discount>loading discount</discount></div>
-			<div id="map"></div>
-			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs&callback=initMap"></script>
+			<google-map>loading map</google-map>
 		</div>
 	</div>
 	<!-- Optional JavaScript -->

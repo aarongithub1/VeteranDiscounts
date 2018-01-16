@@ -6,6 +6,15 @@ angular.module('appModule').component('navbar', {
 		vm.distances = ['3', '5', '10', '10+']
 		vm.searchTerm = "";
 		vm.selected = null;
+		vm.typeArr = [];
+		
+			
+		vm.loadTypes = function(){
+			vetService.allTypes().then(function(res){
+				vm.typeArr = res.data;
+			});
+		}
+		vm.loadTypes();
 		
 		vm.checkLogin = function() {
 			//console.log(authService.getToken().id);
@@ -17,7 +26,6 @@ angular.module('appModule').component('navbar', {
 		
 		vm.search = function() {
 			vetService.search(vm.searchTerm).then(function(response) {
-				//console.log(response.data);
 				$rootScope.$broadcast('search-event',{
 					searchResults : response.data
 				})

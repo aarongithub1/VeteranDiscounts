@@ -1,8 +1,12 @@
 body{
 	background-color:#ebebeb;
 }
-input { margin-right: 1000px; }
-.border1{
+
+input {
+	margin-right: 1000px;
+}
+
+.border1 {
 	border-style: dashed;
 	border-width: 2px;
 }
@@ -77,6 +81,8 @@ input { margin-right: 1000px; }
 	.dropdown-lr label {
 		color: #eee;
 	}
+}
+
 .navbar{
 	background-color: #23252e;
 }

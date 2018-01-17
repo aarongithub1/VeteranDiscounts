@@ -1,7 +1,7 @@
 angular.module('appModule').component('googleMap', {
 	templateUrl : 'app/appModule/googleMap/googleMap.component.html',
 	controllerAs : 'vm',
-	controller : function($timeout, geolocator, $scope) {
+	controller : function($timeout, geolocator, $scope, $rootScope) {
 		var vm = this;
 		vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs';
 		vm.mapOptions = null;
@@ -17,6 +17,9 @@ angular.module('appModule').component('googleMap', {
           	}
 			vm.pos = position;
         		$scope.$apply();
+			// $rootScope.broadcast('origin', {
+			// 	origin : vm.pos
+			// });
       	})
 
 		$scope.$on('search-event', function(e,args){
@@ -24,6 +27,7 @@ angular.module('appModule').component('googleMap', {
 			vm.updateMarkers();
 			console.log(vm.results);
 		})
+
 
 		vm.updateMarkers = function() {
 			vm.markers = [];

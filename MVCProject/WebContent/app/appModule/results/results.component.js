@@ -15,11 +15,6 @@ angular.module('appModule').component('results', {
 		function reload(){
 		vetService.index().then(function(res){
 			vm.results = res.data;
-//			companies.forEach(function(element){
-//				element.locations.forEach(function (element){
-//					vm.results.push(element);
-//				})
-//			})
 			console.log(vm.results);
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
@@ -33,8 +28,6 @@ angular.module('appModule').component('results', {
 		}	
 		
 		$scope.$on('search-event', function(e,args){
-			//console.log('scope hit in results');
-			//console.log(args.searchResults);
 			vm.results = args.searchResults;
 			if(vm.results.length === 0){
 			} else {

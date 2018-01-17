@@ -13,7 +13,7 @@
 			</select>
 			<select class="" name="distanceFilter" ng-model="vm.distance" ng-options="distance as distance for distance in vm.distances">
 			</select>
-			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search(); vm.goHome(#/)" >Search</button>
+			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search()" >Search</button>
 			<button ng-show="vm.checkLogin()" class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.createDiscount()">Create Discount</button>
 		</form>
 		<ul class="navbar-nav mr-auto">

@@ -10,16 +10,14 @@ angular.module('appModule').component('navbar', {
 		vm.results = [];
 		vm.typeId = null;
 		vm.distance = vm.distances[0];
-			
-		vm.goHome = function (path) {
-			  $location.path(path);
-		};
+		console.log(vm.typeId);
 		
 		vm.loadTypes = function(){
 			vetService.allTypes().then(function(res){
 				vm.typeArr = res.data;
 			});
 		}
+		
 		vm.loadTypes();
 		
 		vm.checkLogin = function() {
@@ -42,6 +40,7 @@ angular.module('appModule').component('navbar', {
 				vm.results = response.data;
 				vm.typeFilter();
 				vm.broadcast();
+				$location.url('/');
 			});
 		}
 		

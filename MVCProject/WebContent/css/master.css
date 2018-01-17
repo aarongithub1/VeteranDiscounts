@@ -42,13 +42,15 @@ input { margin-right: 1000px; }
     margin-right: 3.5em;
 }
 
-.form-inline > * {
+.searchForm > * {
    margin-left:20px;
    margin-right:20px;
 }
 
-.form-inline{
-   padding-left:350px;
+
+
+.searchForm{
+	padding-left:350px;
 }
 
 .results {
@@ -75,21 +77,13 @@ input { margin-right: 1000px; }
 	.dropdown-lr label {
 		color: #eee;
 	}
+}
+
 .navbar{
 	background-color: #23252e;
 }
 
-/* Company Search Button 
-border-style: solid;
-	border-color: #102940;
-*/
-.companySearchBtn {
-	background-color: #284664;
-	color: #284664;
+#NewCompany {
+	background-color: #102940;
+	color: #102940;
 }
-
-
-
-
-
-

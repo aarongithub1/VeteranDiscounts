@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Company;
+import entities.Location;
 import entities.Type;
 import entities.User;
 
@@ -32,6 +33,14 @@ public class CompanyDAOImpl implements CompanyDAO {
 		Set<Company> set = new HashSet<>(c);
 		return set;
 	}
+	
+	// Company search by keyword
+		@Override
+		public List<Company> getAllCompaniesByKeyword(String keyword) {
+			String query = "SELECT c FROM Company c WHERE c.name" + " LIKE CONCAT('%', :company,'%')";
+
+			return em.createQuery(query, Company.class).setParameter("company", keyword).getResultList();
+		}
 	
 	@Override
 	public List<Type> getAllTypes(){

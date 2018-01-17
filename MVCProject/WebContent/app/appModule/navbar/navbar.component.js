@@ -9,6 +9,10 @@ angular.module('appModule').component('navbar', {
 		vm.typeArr = [];
 		vm.results = [];
 		
+		vm.myPage = function(){
+			
+			$location.path('/mypage');
+		}
 			
 		vm.loadTypes = function(){
 			vetService.allTypes().then(function(res){

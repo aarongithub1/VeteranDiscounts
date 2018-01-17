@@ -1,6 +1,7 @@
 package data;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -98,6 +99,13 @@ public class DiscountDAOImpl implements DiscountDAO {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public List<Discount> getDiscountsbyUid(int uid) {
+		String q = "SELECT d from Discount d WHERE d.creator.id =:uid";
+		List<Discount> discounts =  em.createQuery(q,Discount.class).setParameter("uid", uid).getResultList();
+		return discounts;
 	}
 
 }

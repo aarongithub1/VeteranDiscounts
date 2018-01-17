@@ -14,6 +14,7 @@ public interface CompanyDAO {
 	public Boolean delete(int id, int uid);
 	public Company update(String json, int cid, int uid);
 	public List<Company> getLocationsByCompany(String json);
+	public List<Company> getCompanybyUid (int uid); 
 	List<Type> getAllTypes();
 
 }

@@ -132,5 +132,10 @@ public class LocationController {
 		
 		return result;
 	}
+	
+	@RequestMapping(path="user/{uid}/locations",method=RequestMethod.GET)
+	public List<Location> getLocationsbyUid(HttpServletResponse res, @PathVariable int uid) {
+		return locationDAO.getLocationsbyUid(uid);
+	} 
 
 }

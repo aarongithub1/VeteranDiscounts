@@ -98,4 +98,12 @@ public class CompanyController {
 	public List<Type> getAllTypes(HttpServletResponse res) {
 		return companyDAO.getAllTypes();
 	}
+	
+	@RequestMapping(path="user/{uid}/companies",method=RequestMethod.GET)
+	public List<Company> getCompanybyUid (HttpServletResponse res, @PathVariable int uid) {
+		
+		return companyDAO.getCompanybyUid(uid);
+	} 
+	
+
 }

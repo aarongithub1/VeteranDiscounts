@@ -154,8 +154,13 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	}
 
-
-
-
+	service.getUser = function() {
+		var user = checkLogin();
+		if (!user) return;
+		return $http({
+			method : 'GET',
+			url : 'rest/user/'+ user.id 
+		})
+	};
 	return service;
 })

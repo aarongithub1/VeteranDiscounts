@@ -4,12 +4,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import data.AuthDAO;
+import data.UserDAO;
 import entities.User;
 
 @RestController
@@ -17,7 +19,7 @@ public class AuthController {
 	
 	@Autowired
 	  private AuthDAO authDAO;
-
+	
 	  @RequestMapping(path = "auth/register", method = RequestMethod.POST)
 	  public User register(HttpSession session, HttpServletResponse res, @RequestBody User user) {
 	    User regUser = authDAO.register(user);
@@ -61,5 +63,6 @@ public class AuthController {
 	    response.setStatus(401);
 	    return "unauthorized";
 	  }
+	  
 
 }

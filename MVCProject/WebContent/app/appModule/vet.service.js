@@ -40,6 +40,20 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/location/search/' + searchTerm
 		});
 	}
+	
+	service.searchWithFilters = function(searchTerm,typeId,distance){
+		if(searchTerm.trim()===null ||searchTerm.trim()===""){
+			return $http({
+				method : 'GET',
+				url : 'rest/location'
+			});
+		}
+
+		return $http({
+			method : 'GET',
+			url : 'rest/location/search/' + searchTerm + '/' + distance + '/' + typeId
+		});
+	}
 
 	// search company
 	service.searchCompany = function(searchCompany){

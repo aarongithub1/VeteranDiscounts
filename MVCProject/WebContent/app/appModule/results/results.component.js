@@ -1,12 +1,16 @@
 angular.module('appModule').component('results', {
 	templateUrl : 'app/appModule/results/results.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService,$scope,$rootScope) {
+	controller : function(vetService,$scope,$rootScope,$filter) {
 		var vm = this;
 		vm.results = [];
 		//vm.searchTerm = null;
 		vm.active = null;
+		vm.distance = null;
+		vm.typeId = null;
 		reload();
+		
+		
 		
 		function reload(){
 		vetService.index().then(function(res){
@@ -24,8 +28,15 @@ angular.module('appModule').component('results', {
 		
 		$scope.$on('search-event', function(e,args){
 			//console.log('scope hit in results');
+			//console.log(args.searchResults);
 			vm.results = args.searchResults;
-			vm.makeActive(vm.results[0]);
+			if(vm.results.length === 0){
+			} else {
+				vm.makeActive(vm.results[0]);
+			}
+			
+			vm.distance = args.distance;
+			vm.typeId = args.type;
 		})
 		
 	}

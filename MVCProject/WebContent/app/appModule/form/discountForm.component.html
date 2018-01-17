@@ -13,23 +13,6 @@
 		</li>
 	</ul>
 	
-	<!-- show locations list based on search result -->
-	<!-- Button - Create new location -->
-	<input type="submit" ng-click="vm.showNewLocationForm()" value="Create New Location" />
-	<ul>
-		<li ng-hide="vm.showLocation" ng-repeat="location in vm.locationResults" 
-			ng-click="vm.addLocation(location)">
-			ID : {{location.id}}
-			{{location.address.street}}
-			{{location.address.city}}
-			{{location.address.state}}
-			{{location.address.zip}}
-			{{location.phone}}
-			{{location.hours}}
-			
-		</li>
-	</ul>
-	
 	<!-- company form -->
 	<form ng-show="vm.showCompanyForm">
 		<input type="text" ng-model="company.name" placeholder="Company Name" /><br />
@@ -42,6 +25,25 @@
 		<input type="text" ng-model="company.storeUrl" placeholder="Company URL" /><br />
 		<input type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" />
 	</form>
+	
+	<!-- show locations list based on search result -->
+	<!-- Button - Create new location -->
+	<div ng-show="vm.showLocationList">
+		<input type="submit" ng-click="vm.showNewLocationForm()" value="Create New Location" />
+		<ul>
+			<li ng-repeat="location in vm.locationResults" 
+				ng-click="vm.addLocationFromList(location)">
+				ID : {{location.id}}
+				{{location.address.street}}
+				{{location.address.city}}
+				{{location.address.state}}
+				{{location.address.zip}}
+				{{location.phone}}
+				{{location.hours}}
+				
+			</li>
+		</ul>
+	</div>
 	
 	<!-- location form -->
 	<form ng-show="vm.showLocation">
@@ -58,8 +60,6 @@
 		<input type="text" ng-model="address.zip" placeholder="Zip Code" /><br />
 		<input type="submit" ng-click="vm.addAddress(address); address = {}" value="Add Address" />
 	</form>
-	
-
 
 	<!-- discount form -->
 	<form ng-show="vm.showDiscount">

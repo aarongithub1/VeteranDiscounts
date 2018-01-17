@@ -5,6 +5,7 @@ angular.module('appModule')
 	controller : function(vetService, $filter, $location, $routeParams, $cookies, $rootScope) {
 
 		var vm = this;
+		vm.showLocationList = null;
 		vm.showCompanySearch = null;
 		vm.showCompanyForm = null;
 		vm.companyClick = null;
@@ -41,12 +42,15 @@ angular.module('appModule')
 
 		reload();
 		
+		// show Company Form
 		vm.showNewCompanyForm = function() {
 			vm.showCompanyForm = "show";
 			vm.companyClick = "hide";
 		}
 		
+		// show Location Form
 		vm.showNewLocationForm = function() {
+			vm.showLocationList = null;
 			vm.showLocation = "show";
 			vm.locationClick = "hide";
 		}
@@ -62,32 +66,57 @@ angular.module('appModule')
 		
 		// on Company Click - get locations by company id
 		vm.getLocations = function(company) {
+			console.log(company);
+			console.log(company.id);
+			vm.discounts.company = company;
 			vetService.getLocations(company.id)
 				.then(function(response) {
+					vm.showLocationList = response.data;
 					vm.locationResults = response.data;
 					vm.companyClick = response.data;
 				})
 			
 		}
 
-		//on Location form submit - show Discount form / hide Location form
-		vm.addLocation = function(location) {
-			vm.showLocation = null;
-			vm.showDiscount = location;
-			vm.discounts.location = location;
-		}
-		
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {
 			vm.showCompanyForm = null;
-			vm.showAddress = company;
+			vm.showLocation = company;
+//			vm.showAddress = company;
 			vm.discounts.company = company;
 		}
+		
+		//on Location form submit - show Discount form / hide Location form
+		vm.addLocation = function(location) {
+			vm.showAddress = location;
+			vm.showLocationList = null;
+			vm.showLocation = null;
+			vm.discounts.location = location;
+			console.log(vm.discounts.location);
+			vm.discounts.address = location.address;
+			console.log(vm.discounts.address);
+		}
 
+		//on Location form submit - show Discount form / hide Location form
+		vm.addLocationFromList = function(location) {
+			vm.showAddress = null;
+			vm.showLocationList = null;
+			vm.showLocation = null;
+			vm.showDiscount = location;
+			
+			vm.discounts.location = location;
+			vm.discounts.address = location.address;
+			
+			console.log(location.id);
+			console.log(vm.discounts.location);
+			console.log(vm.discounts.address);
+		}
+		
 		//on Address form submit - show Location form / hide Company form
 		vm.addAddress = function(address) {
+			vm.showDiscount = location;
 			vm.showAddress = null;
-			vm.showLocation = address;
+//			vm.showLocation = address;
 			vetService.getLatLong(address)
 				.then(function(res){
 					console.log(res.data);

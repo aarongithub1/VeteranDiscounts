@@ -2,10 +2,6 @@ body{
 	background-color:#ebebeb;
 }
 
-input {
-	margin-right: 1000px;
-}
-
 .border1 {
 	border-style: dashed;
 	border-width: 2px;

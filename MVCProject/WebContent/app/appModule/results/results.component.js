@@ -8,10 +8,11 @@ angular.module('appModule').component('results', {
 		vm.active = null;
 		vm.distance = null;
 		vm.typeId = null;
+		vm.origin = {};
 		reload();
-		
-		
-		
+
+
+
 		function reload(){
 		vetService.index().then(function(res){
 			vm.results = res.data;
@@ -26,12 +27,12 @@ angular.module('appModule').component('results', {
 			  console.log(error);
 		  });
 		}
-		
+
 		vm.makeActive = function(result){
 			vm.active = result;
 			$rootScope.$broadcast('activeSelection', vm.active);
-		}	
-		
+		}
+
 		$scope.$on('search-event', function(e,args){
 			//console.log('scope hit in results');
 			//console.log(args.searchResults);
@@ -40,10 +41,22 @@ angular.module('appModule').component('results', {
 			} else {
 				vm.makeActive(vm.results[0]);
 			}
-			
+
 			vm.distance = args.distance;
 			vm.typeId = args.type;
 		})
-		
+
+		// $scope.on('origin', function(e, args) {
+		// 	vm.origin = args.origin;
+		// })
+
+		vm.getDistances = function() {
+			vm.results.forEach(function(item) {
+				vetService.distance(vm.origin.lat + '+' + vm.origin.lng, item.address.lat + '+' + item.address.longitude).then(function(response){
+					item.distance = response.data.rows[0].elements[0].distance.text;
+				})
+			})
+		}
+
 	}
 });

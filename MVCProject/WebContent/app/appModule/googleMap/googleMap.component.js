@@ -20,8 +20,16 @@ angular.module('appModule').component('googleMap', {
 
 		$scope.$on('search-event', function(e,args){
 			vm.results = args.searchResults;
+			vm.updateMarkers();
 			console.log(vm.results);
 		})
+
+		vm.updateMarkers = function() {
+			vm.results.forEach(function(item) {
+				vm.markers.push({lat : item.address.lat, lng : item.address.longitude})
+			})
+			vm.mapOptions.markers = vm.markers;
+		}
 
 	}
 });

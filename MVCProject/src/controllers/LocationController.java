@@ -36,6 +36,21 @@ public class LocationController {
 		return searchedLocations;
 	}
 	
+	//Search by location
+		@RequestMapping(path="location/search/{searchString}/{distance}/{typeId}", method=RequestMethod.GET)
+		public List<Location> searchWithFilters(HttpServletRequest req, HttpServletResponse res, 
+				@PathVariable String searchString, @PathVariable String distance,
+				@PathVariable String typeId) {
+			List<Location> searchedLocations = locationDAO.getAllLocationsByKeywordWithFilters(searchString,distance,typeId);
+			if(searchedLocations== null) {
+				res.setStatus(400);
+			}
+			else {
+				res.setStatus(201);
+			}
+			return searchedLocations;
+		}
+	
 	//Get Locations by company id
 	@RequestMapping(path="{cid}/location", method=RequestMethod.GET)
 	public List<Location> getLocations(HttpServletRequest req, HttpServletResponse res,

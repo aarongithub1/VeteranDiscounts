@@ -69,12 +69,20 @@ angular.module('appModule')
 			console.log(company);
 			console.log(company.id);
 			vm.discounts.company = company;
-			vetService.getLocations(company.id)
+			vetService.getCompany(company.id)
 				.then(function(response) {
 					vm.showLocationList = response.data;
 					vm.locationResults = response.data;
+					console.log(vm.locationResults);
 					vm.companyClick = response.data;
 				})
+//				vetService.getLocations(company.id)
+//				.then(function(response) {
+//					vm.showLocationList = response.data;
+//					vm.locationResults = response.data;
+//					console.log(vm.locationResults);
+//					vm.companyClick = response.data;
+//				})
 			
 		}
 
@@ -93,8 +101,8 @@ angular.module('appModule')
 			vm.showLocation = null;
 			vm.discounts.location = location;
 			console.log(vm.discounts.location);
-			vm.discounts.address = location.address;
-			console.log(vm.discounts.address);
+//			vm.discounts.address = location.address;
+//			console.log(vm.discounts.address);
 		}
 
 		//on Location form submit - show Discount form / hide Location form
@@ -116,7 +124,6 @@ angular.module('appModule')
 		vm.addAddress = function(address) {
 			vm.showDiscount = location;
 			vm.showAddress = null;
-//			vm.showLocation = address;
 			vetService.getLatLong(address)
 				.then(function(res){
 					console.log(res.data);
@@ -138,6 +145,7 @@ angular.module('appModule')
 			if (vm.companyExists) {
 				if (vm.locationExists) {
 					vetService.createDiscount(vm.discounts.discount, vm.discounts.location.id).then(function() {
+						vm.showButton = null;
 						vm.companyExists = false;
 						vm.locationExists = false;
 					});
@@ -163,12 +171,12 @@ angular.module('appModule')
 							vetService.createDiscount(vm.discounts.discount, response.data.id).then(function(response) {
 								//do something with new discount at new company
 								vm.showButton = null;
-								reload();
 							})
 						})
 					})
 				})
 			}
+			$location.path('/');
 		}//end of addAllForms method
 		
 

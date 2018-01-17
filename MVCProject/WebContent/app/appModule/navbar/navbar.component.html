@@ -11,7 +11,7 @@
 			<select class="" name="typeFilter" ng-model="typeFilter">
 				<option ng-repeat="type in vm.typeArr" value="{{type.id}}">{{type.name}}</option>
 			</select>
-			<select class="" name="" ng-model="distanceFilter">
+			<select class="" name="distanceFilter" ng-model="distanceFilter">
 				<option ng-repeat="distance in vm.distances" value="{{distance}}">{{distance}}</option>
 			</select>
 			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search(typeFilter,distanceFilter)">Search</button>

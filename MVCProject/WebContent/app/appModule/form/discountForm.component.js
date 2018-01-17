@@ -46,6 +46,11 @@ angular.module('appModule')
 			vm.companyClick = "hide";
 		}
 		
+		vm.showNewLocationForm = function() {
+			vm.showLocation = "show";
+			vm.locationClick = "hide";
+		}
+		
 		//Search for company - 
 		vm.searchCompany = function() {
 			vetService.searchCompany(vm.company)
@@ -65,37 +70,31 @@ angular.module('appModule')
 			
 		}
 
-		//on Company form submit - show address form / hide company form
-		vm.addCompany = function(company) {
-			console.log(vm.typeId);
-			vm.showCompanyForm = null;
-			vm.showAddress = company;
-			vm.discounts.company = company;
-			console.log(company);
-			console.log(vm.discounts);
-//			if company exists, don't add company
-
-
-		}
-
 		//on Location form submit - show Discount form / hide Location form
 		vm.addLocation = function(location) {
 			vm.showLocation = null;
 			vm.showDiscount = location;
 			vm.discounts.location = location;
-			console.log("This is in location: " + location);
-			console.log(vm.discounts);
-//			if location exists, don't add location
 		}
 		
+		//on Company form submit - show address form / hide company form
+		vm.addCompany = function(company) {
+			vm.showCompanyForm = null;
+			vm.showAddress = company;
+			vm.discounts.company = company;
+		}
+
 		//on Address form submit - show Location form / hide Company form
 		vm.addAddress = function(address) {
 			vm.showAddress = null;
 			vm.showLocation = address;
+			vetService.getLatLong(address)
+				.then(function(res){
+					console.log(res.data);
+					address.lat = res.data.results[0].geometry.location.lat;
+					address.longitude = res.data.results[0].geometry.location.lng;
+				})
 			vm.discounts.address = address;
-			console.log(address);
-			console.log(vm.discounts);
-//			if address exists, don't add address
 		}
 
 		//on Discount form submit - show AddAllButton / hide Discount form
@@ -103,8 +102,6 @@ angular.module('appModule')
 			vm.showDiscount = null;
 			vm.showButton = discount;
 			vm.discounts.discount = discount;
-			console.log(discount);
-			console.log(vm.discounts);
 		}
 
 		// Create Discount - All forms

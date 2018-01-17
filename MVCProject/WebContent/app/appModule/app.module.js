@@ -1,4 +1,4 @@
-angular.module('appModule', ['ngRoute', 'authModule', 'ngMap'])
+angular.module('appModule', ['ngMessages', 'ngRoute', 'authModule', 'ngMap'])
 .config(function($routeProvider) {
 
 	$routeProvider

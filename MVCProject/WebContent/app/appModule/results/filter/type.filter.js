@@ -1,7 +1,8 @@
 angular.module('appModule').filter('typeFilter',function(){
 	return function(resultsList,typeId){
 		var results = [];
-		
+		console.log(resultsList);
+		console.log(typeId);
 		//if zero do not filter
 		if(isNaN(parseInt(typeId))){
 			return resultsList;
@@ -9,7 +10,6 @@ angular.module('appModule').filter('typeFilter',function(){
 		
 		resultsList.forEach(function(item){
 			if(parseInt(item.company.type.id) === parseInt(typeId)){
-				//console.log('item found');
 				results.push(item);
 			}
 		});

@@ -8,7 +8,7 @@ angular.module('appModule').component('navbar', {
 		vm.selected = null;
 		vm.typeArr = [];
 		vm.results = [];
-		vm.typeId = 0;
+		vm.typeId = null;
 		vm.distance = vm.distances[0];
 			
 		vm.loadTypes = function(){
@@ -27,14 +27,16 @@ angular.module('appModule').component('navbar', {
 		}
 		
 		vm.typeFilter = function(){
+			console.log(vm.results);
 			vm.results = $filter('typeFilter')(vm.results,vm.typeId);
+			console.log(vm.results);
+
 		}
 		
 		vm.search = function() {
 			vetService.search(vm.searchTerm).then(function(response) {
 				vm.results = response.data;
 				vm.typeFilter();
-				//console.log(vm.results);
 				vm.broadcast();
 			});
 		}

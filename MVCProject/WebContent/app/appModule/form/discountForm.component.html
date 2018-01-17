@@ -3,12 +3,10 @@
 	<!-- company search bar -->
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col">
-				<form class="form-inline" ng-show="!vm.companyClick">
-					<input class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
-					<input id="NewCompany" type="submit" ng-click="vm.showNewCompanyForm()" value="Create New Company" />
-				</form>
-			</div>
+			<form class="form-inline" ng-show="!vm.companyClick">
+				<input class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
+				<input type="submit" ng-click="vm.showNewCompanyForm()" value="Create New Company" />
+			</form>
 		</div>
 	</div>
 	

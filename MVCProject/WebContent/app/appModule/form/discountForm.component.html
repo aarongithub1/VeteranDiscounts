@@ -8,7 +8,7 @@
 	
 	<!-- show Company List -->
 	<ul ng-show="!vm.companyClick">
-		<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company)">
+		<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
 			{{company.name}}
 		</li>
 	</ul>
@@ -32,7 +32,7 @@
 		<input type="submit" ng-click="vm.showNewLocationForm()" value="Create New Location" />
 		<ul>
 			<li ng-repeat="location in vm.locationResults" 
-				ng-click="vm.addLocationFromList(location)">
+				ng-click="vm.addLocationFromList(location); vm.locationExists = true">
 				ID : {{location.id}}
 				{{location.address.street}}
 				{{location.address.city}}

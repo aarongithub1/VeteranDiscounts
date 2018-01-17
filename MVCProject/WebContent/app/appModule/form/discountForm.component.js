@@ -23,8 +23,8 @@ angular.module('appModule')
 		vm.locationResults = [];
 		vm.typesArr = [];
 		
-		var companyExists = false;
-		var locationExists = false;
+		vm.companyExists = false;
+		vm.locationExists = false;
 		
 
 		// Display Updated List
@@ -135,19 +135,21 @@ angular.module('appModule')
 
 		// Create Discount - All forms
 		vm.addAllForms = function() {
-			if (companyExists) {
-				if (locationExists) {
-					vetService.createDiscount(vm.discounts.discount, vm.discounts.company.id).then(function() {
-						//do something
+			if (vm.companyExists) {
+				if (vm.locationExists) {
+					vetService.createDiscount(vm.discounts.discount, vm.discounts.location.id).then(function() {
+						vm.companyExists = false;
+						vm.locationExists = false;
 					});
 				}
 				else {
 					vetService.createAddress(vm.discounts.address).then(function(response) {
 						vetService.createLocation(vm.discounts.location, vm.discounts.company.id, response.data.id).then(function(response) {
-							vetService.createDiscount(vm.discounts.discount, vm.discounts.company.id).then(function(response) {
+							vetService.createDiscount(vm.discounts.discount, response.data.id).then(function(response) {
 								//do something with new discount at new company
 								vm.showButton = null;
 								reload();
+								vm.companyExists = false;
 							})
 						})
 					})

@@ -3,7 +3,7 @@ angular.module('appModule').component('results', {
 	controllerAs : 'vm',
 	controller : function(vetService,$scope,$rootScope,$filter) {
 		var vm = this;
-		companies = [];
+		//companies = [];
 		vm.results = [];
 		vm.active = null;
 		vm.distance = null;
@@ -14,12 +14,12 @@ angular.module('appModule').component('results', {
 		
 		function reload(){
 		vetService.index().then(function(res){
-			companies = res.data;
-			companies.forEach(function(element){
-				element.locations.forEach(function (element){
-					vm.results.push(element);
-				})
-			})
+			vm.results = res.data;
+//			companies.forEach(function(element){
+//				element.locations.forEach(function (element){
+//					vm.results.push(element);
+//				})
+//			})
 			console.log(vm.results);
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){

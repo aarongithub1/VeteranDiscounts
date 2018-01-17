@@ -13,15 +13,26 @@ angular.module('appModule').component('googleMap', {
         		vm.mapOptions = {
               		center: position,
               		markers : [position],
-              		zoom: 8
+              		zoom: 11
           	}
+			vm.pos = position;
         		$scope.$apply();
       	})
 
 		$scope.$on('search-event', function(e,args){
 			vm.results = args.searchResults;
+			vm.updateMarkers();
 			console.log(vm.results);
 		})
+
+		vm.updateMarkers = function() {
+			vm.markers = [];
+			vm.results.forEach(function(item) {
+				vm.markers.push({lat : item.address.lat, lng : item.address.longitude})
+			})
+			vm.markers.push(vm.pos);
+			vm.mapOptions.markers = vm.markers;
+		}
 
 	}
 });

@@ -14,7 +14,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 	service.index = function() {
         return $http({
             method : 'GET',
-            url : 'rest/company'
+            url : 'rest/location'
         });
     }
 
@@ -31,13 +31,13 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		if(searchTerm.trim()===null ||searchTerm.trim()===""){
 			return $http({
 				method : 'GET',
-				url : 'rest/company'
+				url : 'rest/location'
 			});
 		}
 
 		return $http({
 			method : 'GET',
-			url : 'rest/company/search/' + searchTerm
+			url : 'rest/location/search/' + searchTerm
 		});
 	}
 	

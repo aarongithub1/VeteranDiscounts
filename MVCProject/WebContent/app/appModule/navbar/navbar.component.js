@@ -1,13 +1,16 @@
 angular.module('appModule').component('navbar', {
 	templateUrl : 'app/appModule/navbar/navbar.component.html',
 	controllerAs : 'vm',
-	controller : function(vetService, authService, $rootScope, $location, $filter) {
+	controller : function(vetService, authService, $rootScope, $location, $filter,$scope) {
 		var vm = this;
 		vm.distances = ['3', '5', '10', '10+']
 		vm.searchTerm = "";
 		vm.selected = null;
 		vm.typeArr = [];
 		vm.results = [];
+		vm.typeId = null;
+		vm.distance = vm.distances[0];
+		console.log(vm.typeId);
 		
 		vm.myPage = function(){
 			
@@ -19,6 +22,7 @@ angular.module('appModule').component('navbar', {
 				vm.typeArr = res.data;
 			});
 		}
+		
 		vm.loadTypes();
 		
 		vm.checkLogin = function() {
@@ -29,19 +33,19 @@ angular.module('appModule').component('navbar', {
 			return false;
 		}
 		
-		vm.typeFilter = function(typeId){
-			vm.results = $filter('typeFilter')(vm.results,typeId);
+		vm.typeFilter = function(){
+			console.log(vm.results);
+			vm.results = $filter('typeFilter')(vm.results,vm.typeId);
+			console.log(vm.results);
+
 		}
 		
-		vm.search = function(typeId,distance) {
+		vm.search = function() {
 			vetService.search(vm.searchTerm).then(function(response) {
 				vm.results = response.data;
-				//console.log(vm.results);
-				if(!isNaN(typeId)){
-					vm.typeFilter(typeId);
-				}
-				//console.log(vm.results);
+				vm.typeFilter();
 				vm.broadcast();
+				$location.url('/');
 			});
 		}
 		

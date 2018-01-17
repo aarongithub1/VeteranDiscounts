@@ -63,7 +63,7 @@ public class LocationController {
 		else {
 			res.setStatus(201);
 		}
-		
+		System.out.println(locations);
 		return locations;
 	}
 	

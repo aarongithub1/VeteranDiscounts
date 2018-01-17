@@ -1,7 +1,8 @@
 body{
 	background-color:#ebebeb;
 }
-.border1{
+
+.border1 {
 	border-style: dashed;
 	border-width: 2px;
 }
@@ -41,6 +42,17 @@ body{
     margin-right: 3.5em;
 }
 
+.searchForm > * {
+   margin-left:20px;
+   margin-right:20px;
+}
+
+
+
+.searchForm{
+	padding-left:350px;
+}
+
 .results {
 	height : 635px;
 	overflow: scroll;
@@ -65,6 +77,8 @@ body{
 	.dropdown-lr label {
 		color: #eee;
 	}
+}
+
 .navbar{
 	background-color: #23252e;
 }

@@ -70,6 +70,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/' + cid + '/location'
 		});
 	}
+	
+	// get company by id
+	service.getCompany = function(cid){
+		return $http({
+			method : 'GET',
+			url : 'rest/company/' + cid
+		});
+	}
 
 	//create discount
 	service.createDiscount = function(discount, lid) {

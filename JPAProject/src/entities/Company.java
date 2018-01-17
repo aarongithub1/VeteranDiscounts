@@ -14,10 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
+//@JsonIdentityInfo(
+//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+//		  property = "id")
 @Entity
 public class Company {
 	
@@ -32,7 +33,7 @@ public class Company {
 	private User owner;
 	
 
-//	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy="company", fetch=FetchType.EAGER)
 	private Set<Location> locations;
 	

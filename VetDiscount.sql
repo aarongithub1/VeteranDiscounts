@@ -97,23 +97,23 @@ INSERT INTO store_type (name) VALUES ('Grocery');
 INSERT INTO store_type (name) VALUES ('Drugstore');
 
 
-INSERT INTO user (username, password, email) VALUES ('HunterK', 'password123', 'hunter@SD.com');
+INSERT INTO user (username, password, email) VALUES ('HunterK', '$2a$10$Fg.SjWBMTyvPqji9XeLWreAP7saCXJJX0ZCzyKqR2XG5qCblNo2xm', 'hunter@SD.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Skill Distillery', '1', '1');
-INSERT INTO address (state, city, zip_code, street) VALUES ('CO', 'Denver', '80111', '7400 East Orchard Road');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '7400 East Orchard Road', '39.6088537', '-104.902828');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('1', '1', '1');
 INSERT INTO discount (amount, info, user_id) VALUES ('20% off', 'Vets get 20% off on all white board erasers!', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('1', '1');
 
-INSERT INTO user (username, password, email) VALUES ('Aaron', '123', 'a@a.com');
+INSERT INTO user (username, password, email) VALUES ('Aaron1', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'a@a.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Barnes and Noble', '2', '2');
-INSERT INTO address (state, city, zip_code, street) VALUES ('FL', 'Orlando', '33467', '123 Main Street');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('FL', 'Orlando', '33467', '123 Main Street', '28.4997892', '-81.53617989999999');
 INSERT INTO location (company_id, address_id) VALUES ('2', '2');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Buy 1 get 1', 'You only get one. Pay full price.', '01/10/2018', '01/22/2018', '2');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('2', '2');
 
-INSERT INTO user (username, password, email) VALUES ('baby', 'baby', 'babylikes2drink@bbb.com');
+INSERT INTO user (username, password, email) VALUES ('babybooze', '$2a$10$H8UEBL7QQG1iNmLhs1io9ugJG.7C7QlPu7WpfjhyGzBQJ1cW5KCXu', 'babylikes2drink@bbb.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Baby\'s Booze Boutique', '3', '3');
-INSERT INTO address (state, city, zip_code, street) VALUES ('CO', 'Denver', '80111', '1111 Tipsy Blvd.');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5332 DTC Blvd', '39.6182514', '-104.8894243');
 INSERT INTO location (company_id, address_id) VALUES ('3', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('15% off everything', 'Baby wants the bottle!', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');

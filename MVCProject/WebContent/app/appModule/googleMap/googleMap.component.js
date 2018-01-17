@@ -7,6 +7,7 @@ angular.module('appModule').component('googleMap', {
 		vm.mapOptions = null;
 		vm.pos = null;
 		vm.results = null;
+		vm.markers = [];
 
 		geolocator.geolocate().then(function(position){
         		vm.mapOptions = {
@@ -21,5 +22,6 @@ angular.module('appModule').component('googleMap', {
 			vm.results = args.searchResults;
 			console.log(vm.results);
 		})
+
 	}
 });

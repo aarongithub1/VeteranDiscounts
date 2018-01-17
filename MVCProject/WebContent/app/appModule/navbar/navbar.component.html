@@ -8,13 +8,12 @@
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-model="vm.searchTerm">
 			<!--<input class="form-control mr-sm-2" type="search" placeholder="Zipcode" aria-label="Zipcode">-->
-			<select class="" name="typeFilter" ng-model="typeFilter">
-				<option ng-repeat="type in vm.typeArr" value="{{type.id}}">{{type.name}}</option>
+			<select class="" name="typeFilter" ng-model="vm.typeId" ng-options="type.id as type.name for type in vm.typeArr">
+				<option value="">All</option>
 			</select>
-			<select class="" name="distanceFilter" ng-model="distanceFilter">
-				<option ng-repeat="distance in vm.distances" value="{{distance}}">{{distance}}</option>
+			<select class="" name="distanceFilter" ng-model="vm.distance" ng-options="distance as distance for distance in vm.distances">
 			</select>
-			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search(typeFilter,distanceFilter)">Search</button>
+			<button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.search(typeId,distanceFilter)">Search</button>
 			<button ng-show="vm.checkLogin()" class="form-control btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="vm.createDiscount()">Create Discount</button>
 		</form>
 		<ul class="navbar-nav mr-auto">

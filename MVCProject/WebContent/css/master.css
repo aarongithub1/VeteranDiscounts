@@ -41,10 +41,16 @@ input { margin-right: 1000px; }
 	margin: 1em;
     margin-right: 3.5em;
 }
-.form-inline {
-    padding:100px;
-    margin:150px;
+
+.form-inline > * {
+   margin-left:20px;
+   margin-right:20px;
 }
+
+.form-inline{
+   padding-left:350px;
+}
+
 .results {
 	height : 635px;
 	overflow: scroll;

@@ -34,20 +34,29 @@ angular.module('appModule').component('results', {
 			} else {
 				vm.makeActive(vm.results[0]);
 			}
-
+			vm.getDistances();
 			vm.distance = args.distance;
 			vm.typeId = args.type;
 		})
 
-		// $scope.on('origin', function(e, args) {
-		// 	vm.origin = args.origin;
-		// })
+		$scope.$on('origin', function(e, args) {
+			vm.origin = args.origin;
+		})
 
+		var toRadians = function(num) {
+			return num * (Math.PI / 180);
+		}
+		
 		vm.getDistances = function() {
-			vm.results.forEach(function(item) {
-				vetService.distance(vm.origin.lat + '+' + vm.origin.lng, item.address.lat + '+' + item.address.longitude).then(function(response){
-					item.distance = response.data.rows[0].elements[0].distance.text;
-				})
+			vm.results.forEach(function(item){
+				var lat1 = item.address.lat;
+				var lat2 = vm.origin.lat;
+				var lon1 = item.address.longitude;
+				var lon2 = vm.origin.lng;
+				var φ1 = toRadians(lat1), φ2 = toRadians(lat2), Δλ = toRadians(lon2-lon1), R = 6371e3; // gives d in metres
+				var d = Math.acos( Math.sin(φ1)*Math.sin(φ2) + Math.cos(φ1)*Math.cos(φ2) * Math.cos(Δλ) ) * R;
+				var miles = d/1609.344;
+				item.distance = miles;
 			})
 		}
 

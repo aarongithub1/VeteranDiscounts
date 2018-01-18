@@ -1,8 +1,10 @@
 angular.module('authModule').component('mypage', {
 	templateUrl : 'app/authModule/mypage/mypage.component.html',
 	controllerAs : 'vm',
+
 	controller : function(authService,vetService,$location) {
 		
+
 		var vm = this;
 		
 		vm.editUser = null;

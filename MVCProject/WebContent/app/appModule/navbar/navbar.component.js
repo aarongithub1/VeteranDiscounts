@@ -3,7 +3,7 @@ angular.module('appModule').component('navbar', {
 	controllerAs : 'vm',
 	controller : function(vetService, authService, $rootScope, $location, $filter,$scope) {
 		var vm = this;
-		vm.distances = ['3', '5', '10', '15', '20', '25', '50']
+		vm.distances = ['1', '3', '5', '10', '15', '20', '25', '50']
 		vm.searchTerm = "";
 		vm.selected = null;
 		vm.typeArr = [];

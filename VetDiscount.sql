@@ -104,21 +104,21 @@ INSERT INTO location (company_id, address_id, owner_id) VALUES ('1', '1', '1');
 INSERT INTO discount (amount, info, user_id) VALUES ('20% off', 'Vets get 20% off on all white board erasers!', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('1', '1');
 
-INSERT INTO user (username, password, email) VALUES ('Aaron', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'aaron@bn.com');
+INSERT INTO user (username, password, email) VALUES ('Aaron123', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'aaron@bn.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Barnes and Noble', '2', '2');
 INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('FL', 'Lone Tree', '80124', '8374 Willow St', '39.564538', '-104.8864781');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('2', '2', '2');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('10% off', '10% off all books.', '01/10/2018', '01/22/2018', '2');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('2', '2');
 
-INSERT INTO user (username, password, email) VALUES ('Jake', '$2a$10$H8UEBL7QQG1iNmLhs1io9ugJG.7C7QlPu7WpfjhyGzBQJ1cW5KCXu', 'jake@starbucks.com');
+INSERT INTO user (username, password, email) VALUES ('Jake123', '$2a$10$H8UEBL7QQG1iNmLhs1io9ugJG.7C7QlPu7WpfjhyGzBQJ1cW5KCXu', 'jake@starbucks.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Starbucks Coffee', '3', '4');
 INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9301 E Arapahoe Rd', '39.5955571', '-104.8802885');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('3', '3', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Buy one, Get one.', 'Buy any small coffee, Get one for free', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');
 
-INSERT INTO user (username, password, email) VALUES ('Alex', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'alex@lyonsliquor.com');
+INSERT INTO user (username, password, email) VALUES ('Alex123', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'alex@lyonsliquor.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Lyons Den Liquor', '4', '3');
 INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5332 DTC Blvd', '39.6182514', '-104.8894243');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('4', '4', '4');

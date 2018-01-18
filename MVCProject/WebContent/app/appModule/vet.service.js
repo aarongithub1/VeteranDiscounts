@@ -161,14 +161,20 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		     }
 		})
 	}
-
-	service.getUser = function() {
-		var user = checkLogin();
+	
+	service.updateUser = function(user){
+		console.log('in method updateuser');
 		if (!user) return;
+		
 		return $http({
-			method : 'GET',
-			url : 'rest/user/'+ user.id 
+			method : 'PUT',
+			url : 'rest/user/'+ user.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			data : user
 		})
-	};
+	}
+		
 	return service;
 })

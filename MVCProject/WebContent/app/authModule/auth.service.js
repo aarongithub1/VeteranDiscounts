@@ -5,6 +5,8 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 	service.getToken = function() {
 		var user = {};
 		user.id = $cookies.get('uid');
+		user.email = $cookies.get('email');
+		user.username = $cookies.get('username');
 		return user;
 	}
 

@@ -1,5 +1,14 @@
 <div id="map" ng-if="vm.mapOptions" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{vm.googleMapsUrl}}">
-	<ng-map center="{{vm.mapOptions.center.lat}},{{vm.mapOptions.center.lng}}" zoom="{{vm.mapOptions.zoom}}">
-     	<marker ng-repeat="mark in vm.mapOptions.markers" position="[{{mark.lat}},{{mark.lng}}]" title="{{mark.title}}" icon="{{mark.icon}}" animation="{{mark.animation}}" draggable="{{mark.draggable}}"></marker>
+	<ng-map center="{{vm.mapOptions.center.lat}},{{vm.mapOptions.center.lng}}" zoom="{{vm.mapOptions.zoom}}" zoom-to-include-markers="auto">
+     	<marker ng-repeat="item in vm.mapOptions.markers" position="[{{item.lat}},{{item.lng}}]" title="{{item.title}}" icon="{{item.icon}}" animation="{{item.animation}}" draggable="{{item.draggable}}" on-mouseover="vm.showDetail(item)" ></marker>
+		<info-window ng-repeat="item in vm.mapOptions.markers" id="{{item.id}}" max-width="200">
+			<div ng-non-bindable class="">
+				{{vm.displayDetails.name}}
+				<br>
+				{{vm.displayDetails.street}}, {{vm.displayDetails.city}}
+				<br>
+				<a href="https://www.google.com/maps/dir/?api=1&origin={{vm.origin}}&destination={{vm.destination}}" target="_blank">Directions</a>
+			</div>
+		</info-window>
    	</ng-map>
 </div>

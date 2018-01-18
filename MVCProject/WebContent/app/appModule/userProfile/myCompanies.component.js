@@ -7,7 +7,6 @@ angular.module('appModule').component('myCompanies', {
 		
 		vetService.company().then(function(res){
 			vm.results = res.data;
-			console.log(vm.results);
 		  }).catch(function(error){
 			  console.log(error);
 		  });

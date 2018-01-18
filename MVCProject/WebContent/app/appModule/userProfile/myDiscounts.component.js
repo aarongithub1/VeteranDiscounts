@@ -7,9 +7,8 @@ angular.module('appModule').component('myDiscounts', {
 		
 		vetService.index().then(function(res){
 			vm.results = res.data;
-			console.log(vm.results);
-			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
 		  });
 	}
+});

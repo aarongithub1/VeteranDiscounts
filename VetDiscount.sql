@@ -167,7 +167,7 @@ INSERT INTO participating_locations (location_id, discount_id) VALUES ('10', '10
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Starbucks Coffee', '3', '4');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8000 E Belleview, Suite B10', '39.610716', '-104.8988144');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8000 E Belleview, Suite B10', '39.6029258', '-104.8901488');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('3', '11', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Free Cookie', 'Free Cookie with any purchase of $20 or more.', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('11', '11');

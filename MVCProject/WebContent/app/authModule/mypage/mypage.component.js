@@ -32,6 +32,8 @@ angular.module('authModule').component('mypage', {
 			(checkLogin);
 		
 		}
+		
+		
 
 	}
 });

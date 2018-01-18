@@ -3,8 +3,10 @@ angular.module('appModule').component('mypage', {
 	controllerAs : 'vm',
 	controller : function(vetService,authService, $location) {
 		var vm = this;
-		
-var vm = this;
+		vm.comp = true;
+		vm.loc = null;
+		vm.disc = null;
+		vm.activeSelection = null;
 		
 		vm.editUser = null;
 		

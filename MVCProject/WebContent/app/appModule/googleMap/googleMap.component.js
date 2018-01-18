@@ -23,6 +23,7 @@ angular.module('appModule').component('googleMap', {
               		zoom: 11
           	}
 			vm.pos = position;
+			console.log('updating dom');
         		$scope.$apply();
 			vm.broadcastOrigin();
       	})
@@ -51,9 +52,20 @@ angular.module('appModule').component('googleMap', {
 			vm.mapOptions.markers = vm.markers;
 		}
 
+		vm.showDetail = function(event, markerId) {
+			vm.mapOptions.markers.forEach(function(mark) {
+				if (mark.id === markerId) {
+					vm.selectedLocation = mark;
+				}
+			})
+			vm.origin = vm.pos.lat + ',' + vm.pos.lng;
+			vm.destination = vm.selectedLocation.address.lat + ',' + vm.selectedLocation.address.longitude;
+			vm.map.showInfoWindow('info', this);
+		}
+
 		$scope.$on('activeSelection', function(e,arg){
-			//console.log('scope hit in discount');
-			vm.selectedLocation = arg.activeSelection;
+			vm.selectedLocation = arg;
+			vm.showDetail(null, vm.selectedLocation);
 		});
 
 

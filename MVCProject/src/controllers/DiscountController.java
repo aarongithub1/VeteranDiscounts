@@ -58,11 +58,11 @@ public class DiscountController {
 		Boolean b = dao.deleteDiscount(did, uid);
 		if (b == true) {
 			res.setStatus(201);
-			return b;
 		} else {
 			res.setStatus(400);
-			return false;
 		}
+		
+		return b;
 	}
 
 	@RequestMapping(path = "user/{uid}/discount/{did}", method = RequestMethod.PUT)

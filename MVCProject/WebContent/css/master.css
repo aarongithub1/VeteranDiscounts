@@ -97,6 +97,49 @@ body {
 }
 
 #NewCompany {
+	height: 37px;
+	background-color: #284664;
+	color: white;
+<<<<<<< HEAD
+}
+=======
+}
+
+#companyList {
+	border-style: solid;
+	border-radius: 5px;
+	width: 346px;
+}
+
+#locationList {
+	
+}
+
+#dropDown {
+	background-color: white;
+	height: 38px;
+    width: 147px;
+}
+
+#url {
+	width: 300px;
+}
+
+#companyName {
+	width: 300px;
+}
+
+#addCompany {
+	width: 148px;
+	height: 35px;
 	background-color: #284664;
 	color: white;
 }
+
+.clickable:hover {
+background-color: CadetBlue;
+color:LawnGreen;
+font-size: 20px;
+
+}
+>>>>>>> a3ba39c66d01446bc9ce50ac11b7767457544940

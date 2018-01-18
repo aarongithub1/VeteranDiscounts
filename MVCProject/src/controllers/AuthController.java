@@ -20,6 +20,9 @@ public class AuthController {
 	@Autowired
 	  private AuthDAO authDAO;
 	
+//	@Autowired
+//	private UserDAO userDAO;
+//	
 	  @RequestMapping(path = "auth/register", method = RequestMethod.POST)
 	  public User register(HttpSession session, HttpServletResponse res, @RequestBody User user) {
 	    User regUser = authDAO.register(user);
@@ -63,6 +66,7 @@ public class AuthController {
 	    response.setStatus(401);
 	    return "unauthorized";
 	  }
+	  
 	  
 
 }

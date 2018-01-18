@@ -70,10 +70,6 @@ public class UserDAOImpl implements UserDAO {
 			User managed = em.find(User.class, id);
 			managed.setUsername(updatedUser.getUsername());
 			managed.setEmail(updatedUser.getEmail());
-			managed.setPassword(updatedUser.getPassword());
-			managed.setDiscounts(updatedUser.getDiscounts());
-			managed.setCompany(updatedUser.getCompany());
-			managed.setLocations(updatedUser.getLocations());
 			return managed;
 		} catch (Exception e) {
 			e.printStackTrace();

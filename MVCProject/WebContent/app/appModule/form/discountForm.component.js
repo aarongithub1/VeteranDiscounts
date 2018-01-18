@@ -69,7 +69,7 @@ angular.module('appModule')
 			console.log(company);
 			console.log(company.id);
 			vm.discounts.company = company;
-			vetService.getCompany(company.id)
+			vetService.search(company.name)
 				.then(function(response) {
 					vm.showLocationList = response.data;
 					vm.locationResults = response.data;

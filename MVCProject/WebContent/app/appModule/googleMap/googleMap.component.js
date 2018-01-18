@@ -17,9 +17,9 @@ angular.module('appModule').component('googleMap', {
           	}
 			vm.pos = position;
         		$scope.$apply();
-			// $rootScope.broadcast('origin', {
-			// 	origin : vm.pos
-			// });
+			$rootScope.$broadcast('origin', {
+				origin : vm.pos
+			});
       	})
 
 		$scope.$on('search-event', function(e,args){
@@ -37,6 +37,7 @@ angular.module('appModule').component('googleMap', {
 			vm.markers.push(vm.pos);
 			vm.mapOptions.markers = vm.markers;
 		}
+		
 
 	}
 });

@@ -1,18 +1,55 @@
+<div style="margin:auto ; width: 80%">
 
 <h1>Welcome to My Page</h1>
 
-<div>
+<div ng-hide="vm.editUser" class="clickable" ng-click="vm.setEditUser()">
 <span>
 {{vm.user.username}} | {{vm.user.email}}
 </span>
 </div>
 
+<div ng-show="vm.editUser">
 
-<div>
+             <form name="logineditform" id="ajax-login-form" role="form" autocomplete="off">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="username" name="username" tabindex="1" class="form-control" placeholder="Username" ng-model="vm.user.username" autocomplete="off" ng-minlength="6"  ng-maxlength="25" ng-pattern="/^\w+$/" required>
+                
+				        <div ng-messages="logineditform.username.$error">
+      					<p ng-message="minlength">Username must have at least 6 characters.</p>
+      					<p ng-message="maxlength">Username may not exceed 25 characters.</p>
+      					<p ng-message="pattern">Username can only be alphanumeric with an optional underscore.</p>
+      					<p ng-message="required">Providing a Username is mandatory.</p>
+   						 </div>
+				</div>
+                  <div class="form-group">
+              <label for="password">Email</label>
+                  <input type="email" name="email" tabindex="1" class="form-control" placeholder="Email Address" ng-model="vm.user.email"
+       				ng-minlength="6"  ng-maxlength="50"  required>
+       				<div ng-messages="logineditform.email.$error">
+      				<p ng-message="minlength">Email must have at least 6 characters.</p>
+      				<p ng-message="maxlength">Email may not exceed 50 characters.</p>
+      				<p ng-message="required">Providing an Email Address is mandatory.</p>
+    					</div>
+                </div>
+
+                <div class="form-group m-x-auto">
+                      <input type="submit" tabindex="4" class="form-control btn btn-success" value="Edit" ng-click="vm.doEditUser(vm.user); vm.editUser=null">
+                    </div>
+                <div class="form-group m-x-auto">
+                      <input type="submit" tabindex="4" class="form-control btn btn-success" value="Cancel" ng-click="vm.editUser=null">
+                    </div>
+                  
+              </form>
+
+
+</div>
+
 <span>
 My Companies | My Locations | My Discounts
 <div class="userContent">
 	<my-companies>Loading your companies</my-companies>
 </div>
 </span>
+
 </div>

@@ -48,7 +48,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/location/search/' + searchTerm
 		});
 	}
-	
+
 	service.searchWithFilters = function(searchTerm,typeId,distance){
 		if(searchTerm.trim()===null ||searchTerm.trim()===""){
 			return $http({
@@ -78,7 +78,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'rest/' + cid + '/location'
 		});
 	}
-	
+
 	// get company by id
 	service.getCompany = function(cid){
 		return $http({
@@ -137,16 +137,12 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 	};
 
 	//distance between two points
-	service.distance = function(origin,destination) {
-		var parsedOrigin = origin.split(' ').join('+');
-		var parsedDestination = destination.split(' ').join('+');
+	service.distance = function(origin, destination) {
 		//maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=518+West+14th+Street+Houston+TX&destinations=12411+Wedgehill+Lane+Houston+TX
+		console.log('getting distance');
 		return $http({
 			method : 'GET',
-			url : 'maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + parsedOrigin +'&destinations=' + parsedDestination + '&key=AIzaSyC23b9B6TuJDmGsOOJCGimRY0sJMcD4MK8',
-			headers : {
-		        'Content-Type' : 'application/json'
-		      }
+			url : 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin +'&destinations=' + destination + '&key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs'
 		})
 	};
 
@@ -163,20 +159,23 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		var city = address.city.split(' ').join('+');
 		return $http({
 			method : 'GET',
-			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip,
-			headers : {
-		        'Content-Type' : 'application/json'
-		     }
+			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip
 		})
 	}
-
-	service.getUser = function() {
-		var user = checkLogin();
+	
+	service.updateUser = function(user){
+		console.log('in method updateuser');
 		if (!user) return;
+		
 		return $http({
-			method : 'GET',
-			url : 'rest/user/'+ user.id 
+			method : 'PUT',
+			url : 'rest/user/'+ user.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			data : user
 		})
-	};
+	}
+		
 	return service;
 })

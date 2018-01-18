@@ -25,6 +25,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/company'
         });
     }
+	
+	//index for companies by user
+	service.companybyUid = function () {
+		var user = checkLogin();
+		
+		return $http({
+			method:'GET',
+			url:'rest/user/' + user.id + '/companies'
+			
+		});
+		
+	}
 
 	// get types
 //	service.getTypes = function() {

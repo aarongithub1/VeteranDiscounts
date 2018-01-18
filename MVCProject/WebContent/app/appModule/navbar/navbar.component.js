@@ -11,20 +11,20 @@ angular.module('appModule').component('navbar', {
 		vm.typeId = null;
 		vm.distance = vm.distances[0];
 		console.log(vm.typeId);
-		
+
 		vm.myPage = function(){
-			
+
 			$location.path('/mypage');
 		}
-			
+
 		vm.loadTypes = function(){
 			vetService.allTypes().then(function(res){
 				vm.typeArr = res.data;
 			});
 		}
-		
+
 		vm.loadTypes();
-		
+
 		vm.checkLogin = function() {
 			//console.log(authService.getToken().id);
 			if(authService.getToken().id) {
@@ -32,33 +32,39 @@ angular.module('appModule').component('navbar', {
 			}
 			return false;
 		}
-		
+
 		vm.typeFilter = function(){
-			console.log(vm.results);
 			vm.results = $filter('typeFilter')(vm.results,vm.typeId);
-			console.log(vm.results);
 
 		}
-		
+
 		vm.search = function() {
 			vetService.search(vm.searchTerm).then(function(response) {
-				vm.results = response.data;
-				vm.typeFilter();
-				vm.broadcast();
 				$location.url('/');
+				setTimeout(function(){
+					vm.results = response.data;
+					vm.typeFilter();
+					vm.broadcast();
+				}, 500)
 			});
 		}
-		
-		
+
+
 		vm.broadcast = function(){
+			console.log('broadcasting search');
 			$rootScope.$broadcast('search-event',{
-				searchResults : vm.results
+				searchResults : vm.results,
+				origin : vm.origin
 			})
 		}
-		
+
 		vm.createDiscount = function() {
 			$location.path('/company/discount')
 		}
-		
+
+		$scope.$on('origin', function(e, args) {
+			vm.origin = args.origin;
+			vm.search();
+		})
 	}
 });

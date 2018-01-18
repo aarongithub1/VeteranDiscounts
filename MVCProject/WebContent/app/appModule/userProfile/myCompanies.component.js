@@ -6,7 +6,7 @@ angular.module('appModule').component('myCompanies', {
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.company().then(function(res){
+		vetService.companybyUid().then(function(res){
 			vm.results = res.data;
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){

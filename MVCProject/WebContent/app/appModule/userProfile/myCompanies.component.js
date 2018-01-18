@@ -1,7 +1,7 @@
 angular.module('appModule').component('myCompanies', {
 	templateUrl : 'app/appModule/userProfile/myCompanies.component.html',
 	controllerAs : 'vm',
-	controller : function(authService,vetService) {
+	controller : function(authService,vetService,$rootScope) {
 		var vm = this;
 		vm.results = [];
 		vm.active = null;

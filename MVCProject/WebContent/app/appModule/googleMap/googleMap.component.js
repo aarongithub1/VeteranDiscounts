@@ -8,9 +8,9 @@ angular.module('appModule').component('googleMap', {
 		vm.pos = null;
 		vm.results = null;
 		vm.markers = [];
-		vm.displayDetails = null;
 		vm.origin = null;
 		vm.destination = null;
+		vm.selectedLocation = null;
 
 		NgMap.getMap().then(function(map) {
     			vm.map = map;
@@ -24,15 +24,19 @@ angular.module('appModule').component('googleMap', {
           	}
 			vm.pos = position;
         		$scope.$apply();
+			vm.broadcastOrigin();
+      	})
+
+		vm.broadcastOrigin = function() {
+			console.log('broadcasting origin');
 			$rootScope.$broadcast('origin', {
 				origin : vm.pos
 			});
-      	})
-
+		}
 		$scope.$on('search-event', function(e,args){
+			console.log('search hit');
 			vm.results = args.searchResults;
 			vm.updateMarkers();
-			console.log(vm.results);
 		})
 
 
@@ -40,29 +44,18 @@ angular.module('appModule').component('googleMap', {
 			vm.markers = [];
 			var counter = 0;
 			vm.results.forEach(function(item) {
-				vm.markers.push({
-					lat : item.address.lat,
-					lng : item.address.longitude,
-					id : counter,
-					name : item.company.name,
-					street : item.address.street,
-					city : item.address.city
-				})
+				item.markerId = counter;
+				vm.markers.push(item)
 				counter++;
 			})
 			vm.mapOptions.markers = vm.markers;
-			console.log(vm.mapOptions.markers);
 		}
 
-		vm.showDetail = function(e, thisMark) {
-			if (vm.displayDetails) {
-				vm.map.hideInfoWindow(vm.displayDetails.id.toString())
-			}
-			vm.displayDetails = thisMark;
-			vm.origin = vm.pos.lat + ',' + vm.pos.lng;
-			vm.destination = thisMark.lat + ',' + thisMark.lng;
-			vm.map.showInfoWindow(thisMark.id.toString(), (thisMark.id).toString())
-		}
+		$scope.$on('activeSelection', function(e,arg){
+			//console.log('scope hit in discount');
+			vm.selectedLocation = arg.activeSelection;
+		});
+
 
 
 	}

@@ -1,15 +1,21 @@
 angular.module('appModule').component('myDiscounts', {
 	templateUrl : 'app/appModule/userProfile/myDiscounts.component.html',
 	controllerAs : 'vm',
-	controller : function(authService,vetService) {
+	controller : function(authService,vetService,$rootScope) {
 		var vm = this;
 		vm.results = [];
+		vm.active = null;
 		
 		vetService.index().then(function(res){
 			vm.results = res.data;
-			console.log(vm.results);
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
 		  });
+		
+		vm.makeActive = function(result){
+			vm.active = result;
+			$rootScope.$broadcast('activeSelection', vm.active);
+		}
 	}
+});

@@ -5,6 +5,7 @@ angular.module('appModule').component('myDiscounts', {
 		var vm = this;
 		vm.results = [];
 		vm.active = null;
+		vm.editDiscount = null;
 		
 		
 		var reload = function(){vetService.getDiscountsByUid().then(function(res){
@@ -26,6 +27,15 @@ angular.module('appModule').component('myDiscounts', {
 			vetService.deleteDiscount(discountId).then(reload);
 		}
 		
+		vm.setEditDiscount = function(discount) {
+			
+			vm.editDiscount = discount;
+		}
+		
+		vm.doEditDiscount = function (discount) {
+			vetService.updateDiscount(discount).then(reload);
+			
+		}
 		
 	}
 });

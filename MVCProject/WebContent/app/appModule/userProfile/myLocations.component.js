@@ -6,12 +6,14 @@ angular.module('appModule').component('myLocations', {
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.getLocationsbyUid().then(function(res){
+		
+		var reload = function(){vetService.getLocationsbyUid().then(function(res){
 			vm.results = res.data;
-			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
 		  });
+		};
+		reload();
 		
 		vm.makeActive = function(result){
 			vm.active = result;
@@ -19,11 +21,7 @@ angular.module('appModule').component('myLocations', {
 		}
 		
 		vm.deleteLocation = function(location){
-			vetService.deleteLocation(location).then(function(res){
-				console.log(res);
-			  }).catch(function(error){
-				  console.log(error);
-			  });
+			vetService.deleteLocation(location).then(reload);
 		}
 		
 		

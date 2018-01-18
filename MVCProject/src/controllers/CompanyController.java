@@ -70,7 +70,7 @@ public class CompanyController {
 		return c;
 	}
 	
-	@RequestMapping(path = "{uid}/company/{cid}", method = RequestMethod.PUT)
+	@RequestMapping(path = "user/{uid}/company/{cid}", method = RequestMethod.PUT)
 	public Company update(@RequestBody String json, HttpServletResponse res,
 			@PathVariable int cid, @PathVariable int uid) {
 		Company c = companyDAO.update(json, cid, uid);

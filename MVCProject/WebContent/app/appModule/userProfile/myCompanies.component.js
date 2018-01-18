@@ -5,7 +5,7 @@ angular.module('appModule').component('myCompanies', {
 		var vm = this;
 		vm.results = [];
 		
-		vetService.company().then(function(res){
+		vetService.companybyUid().then(function(res){
 			vm.results = res.data;
 			console.log(vm.results);
 		  }).catch(function(error){

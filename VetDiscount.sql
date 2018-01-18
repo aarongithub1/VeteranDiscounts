@@ -176,14 +176,14 @@ INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3')
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Greenwood Village Wine & Spirits', '4', '3');
 INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9251 E Peakview Ave Unit E', '39.6086793', '-104.8970138');
-INSERT INTO location (company_id, address_id, owner_id) VALUES ('4', '12', '4');
+INSERT INTO location (company_id, address_id, owner_id) VALUES ('12', '12', '4');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('10% off', '10% off all purchases over $70.', '03/1/2018', '03/30/2018', '4');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('12', '12');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('4', '4');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Orchards Wine & Spirits', '4', '3');
 INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5998 S Holly St', '39.6151711', '-104.8937963');
-INSERT INTO location (company_id, address_id, owner_id) VALUES ('4', '13', '4');
+INSERT INTO location (company_id, address_id, owner_id) VALUES ('13', '13', '4');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('20% off', '20% off all purchases over $200.', '03/1/2018', '03/30/2018', '4');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('13', '13');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('4', '4');

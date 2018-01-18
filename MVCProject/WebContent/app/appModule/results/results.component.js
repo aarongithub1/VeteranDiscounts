@@ -16,7 +16,6 @@ angular.module('appModule').component('results', {
 		vetService.index().then(function(res){
 			vm.results = res.data;
 			vm.getDistances();
-			console.log(vm.results);
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
@@ -31,8 +30,6 @@ angular.module('appModule').component('results', {
 		$scope.$on('search-event', function(e,args){
 			vm.results = args.searchResults;
 			vm.origin = args.origin;
-			console.log('origin in search');
-			console.log(vm.origin);
 			if(vm.results.length === 0){
 			} else {
 				vm.makeActive(vm.results[0]);
@@ -40,7 +37,6 @@ angular.module('appModule').component('results', {
 			vm.getDistances();
 			vm.distance = args.distance;
 			vm.typeId = args.type;
-			reload();
 		})
 
 
@@ -51,8 +47,6 @@ angular.module('appModule').component('results', {
 			}
 			vm.results.forEach(function(item){
 				if (item.distance === undefined) {
-					console.log(vm.origin);
-					console.log($rootScope.origin);
 					var lat1 = item.address.lat;
 					var lat2 = vm.origin.lat;
 					var lon1 = item.address.longitude;

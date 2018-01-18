@@ -51,6 +51,15 @@ angular.module('appModule').component('googleMap', {
 			vm.mapOptions.markers = vm.markers;
 		}
 
+		vm.showDetail = function(event, markerId) {
+			vm.mapOptions.markers.forEach(function(mark) {
+				if (mark.id === markerId) {
+					vm.selectedLocation = mark;
+				}
+			})
+			vm.map.showInfoWindow('info', this);
+		}
+
 		$scope.$on('activeSelection', function(e,arg){
 			//console.log('scope hit in discount');
 			vm.selectedLocation = arg.activeSelection;

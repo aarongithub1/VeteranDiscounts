@@ -6,7 +6,7 @@ angular.module('appModule').component('myDiscounts', {
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.index().then(function(res){
+		vetService.getDiscountsByUid().then(function(res){
 			vm.results = res.data;
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){

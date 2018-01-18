@@ -9,36 +9,50 @@
 				<button id="NewCompany" class="btn mr-sm-2" type="submit" ng-click="vm.showNewCompanyForm()" >Create New Company</button>
 			</form>
 		</div>
-	</div>
+	</div><br />
 	
 	<!-- show Company List -->
-	<ul ng-show="!vm.companyClick">
-		<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
-			{{company.name}}
-		</li>
-	</ul>
+	<div class="container">
+		<div class="row justify-content-center">
+			<ol ng-show="!vm.companyClick">
+				<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
+					<div id="companyList">
+						{{company.name}}
+					</div><br />
+				</li>
+			</ol>
+		</div>
+	</div>
 	
 	<!-- company form -->
-	<form ng-show="vm.showCompanyForm">
-		<input type="text" ng-model="company.name" placeholder="Company Name" /><br />
-			
-			<!-- type drop down -->
-			<select name="types" ng-model="vm.typeId">
-			    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
-		  	</select><br />
-		  	
-		<input type="text" ng-model="company.storeUrl" placeholder="Company URL" /><br />
-		<input type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" />
-	</form>
+	<div class="container" ng-show="vm.showCompanyForm">
+		<div class="row justify-content-center">
+			<div>
+				<form>
+					<input id="companyName" class="form-control mr-sm-2" type="text" ng-model="company.name" placeholder="Company Name" />
+					<input id="url" class="form-control mr-sm-2" type="text" ng-model="company.storeUrl" placeholder="Company URL" />
+					
+					<!-- type drop down -->
+					<select id="dropDown" name="types" ng-model="vm.typeId" placeholder="Type">
+						<option value="">--Types--</option>
+					    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
+				  	</select>
+				  	
+				  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="vm.addCompany(company); company = {}" >Add Company</button>
+					<!-- <input id="addCompany" type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" /> -->
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<!-- show locations list based on search result -->
 	<!-- Button - Create new location -->
 	<div ng-show="vm.showLocationList">
 		<input type="submit" ng-click="vm.showNewLocationForm()" value="Create New Location" />
 		<ul>
-			<li ng-repeat="location in vm.locationResults.locations" 
+			<li ng-repeat="location in vm.locationResults" 
 				ng-click="vm.addLocationFromList(location); vm.locationExists = true">
-				ID : {{location.id}}
+				<!-- ID : {{location.id}} -->
 				{{location.address.street}}
 				{{location.address.city}}
 				{{location.address.state}}

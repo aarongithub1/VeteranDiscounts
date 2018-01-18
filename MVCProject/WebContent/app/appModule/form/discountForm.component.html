@@ -1,7 +1,7 @@
 <!----------- Create New discount ---------------->
 
 	<!-- company search bar -->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<form class="form-inline" ng-show="!vm.companyClick">
 				<input class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
@@ -12,15 +12,15 @@
 	</div><br />
 	
 	<!-- show Company List -->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<ol ng-show="!vm.companyClick">
-				<li ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
+			<div class="col" ng-show="!vm.companyClick">
+				<div ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
 					<div id="companyList">
 						{{company.name}}
 					</div><br />
-				</li>
-			</ol>
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -33,12 +33,14 @@
 					<input id="url" class="form-control mr-sm-2" type="text" ng-model="company.storeUrl" placeholder="Company URL" />
 					
 					<!-- type drop down -->
-					<select id="dropDown" name="types" ng-model="vm.typeId" placeholder="Type">
-						<option value="">--Types--</option>
-					    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
-				  	</select>
-				  	
-				  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="vm.addCompany(company); company = {}" >Add Company</button>
+					<div	>
+						<select id="dropDown" name="types" ng-model="vm.typeId" placeholder="Type">
+							<option value="">--Types--</option>
+						    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
+					  	</select>
+					  	
+					  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="vm.addCompany(company); company = {}" >Add Company</button>
+					</div>
 					<!-- <input id="addCompany" type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" /> -->
 				</form>
 			</div>

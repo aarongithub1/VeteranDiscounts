@@ -172,6 +172,23 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : address
 		});
 	};
+	
+	
+	//update Company
+	service.updateCompany = function(company) {
+		var user = checkLogin();
+
+		return $http({
+			method : 'PUT',
+			url : 'rest/user/' + user.id + '/company/' + company.id,
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : company
+		});
+	};
+	
+	
 
 	//distance between two points
 	service.distance = function(origin, destination) {

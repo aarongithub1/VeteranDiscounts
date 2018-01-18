@@ -14,8 +14,8 @@ angular.module('appModule', ['ngMessages', 'ngRoute', 'authModule', 'ngMap'])
 //			template : '<login></login>'
 //		})
 
-	.when('/redirect',{
-		template:'<redirect></redirect>'
+	.when('/mypage',{
+		template: '<mypage></mypage>'
 	})
 
 	.when('/', {

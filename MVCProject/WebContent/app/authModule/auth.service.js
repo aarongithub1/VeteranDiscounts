@@ -25,7 +25,7 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 			data : user
 		}).then(function(response) {
 			saveToken(response.data);
-			$location.path('/redirect');
+			$location.path('/mypage');
 		})
 	}
 
@@ -45,7 +45,7 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 			data : user
 		}).then(function(response) {
 			saveToken(response.data);
-			$location.path('/redirect');
+			$location.path('/mypage');
 		})
 	}
 
@@ -55,7 +55,7 @@ angular.module('authModule').factory('authService', function($http, $cookies, $l
 			url : 'rest/auth/logout'
 		}).then(function(response) {
 			removeToken();
-			$location.path('/login');
+			$location.path('/');
 		})
 	}
 

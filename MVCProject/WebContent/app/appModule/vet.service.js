@@ -17,6 +17,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/location'
         });
     }
+	
+	// index for companies
+	service.company = function() {
+        return $http({
+            method : 'GET',
+            url : 'rest/company'
+        });
+    }
 
 	// get types
 //	service.getTypes = function() {

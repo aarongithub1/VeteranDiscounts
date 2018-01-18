@@ -1,5 +1,5 @@
-body{
-	background-color:#ebebeb;
+body {
+	background-color: #ebebeb;
 }
 
 .border1 {
@@ -7,7 +7,23 @@ body{
 	border-width: 2px;
 }
 
+.deleteButton {
+	text-align:right;
+}
+
+.editButton{
+	
+}
+
 .resultCard {
+	background-color: #102940;
+	color: #ffffff;
+	margin: 1em;
+	margin-left: 3.5em;
+	padding: 1em;
+}
+
+.editCard {
 	background-color: #102940;
 	color: #ffffff;
 	margin: 1em;
@@ -41,34 +57,33 @@ body{
 	color: #fefefe;
 	padding: 0.5em;
 	margin: 1em;
-    margin-right: 3.5em;
+	margin-right: 3.5em;
 }
 
-.searchForm > * {
-   margin-left:20px;
-   margin-right:20px;
+.searchForm>* {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-.searchForm{
-	padding-left:350px;
+.searchForm {
+	padding-left: 350px;
 }
 
 .results {
-	height : 635px;
+	height: 635px;
 	overflow: scroll;
 }
 
-.display{
+.display {
 	height: 635px;
 	overflow: scroll;
 }
 
 #dropit {
-
 	width: 333px;
 }
 
-@media (max-width: 768px) {
+@media ( max-width : 768px) {
 	.dropdown-lr h3 {
 		color: #eee;
 	}
@@ -77,7 +92,7 @@ body{
 	}
 }
 
-.navbar{
+.navbar {
 	background-color: #23252e;
 }
 

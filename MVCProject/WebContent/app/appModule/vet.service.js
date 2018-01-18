@@ -17,6 +17,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/location'
         });
     }
+	
+	// index for companies
+	service.company = function() {
+        return $http({
+            method : 'GET',
+            url : 'rest/company'
+        });
+    }
 
 	// get types
 //	service.getTypes = function() {
@@ -154,14 +162,20 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip
 		})
 	}
-
-	service.getUser = function() {
-		var user = checkLogin();
+	
+	service.updateUser = function(user){
+		console.log('in method updateuser');
 		if (!user) return;
+		
 		return $http({
-			method : 'GET',
-			url : 'rest/user/'+ user.id 
+			method : 'PUT',
+			url : 'rest/user/'+ user.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			data : user
 		})
-	};
+	}
+		
 	return service;
 })

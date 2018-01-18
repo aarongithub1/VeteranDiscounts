@@ -3,7 +3,7 @@ angular.module('appModule').component('navbar', {
 	controllerAs : 'vm',
 	controller : function(vetService, authService, $rootScope, $location, $filter,$scope) {
 		var vm = this;
-		vm.distances = ['3', '5', '10', '10+']
+		vm.distances = ['3', '5', '10', '15', '20', '25', '50']
 		vm.searchTerm = "";
 		vm.selected = null;
 		vm.typeArr = [];
@@ -54,7 +54,8 @@ angular.module('appModule').component('navbar', {
 			console.log('broadcasting search');
 			$rootScope.$broadcast('search-event',{
 				searchResults : vm.results,
-				origin : vm.origin
+				origin : vm.origin,
+				distance : vm.distance
 			})
 		}
 

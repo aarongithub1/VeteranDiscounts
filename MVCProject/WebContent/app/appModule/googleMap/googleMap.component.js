@@ -1,7 +1,7 @@
 angular.module('appModule').component('googleMap', {
 	templateUrl : 'app/appModule/googleMap/googleMap.component.html',
 	controllerAs : 'vm',
-	controller : function($timeout, geolocator, $scope, $rootScope, NgMap) {
+	controller : function($timeout, geolocator, $scope, $rootScope, NgMap, $filter) {
 		var vm = this;
 		vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs';
 		vm.mapOptions = null;
@@ -11,6 +11,7 @@ angular.module('appModule').component('googleMap', {
 		vm.origin = null;
 		vm.destination = null;
 		vm.selectedLocation = null;
+		vm.distance = 3;
 
 		NgMap.getMap().then(function(map) {
     			vm.map = map;
@@ -23,25 +24,24 @@ angular.module('appModule').component('googleMap', {
               		zoom: 11
           	}
 			vm.pos = position;
-			console.log('updating dom');
         		$scope.$apply();
 			vm.broadcastOrigin();
       	})
 
 		vm.broadcastOrigin = function() {
-			console.log('broadcasting origin');
 			$rootScope.$broadcast('origin', {
 				origin : vm.pos
 			});
 		}
 		$scope.$on('search-event', function(e,args){
-			console.log('search hit');
 			vm.results = args.searchResults;
+			vm.distance = args.distance;
 			vm.updateMarkers();
 		})
 
 
 		vm.updateMarkers = function() {
+			vm.distanceFilter()
 			vm.markers = [];
 			var counter = 0;
 			vm.results.forEach(function(item) {
@@ -61,6 +61,10 @@ angular.module('appModule').component('googleMap', {
 			vm.origin = vm.pos.lat + ',' + vm.pos.lng;
 			vm.destination = vm.selectedLocation.address.lat + ',' + vm.selectedLocation.address.longitude;
 			vm.map.showInfoWindow('info', this);
+		}
+
+		vm.distanceFilter = function() {
+			vm.results = $filter('distanceFilter')(vm.results, vm.distance)
 		}
 
 		$scope.$on('activeSelection', function(e,arg){

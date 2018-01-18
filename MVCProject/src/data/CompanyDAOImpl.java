@@ -114,10 +114,8 @@ public class CompanyDAOImpl implements CompanyDAO {
 				Company updatedCompany = mapper.readValue(json, Company.class);
 				Company managed = em.find(Company.class, cid);
 				managed.setName(updatedCompany.getName());
-				managed.setType(updatedCompany.getType());
 				managed.setStoreUrl(updatedCompany.getStoreUrl());
 				managed.setIsChain(updatedCompany.getIsChain());
-				managed.setLocations(updatedCompany.getLocations());
 				return managed;
 			} catch (Exception e) {
 				e.printStackTrace();

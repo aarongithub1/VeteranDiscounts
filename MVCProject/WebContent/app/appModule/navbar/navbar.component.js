@@ -12,6 +12,11 @@ angular.module('appModule').component('navbar', {
 		vm.distance = vm.distances[0];
 		console.log(vm.typeId);
 		
+		vm.myPage = function(){
+			
+			$location.path('/mypage');
+		}
+			
 		vm.loadTypes = function(){
 			vetService.allTypes().then(function(res){
 				vm.typeArr = res.data;

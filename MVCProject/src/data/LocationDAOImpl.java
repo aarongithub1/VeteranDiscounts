@@ -193,4 +193,11 @@ public class LocationDAOImpl implements LocationDAO {
 		return em.createQuery(query, Location.class).setParameter("cid", cid).getResultList();
 	}
 
+	@Override
+	public List<Location> getLocationsbyUid(int uid) {
+		String q = "SELECT l FROM Location l where l.company.owner.id = :uid";
+		List<Location> locations = em.createQuery(q,Location.class).setParameter("uid", uid).getResultList();
+		return locations;
+	}
+
 }

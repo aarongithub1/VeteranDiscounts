@@ -137,4 +137,11 @@ public class CompanyDAOImpl implements CompanyDAO {
 				.getResultList();
 	}
 
+	@Override
+	public List<Company> getCompanybyUid(int uid) {
+		String query = "SELECT c from Company c WHERE c.owner.id=:uid";
+		List<Company> companies = em.createQuery(query,Company.class).setParameter("uid",uid).getResultList();
+		return companies;
+	}
+
 }

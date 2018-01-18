@@ -14,5 +14,5 @@ public interface LocationDAO {
 	public List<Location> getAllLocationsByKeyword(String keyword);
 	public List<Location> getLocationsByCompanyId(int cid);
 	List<Location> getAllLocationsByKeywordWithFilters(String keyword, String distance, String typeId);
-
+	public List<Location> getLocationsbyUid (int uid);
 }

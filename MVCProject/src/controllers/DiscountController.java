@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +52,7 @@ public class DiscountController {
 		return discount;
 	}
 
-	@RequestMapping(path = "{uid}/discount/{did}", method = RequestMethod.DELETE)
+	@RequestMapping(path = "user/{uid}/discount/{did}", method = RequestMethod.DELETE)
 	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int did,
 			@PathVariable int uid) {
 		Boolean b = dao.deleteDiscount(did, uid);
@@ -64,7 +65,7 @@ public class DiscountController {
 		}
 	}
 
-	@RequestMapping(path = "{uid}/discount/{did}", method = RequestMethod.PUT)
+	@RequestMapping(path = "user/{uid}/discount/{did}", method = RequestMethod.PUT)
 	public Discount update(HttpServletRequest req, HttpServletResponse res, @PathVariable int did,
 			@PathVariable int uid, @RequestBody String stringJson) {
 		Discount discount = dao.updateDiscount(did, uid, stringJson);
@@ -72,6 +73,11 @@ public class DiscountController {
 			res.setStatus(400);
 		}
 		return discount;
+	}
+	@RequestMapping(path="user/{uid}/discounts", method = RequestMethod.GET)
+	public List<Discount> getDiscountsByUid(HttpServletResponse res, @PathVariable int uid) {
+		
+		return dao.getDiscountsbyUid(uid);
 	}
 
 }

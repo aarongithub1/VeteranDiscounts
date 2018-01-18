@@ -1,7 +1,7 @@
 angular.module('appModule').component('googleMap', {
 	templateUrl : 'app/appModule/googleMap/googleMap.component.html',
 	controllerAs : 'vm',
-	controller : function($timeout, geolocator, $scope, $rootScope, NgMap, $filter) {
+	controller : function($timeout, geolocator, $scope, $rootScope, NgMap, $filter, vetService) {
 		var vm = this;
 		vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs';
 		vm.mapOptions = null;
@@ -11,7 +11,9 @@ angular.module('appModule').component('googleMap', {
 		vm.origin = null;
 		vm.destination = null;
 		vm.selectedLocation = null;
-		vm.distance = 3;
+		vm.distance = 1;
+		vm.zipcode = undefined;
+		vm.oldzip = null;
 
 		NgMap.getMap().then(function(map) {
     			vm.map = map;
@@ -34,13 +36,30 @@ angular.module('appModule').component('googleMap', {
 			});
 		}
 		$scope.$on('search-event', function(e,args){
+			console.log('map got search');
 			vm.results = args.searchResults;
 			vm.distance = args.distance;
+			vm.oldzip = vm.zipcode;
+			vm.zipcode = args.zipcode;
 			vm.updateMarkers();
 		})
 
 
 		vm.updateMarkers = function() {
+			if (vm.zipcode !== '' && vm.zipcode !== vm.oldzip) {
+				vetService.getLatLongForZip(vm.zipcode).then(function(res) {
+					vm.mapOptions.center = {
+						lat : res.data.results[0].geometry.location.lat,
+						lng : res.data.results[0].geometry.location.lng
+					}
+					vm.pos = {
+						lat : res.data.results[0].geometry.location.lat,
+						lng : res.data.results[0].geometry.location.lng
+					}
+					console.log('map got origin');
+					vm.updateOrigin();
+				})
+			}
 			vm.distanceFilter()
 			vm.markers = [];
 			var counter = 0;
@@ -49,6 +68,7 @@ angular.module('appModule').component('googleMap', {
 				vm.markers.push(item)
 				counter++;
 			})
+			console.log(vm.markers);
 			vm.mapOptions.markers = vm.markers;
 		}
 
@@ -71,6 +91,12 @@ angular.module('appModule').component('googleMap', {
 			vm.selectedLocation = arg;
 			vm.showDetail(null, vm.selectedLocation);
 		});
+
+		vm.updateOrigin = function() {
+			$rootScope.$broadcast('originUpdate', {
+				origin : vm.pos
+			});
+		}
 
 
 

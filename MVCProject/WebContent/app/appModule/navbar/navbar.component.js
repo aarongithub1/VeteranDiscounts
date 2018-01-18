@@ -10,6 +10,7 @@ angular.module('appModule').component('navbar', {
 		vm.results = [];
 		vm.typeId = null;
 		vm.distance = vm.distances[0];
+		vm.zipcode = undefined;
 
 		vm.myPage = function(){
 
@@ -44,16 +45,18 @@ angular.module('appModule').component('navbar', {
 					vm.results = response.data;
 					vm.typeFilter();
 					vm.broadcast();
-				}, 500)
+				}, 200)
 			});
 		}
 
 
 		vm.broadcast = function(){
+			console.log(vm.zipcode);
 			$rootScope.$broadcast('search-event',{
 				searchResults : vm.results,
 				origin : vm.origin,
-				distance : vm.distance
+				distance : vm.distance,
+				zipcode : vm.zipcode
 			})
 		}
 
@@ -64,6 +67,15 @@ angular.module('appModule').component('navbar', {
 		$scope.$on('origin', function(e, args) {
 			vm.origin = args.origin;
 			vm.search();
+		})
+
+		$scope.$on('originUpdate', function(e, args) {
+			vm.origin = args.origin;
+			console.log('navbar got origin');
+			setTimeout(function() {
+
+				vm.broadcast();
+			}, 100)
 		})
 	}
 });

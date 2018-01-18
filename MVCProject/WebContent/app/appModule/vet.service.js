@@ -172,8 +172,8 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : address
 		});
 	};
-	
-	
+
+
 	//update Company
 	service.updateCompany = function(company) {
 		var user = checkLogin();
@@ -187,8 +187,8 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : company
 		});
 	};
-	
-	
+
+
 
 	//distance between two points
 	service.distance = function(origin, destination) {
@@ -217,6 +217,13 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	}
 
+	service.getLatLongForZip = function(zipcode) {
+		return $http({
+			method : 'GET',
+			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zipcode + '&key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs'
+		})
+	}
+
 	service.updateUser = function(user){
 		console.log('in method updateuser');
 		if (!user) return;
@@ -242,7 +249,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			}
 		})
 	}
-	
+
 	service.deleteDiscount = function(did){
 		console.log('in method deleteDiscount');
 		var user = checkLogin();
@@ -254,9 +261,9 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			}
 		})
 	}
-	
+
 	//update discount
-	
+
 	service.updateDiscount = function (discount) {
 		var user = checkLogin();
 
@@ -269,7 +276,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : discount
 		});
 	}
-	
+
 
 	return service;
 })

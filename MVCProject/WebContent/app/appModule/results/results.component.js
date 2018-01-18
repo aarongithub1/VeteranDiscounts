@@ -28,16 +28,21 @@ angular.module('appModule').component('results', {
 		}
 
 		$scope.$on('search-event', function(e,args){
+			console.log('results got search');
 			vm.results = args.searchResults;
 			vm.origin = args.origin;
 			vm.distance = args.distance;
+			vm.getDistances();
+			vm.distanceFilter();
+			console.log(vm.origin);
+			console.log(vm.results);
 			if(vm.results.length === 0){
+				vm.makeActive(null);
+				console.log(vm.active);
 			} else {
 				vm.makeActive(vm.results[0]);
 			}
-			vm.getDistances();
 			vm.typeId = args.type;
-			vm.distanceFilter();
 			$scope.$apply();
 		})
 
@@ -67,5 +72,9 @@ angular.module('appModule').component('results', {
 		// 	vm.origin = args.origin;
 		// 	// reload();
 		// })
+		$scope.$on('originUpdate', function(e, args) {
+			vm.origin = args.origin;
+			console.log('results got origin');
+		})
 	}
 });

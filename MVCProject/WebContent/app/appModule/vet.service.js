@@ -255,6 +255,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	}
 	
+	service.deleteCompany = function(companyId){
+		console.log('in method deleteCompany');
+		var user = checkLogin();
+		return $http({
+			method : 'DELETE',
+			url : 'rest/'+ user.id +'/company/' + companyId,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
+	
 	//update discount
 	
 	service.updateDiscount = function (discount) {

@@ -2,7 +2,7 @@
 	<div ng-repeat="company in vm.results" class="editCard">
 		<h3>{{company.name}}</h3>
 		<button class="btn-sm editButton" type="submit" ng-click="vm.setEditCompany(company)" >Edit</button>
-		<button class="btn-sm deleteButton" type="submit" ng-click="" >Delete</button>
+		<button class="btn-sm deleteButton" type="submit" ng-click="vm.deleteCompany(company)" >Delete</button>
 	</div>
 </div>
 

@@ -25,5 +25,8 @@ angular.module('appModule').component('myLocations', {
 				  console.log(error);
 			  });
 		}
+		
+		
+		
 	}
 });

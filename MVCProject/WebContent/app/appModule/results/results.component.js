@@ -28,21 +28,22 @@ angular.module('appModule').component('results', {
 		}
 
 		$scope.$on('search-event', function(e,args){
-			console.log('search event hit');
 			vm.results = args.searchResults;
-			console.log(vm.results);
 			vm.origin = args.origin;
+			vm.distance = args.distance;
 			if(vm.results.length === 0){
 			} else {
 				vm.makeActive(vm.results[0]);
 			}
 			vm.getDistances();
-			vm.distance = args.distance;
 			vm.typeId = args.type;
+			vm.distanceFilter();
 			$scope.$apply();
 		})
 
-
+		vm.distanceFilter = function() {
+			vm.results = $filter('distanceFilter')(vm.results, vm.distance)
+		}
 
 		vm.getDistances = function() {
 			var toRadians = function(num) {

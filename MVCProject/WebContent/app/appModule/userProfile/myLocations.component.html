@@ -1,5 +1,6 @@
 <div>
-	<div ng-repeat="location in vm.results" class="editCard">
+	<div ng-repeat="location in vm.results" class="editCard" ng-click="vm.makeActive(location)"
+	ng-class="{activeSelection : vm.active === location}">
 		<h3>{{location.company.name}}</h3>
 		{{location.address.street}}, {{location.address.city}}
 		{{location.address.state}} {{location.address.zip}}

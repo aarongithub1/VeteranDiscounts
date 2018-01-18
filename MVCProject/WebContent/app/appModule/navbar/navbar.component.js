@@ -10,7 +10,6 @@ angular.module('appModule').component('navbar', {
 		vm.results = [];
 		vm.typeId = null;
 		vm.distance = vm.distances[0];
-		console.log(vm.typeId);
 
 		vm.myPage = function(){
 
@@ -51,7 +50,6 @@ angular.module('appModule').component('navbar', {
 
 
 		vm.broadcast = function(){
-			console.log('broadcasting search');
 			$rootScope.$broadcast('search-event',{
 				searchResults : vm.results,
 				origin : vm.origin,

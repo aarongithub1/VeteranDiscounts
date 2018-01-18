@@ -10,7 +10,7 @@
 
 <div ng-show="vm.editUser">
 
-             <form name="logineditform" id="ajax-login-form" role="form" autocomplete="off">
+             <form name="logineditform" id="ajax-loginedit-form" role="form" autocomplete="off">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="username" name="username" tabindex="1" class="form-control" placeholder="Username" ng-model="vm.user.username" autocomplete="off" ng-minlength="6"  ng-maxlength="25" ng-pattern="/^\w+$/" required>
@@ -49,6 +49,8 @@
 My Companies | My Locations | My Discounts
 <div class="userContent">
 	<my-companies>Loading your companies</my-companies>
+	<my-locations>Loading your locations</my-locations>
+	<my-discounts>Loading your discounts</my-discounts>
 </div>
 </span>
 

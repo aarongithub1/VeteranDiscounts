@@ -214,5 +214,17 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		})
 	}
 
+	service.deleteLocation = function(location){
+		console.log('in method deleteLocation');
+
+		return $http({
+			method : 'DELETE',
+			url : 'rest/' + location.company.id + '/location/' + location.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
+
 	return service;
 })

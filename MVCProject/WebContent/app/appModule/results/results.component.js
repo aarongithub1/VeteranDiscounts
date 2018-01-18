@@ -28,7 +28,9 @@ angular.module('appModule').component('results', {
 		}
 
 		$scope.$on('search-event', function(e,args){
+			console.log('search event hit');
 			vm.results = args.searchResults;
+			console.log(vm.results);
 			vm.origin = args.origin;
 			if(vm.results.length === 0){
 			} else {
@@ -37,6 +39,7 @@ angular.module('appModule').component('results', {
 			vm.getDistances();
 			vm.distance = args.distance;
 			vm.typeId = args.type;
+			$scope.$apply();
 		})
 
 

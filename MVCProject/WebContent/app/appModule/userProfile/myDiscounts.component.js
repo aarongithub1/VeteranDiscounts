@@ -17,5 +17,15 @@ angular.module('appModule').component('myDiscounts', {
 			vm.active = result;
 			$rootScope.$broadcast('activeSelection', vm.active);
 		}
+		
+		vm.deleteDiscount = function(discountId){
+			vetService.deleteDiscount(discountId).then(function(res){
+				console.log(res);
+			}).catch(function(error){
+				console.log(error);
+			});
+		}
+		
+		
 	}
 });

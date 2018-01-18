@@ -92,6 +92,7 @@ angular.module('appModule')
 			vm.showLocation = company;
 //			vm.showAddress = company;
 			vm.discounts.company = company;
+			console.log(vm.discounts.company);
 		}
 		
 		//on Location form submit - show Discount form / hide Location form

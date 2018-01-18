@@ -17,5 +17,16 @@ angular.module('appModule').component('myLocations', {
 			vm.active = result;
 			$rootScope.$broadcast('activeSelection', vm.active);
 		}
+		
+		vm.deleteLocation = function(location){
+			vetService.deleteLocation(location).then(function(res){
+				console.log(res);
+			  }).catch(function(error){
+				  console.log(error);
+			  });
+		}
+		
+		
+		
 	}
 });

@@ -1,2 +1,9 @@
-
-<h1>DIscounts loaded success</h1>
+<div ng-repeat="discount in vm.results" class="editCard">
+	<h3>{{discount.amount}}</h3>
+	<hr>
+	{{discount.info}}
+	{{discount.startDate}} - {{discount.endDate}}
+	<button class="btn-sm editButton" type="submit" ng-click="">Edit</button>
+	<button class="btn-sm deleteButton" type="submit"
+		ng-click="vm.deleteDiscount(discount.id)">Delete</button>
+</div>

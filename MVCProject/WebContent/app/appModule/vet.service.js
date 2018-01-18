@@ -17,7 +17,7 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/location'
         });
     }
-	
+
 	// index for companies
 	service.company = function() {
         return $http({
@@ -25,17 +25,17 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/company'
         });
     }
-	
+
 	//index for companies by user
 	service.companybyUid = function () {
 		var user = checkLogin();
-		
+
 		return $http({
 			method:'GET',
 			url:'rest/user/' + user.id + '/companies'
-			
+
 		});
-		
+
 	}
 
 	// get types
@@ -91,18 +91,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		});
 	}
 
-	
+
 	//index for locations by user
 	service.getLocationsbyUid = function (){
 		var user =  checkLogin();
-		
+
 		return $http({
 			method:'GET',
 			url: 'rest/user/'+ user.id + '/locations'
-			
+
 		})
 	}
-	
+
 	// get company by id
 	service.getCompany = function(cid){
 		return $http({
@@ -124,20 +124,20 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		     data : discount
 		})
 	};
-	
+
 	//index for discounts by user
-	
+
 	service.getDiscountsByUid = function () {
 			var user = checkLogin();
-			
+
 			return $http({
 				method: 'GET',
-				url: 'rest/user/'+ user.id + '/discounts'			
+				url: 'rest/user/'+ user.id + '/discounts'
 			})
 	};
-	
+
 	//create company
-	
+
 	service.createCompany = function(company, tid) {
 		var user = checkLogin();
 
@@ -213,14 +213,14 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		var city = address.city.split(' ').join('+');
 		return $http({
 			method : 'GET',
-			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip
+			url : 'https://maps.googleapis.com/maps/api/geocode/json?address=' + street + '+' + city + '+' + address.state + '+' + address.zip + '&key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs'
 		})
 	}
-	
+
 	service.updateUser = function(user){
 		console.log('in method updateuser');
 		if (!user) return;
-		
+
 		return $http({
 			method : 'PUT',
 			url : 'rest/user/'+ user.id,
@@ -230,6 +230,30 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : user
 		})
 	}
-		
+
+	service.deleteLocation = function(location){
+		console.log('in method deleteLocation');
+
+		return $http({
+			method : 'DELETE',
+			url : 'rest/' + location.company.id + '/location/' + location.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
+	
+	service.deleteDiscount = function(did){
+		console.log('in method deleteDiscount');
+		var user = checkLogin();
+		return $http({
+			method : 'DELETE',
+			url : 'rest/user/' + user.id + '/discount/' + did,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
+
 	return service;
 })

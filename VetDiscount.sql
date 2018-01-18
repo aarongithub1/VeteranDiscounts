@@ -106,68 +106,68 @@ INSERT INTO participating_locations (location_id, discount_id) VALUES ('1', '1')
 
 INSERT INTO user (username, password, email) VALUES ('Aaron', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'aaron@bn.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Barnes and Noble', '2', '2');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('FL', 'Lone Tree', '80124', '8374 Willow St', '39.6017051', '-104.9150362');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('FL', 'Lone Tree', '80124', '8374 Willow St', '39.564538', '-104.8864781');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('2', '2', '2');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('10% off', '10% off all books.', '01/10/2018', '01/22/2018', '2');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('2', '2');
 
 INSERT INTO user (username, password, email) VALUES ('Jake', '$2a$10$H8UEBL7QQG1iNmLhs1io9ugJG.7C7QlPu7WpfjhyGzBQJ1cW5KCXu', 'jake@starbucks.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Starbucks Coffee', '3', '4');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9301 E Arapahoe Rd', '39.5944171', '-104.8813786');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9301 E Arapahoe Rd', '39.5955571', '-104.8802885');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('3', '3', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Buy one, Get one.', 'Buy any small coffee, Get one for free', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');
 
 INSERT INTO user (username, password, email) VALUES ('Alex', '$2a$10$9aWq9X4NP7DenMZ09dGzgOIsup0BOv81t2A6V.fgcfRMCP8kZqjJq', 'alex@lyonsliquor.com');
 INSERT INTO company (name, owner_id, type_id) VALUES ('Lyons Den Liquor', '4', '3');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5332 DTC Blvd', '39.6031957', '-104.8963019');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5332 DTC Blvd', '39.6182514', '-104.8894243');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('4', '4', '4');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('20% off', '20% off all domestic beer.', '03/1/2018', '03/30/2018', '4');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('4', '4');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('McDonald\'s', '1', '6');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Englewood', '80111', '6686 S Yosemite Ct', '39.6046776', '-104.8956939');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Englewood', '80111', '6686 S Yosemite Ct', '39.5957548', '-104.8867951');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('5', '5', '1');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Free Hashbrown', 'Free Hashbrown with any purchase.', '01/1/2018', '04/30/2018', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('5', '5');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('McDonald\'s', '1', '6');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Denver', '80237', '5090 S Quebec St', '39.6045075', '-104.8945603');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Denver', '80237', '5090 S Quebec St', '39.6244532', '-104.9032913');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('5', '6', '1');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('30% off', ' 30% off all breakfast meals.', '01/10/2018', '06/30/2018', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('6', '6');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('6', '5');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('McDonald\'s', '1', '6');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Englewood', '80112', '10555 E Briarwood Ave', '39.5985678', '-104.8932933');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Englewood', '80112', '10555 E Briarwood Ave', '39.5930603', '-104.8570082');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('5', '7', '1');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('10% off', '10% off all lunch items.', '02/1/2018', '03/30/2018', '1');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('7', '7');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('7', '5');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Barnes and Noble', '2', '2');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Glendale', '80246', '960 S Colorado Blvd', '39.5984766', '-104.9943226');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Glendale', '80246', '960 S Colorado Blvd', '39.6988336', '-104.9391188');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('2', '8', '2');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('20% off', '20% off education books.', '04/1/2018', '07/30/2018', '2');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('8', '8');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('2', '2');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Barnes and Noble', '2', '2');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Aurora', '80012', '170 S Abilene St', '39.5984766', '-104.9943226');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Aurora', '80012', '170 S Abilene St', '39.7132113', '-104.8243169');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('2', '9', '2');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Free Atlas', 'Free Atlas with each purchase over $50.', '01/10/2018', '01/22/2018', '2');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('9', '9');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('2', '2');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Starbucks Coffee', '3', '4');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8745 E Orchard Rd', '39.610716', '-104.8988144');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8745 E Orchard Rd', '39.6103767', '-104.8887861');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('3', '10', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Free Espresso', 'Free Espresso with any purchase of $10 or more.', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('10', '10');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Starbucks Coffee', '3', '4');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8000 E Belleview, Suite B10', '39.6029258', '-104.8901488');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '8000 E Belleview, Suite B10', '39.62308549999999', '-104.8962021');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('3', '11', '3');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('Free Cookie', 'Free Cookie with any purchase of $20 or more.', '01/10/2018', '01/30/2018', '3');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('11', '11');
@@ -175,14 +175,14 @@ INSERT INTO participating_locations (location_id, discount_id) VALUES ('10', '10
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('3', '3');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Greenwood Village Wine & Spirits', '4', '3');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9251 E Peakview Ave Unit E', '39.6086793', '-104.8970138');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '9251 E Peakview Ave Unit E', '39.5990975', '-104.8816459');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('12', '12', '4');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('10% off', '10% off all purchases over $70.', '03/1/2018', '03/30/2018', '4');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('12', '12');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('4', '4');
 
 INSERT INTO company (name, owner_id, type_id) VALUES ('Orchards Wine & Spirits', '4', '3');
-INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5998 S Holly St', '39.6151711', '-104.8937963');
+INSERT INTO address (state, city, zip_code, street, lat, longitude) VALUES ('CO', 'Greenwood Village', '80111', '5998 S Holly St', '39.6084148', '-104.9227704');
 INSERT INTO location (company_id, address_id, owner_id) VALUES ('13', '13', '4');
 INSERT INTO discount (amount, info, start_date, end_date, user_id) VALUES ('20% off', '20% off all purchases over $200.', '03/1/2018', '03/30/2018', '4');
 INSERT INTO participating_locations (location_id, discount_id) VALUES ('13', '13');

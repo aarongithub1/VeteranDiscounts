@@ -254,6 +254,22 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			}
 		})
 	}
+	
+	//update discount
+	
+	service.updateDiscount = function (discount) {
+		var user = checkLogin();
+
+		return $http({
+			method : 'PUT',
+			url : 'rest/user/'+ user.id + '/discount/' + discount.id,
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : discount
+		});
+	}
+	
 
 	return service;
 })

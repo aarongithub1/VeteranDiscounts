@@ -11,6 +11,14 @@ body {
 	text-align:right;
 }
 
+.centerText{
+	text-align: center;
+}
+
+.spanMyPage{
+	inline-block;
+}
+
 .editButton{
 
 }
@@ -69,6 +77,11 @@ body {
 	padding-left: 350px;
 }
 
+.editUser{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
 .results {
 	height: 85vh;
 	overflow: scroll;
@@ -122,6 +135,16 @@ body {
 
 }
 
+.redButton{	
+	background-color: #ac090e;
+	color: white;
+}
+
+.redButton:hover{	
+	background-color: #7f000a;
+	color: white;
+}
+
 #dropDown {
 	background-color: white;
 	height: 40px;
@@ -149,11 +172,14 @@ body {
 }
 
 .clickable:hover {
-background-color: CadetBlue;
-color:LawnGreen;
-font-size: 20px;
+background-color: #284664;
+color:white;
+font-size: 1.05em;
 
 }
+
+
+
 ng-map {
 	display : block;
 	height: 500px;

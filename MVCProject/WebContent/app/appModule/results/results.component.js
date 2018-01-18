@@ -10,8 +10,10 @@ angular.module('appModule').component('results', {
 		vm.typeId = null;
 		vm.origin = {};
 
-
-
+		$scope.roundedDistance = function (d){
+			return (Math.round(d * 100) / 100)
+		}
+		
 		function reload(){
 		vetService.index().then(function(res){
 			vm.results = res.data;

@@ -225,6 +225,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			}
 		})
 	}
+	
+	service.deleteDiscount = function(did){
+		console.log('in method deleteDiscount');
+		var user = checkLogin();
+		return $http({
+			method : 'DELETE',
+			url : 'rest/user/' + user.id + '/discount/' + did,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
 
 	return service;
 })

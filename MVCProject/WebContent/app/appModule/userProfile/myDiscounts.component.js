@@ -1,7 +1,7 @@
 angular.module('appModule').component('myDiscounts', {
 	templateUrl : 'app/appModule/userProfile/myDiscounts.component.html',
 	controllerAs : 'vm',
-	controller : function(authService,vetService) {
+	controller : function(authService,vetService,$rootScope) {
 		var vm = this;
 		vm.results = [];
 		vm.active = null;

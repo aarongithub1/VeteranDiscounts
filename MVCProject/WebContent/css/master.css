@@ -12,7 +12,7 @@ body {
 }
 
 .editButton{
-	
+
 }
 
 .resultCard {
@@ -70,7 +70,7 @@ body {
 }
 
 .results {
-	height: 635px;
+	height: 85vh;
 	overflow: scroll;
 }
 
@@ -119,7 +119,7 @@ body {
 }
 
 #locationList {
-	
+
 }
 
 #dropDown {
@@ -153,4 +153,11 @@ background-color: CadetBlue;
 color:LawnGreen;
 font-size: 20px;
 
+}
+ng-map {
+	display : block;
+	height: 500px;
+}
+.full-height {
+	height : 85vh;
 }

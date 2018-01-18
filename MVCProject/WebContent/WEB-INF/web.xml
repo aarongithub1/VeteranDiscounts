@@ -19,4 +19,5 @@
   	<error-page>
     		<location>/rest/errors</location>
     </error-page>
+    
 </web-app>

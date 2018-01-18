@@ -25,6 +25,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
             url : 'rest/company'
         });
     }
+	
+	//index for companies by user
+	service.companybyUid = function () {
+		var user = checkLogin();
+		
+		return $http({
+			method:'GET',
+			url:'rest/user/' + user.id + '/companies'
+			
+		});
+		
+	}
 
 	// get types
 //	service.getTypes = function() {
@@ -79,6 +91,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		});
 	}
 
+	
+	//index for locations by user
+	service.getLocationsbyUid = function (){
+		var user =  checkLogin();
+		
+		return $http({
+			method:'GET',
+			url: 'rest/user/'+ user.id + '/locations'
+			
+		})
+	}
+	
 	// get company by id
 	service.getCompany = function(cid){
 		return $http({
@@ -100,7 +124,20 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		     data : discount
 		})
 	};
-
+	
+	//index for discounts by user
+	
+	service.getDiscountsByUid = function () {
+			var user = checkLogin();
+			
+			return $http({
+				method: 'GET',
+				url: 'rest/user/'+ user.id + '/discounts'			
+			})
+	};
+	
+	//create company
+	
 	service.createCompany = function(company, tid) {
 		var user = checkLogin();
 

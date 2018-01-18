@@ -1,12 +1,12 @@
 angular.module('appModule').component('myDiscounts', {
 	templateUrl : 'app/appModule/userProfile/myDiscounts.component.html',
 	controllerAs : 'vm',
-	controller : function(authService,vetService) {
+	controller : function(authService,vetService,$rootScope) {
 		var vm = this;
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.index().then(function(res){
+		vetService.getDiscountsByUid().then(function(res){
 			vm.results = res.data;
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){

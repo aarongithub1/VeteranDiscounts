@@ -45,13 +45,13 @@
 
 </div>
 
-<span>
-My Companies | My Locations | My Discounts
+<span class="clickable" ng-click="vm.comp = true; vm.loc = null; vm.disc = null;">My Companies</span> | 
+<span class="clickable" ng-click="vm.loc = true; vm.disc = null; vm.comp=null;">My Locations</span> | 
+<span class="clickable" ng-click="vm.disc = true; vm.loc = null; vm.comp = null;">My Discounts</span>
 <div class="userContent">
-	<my-companies>Loading your companies</my-companies>
-	<my-locations>Loading your locations</my-locations>
-	<my-discounts>Loading your discounts</my-discounts>
+	<div ng-show="vm.comp"><my-companies>Loading your companies</my-companies></div>
+	<div ng-show="vm.loc"><my-locations>Loading your locations</my-locations></div>
+	<div ng-show="vm.disc"><my-discounts>Loading your discounts</my-discounts></div>
 </div>
-</span>
 
 </div>

@@ -6,12 +6,16 @@ angular.module('appModule').component('myDiscounts', {
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.getDiscountsByUid().then(function(res){
+		
+		var reload = function(){vetService.getDiscountsByUid().then(function(res){
 			vm.results = res.data;
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){
 			  console.log(error);
 		  });
+		};
+		
+		reload();
 		
 		vm.makeActive = function(result){
 			vm.active = result;
@@ -19,11 +23,7 @@ angular.module('appModule').component('myDiscounts', {
 		}
 		
 		vm.deleteDiscount = function(discountId){
-			vetService.deleteDiscount(discountId).then(function(res){
-				console.log(res);
-			}).catch(function(error){
-				console.log(error);
-			});
+			vetService.deleteDiscount(discountId).then(reload);
 		}
 		
 		

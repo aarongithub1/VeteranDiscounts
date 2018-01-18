@@ -6,7 +6,7 @@ angular.module('appModule').component('myLocations', {
 		vm.results = [];
 		vm.active = null;
 		
-		vetService.index().then(function(res){
+		vetService.getLocationsbyUid().then(function(res){
 			vm.results = res.data;
 			vm.makeActive(vm.results[0]);
 		  }).catch(function(error){

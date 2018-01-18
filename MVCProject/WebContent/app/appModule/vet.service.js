@@ -172,6 +172,23 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 			data : address
 		});
 	};
+	
+	
+	//update Company
+	service.updateCompany = function(company) {
+		var user = checkLogin();
+
+		return $http({
+			method : 'PUT',
+			url : 'rest/user/' + user.id + '/company/' + company.id,
+			headers : {
+		        'Content-Type' : 'application/json'
+		     },
+			data : company
+		});
+	};
+	
+	
 
 	//distance between two points
 	service.distance = function(origin, destination) {
@@ -220,6 +237,18 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		return $http({
 			method : 'DELETE',
 			url : 'rest/' + location.company.id + '/location/' + location.id,
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		})
+	}
+	
+	service.deleteDiscount = function(did){
+		console.log('in method deleteDiscount');
+		var user = checkLogin();
+		return $http({
+			method : 'DELETE',
+			url : 'rest/user/' + user.id + '/discount/' + did,
 			headers : {
 				'Content-Type' : 'application/json'
 			}

@@ -63,14 +63,15 @@ public class DiscountDAOImpl implements DiscountDAO {
 	@Override
 	public boolean deleteDiscount(int discountId, int userId) {
 		Boolean b = false;
+		String q = "DELETE FROM Discount d  WHERE d.id = :id ";
 		Discount d = em.find(Discount.class, discountId);
+		
 		if (d.getCreator().getId() == userId) {
-			em.remove(d);
-			if (em.find(Discount.class, discountId) == null) {
+			int count = em.createQuery(q).setParameter("id", discountId).executeUpdate();
+			if (count > 0) {
 				b = true;
 				return b;
 			} else {
-
 				return b;
 			}
 

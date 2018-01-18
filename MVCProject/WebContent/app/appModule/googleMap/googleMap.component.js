@@ -37,6 +37,7 @@ angular.module('appModule').component('googleMap', {
 			vm.markers.push(vm.pos);
 			vm.mapOptions.markers = vm.markers;
 		}
+		
 
 	}
 });

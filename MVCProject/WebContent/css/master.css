@@ -98,10 +98,18 @@ body {
 
 #NewCompany {
 	height: 37px;
+	width: 194px;
 	/* background-color: #284664; */
 	background-color: #7b7b46;
 /* 	background-color: #7f000a; */
 	color: white;
+
+}
+
+#companySearch {
+	height: 37px;
+	width: 194px;
+	margin-left: 6px;
 
 }
 
@@ -110,9 +118,9 @@ body {
 	border-color: black;
 	border-width: 1px;
 	border-radius: 5px;
-	width: 392px;
+	width: 396px;
 	padding: 10px;
-	margin-left: 111px;
+	/* margin-left: 111px; */
 	/* background-color: #7f000a; */
 	background-color: #284664;
 	color: white;

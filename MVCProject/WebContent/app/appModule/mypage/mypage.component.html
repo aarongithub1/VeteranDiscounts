@@ -1,14 +1,8 @@
-<div style="margin:auto ; width: 80%">
-
-<h1>Welcome to My Page</h1>
-
-<div ng-hide="vm.editUser" class="clickable" ng-click="vm.setEditUser()">
-<span>
+<div class="centerText"><span ng-hide="vm.editUser" class="clickable spanMyPage" ng-click="vm.setEditUser()">
 {{vm.user.username}} | {{vm.user.email}}
-</span>
-</div>
+</span></div>
 
-<div ng-show="vm.editUser">
+<div class="editUser"ng-show="vm.editUser">
 
              <form name="logineditform" id="ajax-loginedit-form" role="form" autocomplete="off">
                 <div class="form-group">
@@ -34,24 +28,26 @@
                 </div>
 
                 <div class="form-group m-x-auto">
-                      <input type="submit" tabindex="4" class="form-control btn btn-success" value="Edit" ng-click="vm.doEditUser(vm.user); vm.editUser=null">
+                      <input type="submit" tabindex="4" class="form-control btn" value="Edit" ng-click="vm.doEditUser(vm.user); vm.editUser=null">
                     </div>
                 <div class="form-group m-x-auto">
-                      <input type="submit" tabindex="4" class="form-control btn btn-success" value="Cancel" ng-click="vm.editUser=null">
+                      <input type="submit" tabindex="4" class="form-control btn" value="Cancel" ng-click="vm.editUser=null">
                     </div>
                   
               </form>
 
 
 </div>
-
-<span class="clickable" ng-click="vm.comp = true; vm.loc = null; vm.disc = null;">My Companies</span> | 
-<span class="clickable" ng-click="vm.loc = true; vm.disc = null; vm.comp=null;">My Locations</span> | 
-<span class="clickable" ng-click="vm.disc = true; vm.loc = null; vm.comp = null;">My Discounts</span>
+<br>
+<div class="centerText">
+<span class="clickable spanMyPage" ng-click="vm.comp = true; vm.loc = null; vm.disc = null;">My Companies</span> | 
+<span class="clickable spanMyPage" ng-click="vm.loc = true; vm.disc = null; vm.comp=null;">My Locations</span> | 
+<span class="clickable spanMyPage" ng-click="vm.disc = true; vm.loc = null; vm.comp = null;">My Discounts</span>
+</div>
+<hr width="55%">
 <div class="userContent">
 	<div ng-show="vm.comp"><my-companies>Loading your companies</my-companies></div>
 	<div ng-show="vm.loc"><my-locations>Loading your locations</my-locations></div>
 	<div ng-show="vm.disc"><my-discounts>Loading your discounts</my-discounts></div>
 </div>
 
-</div>

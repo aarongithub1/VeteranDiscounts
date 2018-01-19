@@ -15,6 +15,7 @@ angular.module('appModule')
 		vm.showButton = null;
 		vm.companyId = null;
 		vm.typeId = null;
+		vm.addedCompany = null;
 		
 		vm.company = "";
 		vm.companySearchResult = "";
@@ -88,6 +89,7 @@ angular.module('appModule')
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {
+			vm.addedCompany = company;
 			vm.showCompanyForm = null;
 			vm.showLocation = company;
 //			vm.showAddress = company;
@@ -97,7 +99,15 @@ angular.module('appModule')
 		
 		//on Location form submit - show Discount form / hide Location form
 		vm.addLocation = function(location) {
+			
+			if(location === undefined) {
+				location = {
+						hours: null,
+						phoneNumber: null
+				}
+			}
 			vm.showAddress = location;
+			
 			vm.showLocationList = null;
 			vm.showLocation = null;
 			vm.discounts.location = location;
@@ -123,6 +133,16 @@ angular.module('appModule')
 		
 		//on Address form submit - show Location form / hide Company form
 		vm.addAddress = function(address) {
+//			if(address === undefined) {
+//				address = {
+//						state: "",
+//						city: "",
+//						street: null,
+//						zip: null,
+//						lat: null,
+//						longitude: null
+//				}
+//			}
 			vm.showDiscount = location;
 			vm.showAddress = null;
 			vetService.getLatLong(address)

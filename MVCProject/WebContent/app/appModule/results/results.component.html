@@ -7,6 +7,6 @@
 		<h3>{{location.company.name}}</h3>
 		{{location.address.street}}, {{location.address.city}}
 		{{location.address.state}} {{location.address.zip}}
-		{{location.distance}}
+		{{roundedDistance(location.distance)}} Miles
 	</div>
 </div>

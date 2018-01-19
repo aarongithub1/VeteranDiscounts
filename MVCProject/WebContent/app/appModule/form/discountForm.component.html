@@ -4,17 +4,16 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<form class="form-inline" ng-show="!vm.companyClick">
-				<input class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
+				<input id="companySearch" class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
 				<!-- <input id="NewCompany" type="submit" ng-click="vm.showNewCompanyForm()" value="Create New Company" /> -->
 				<button id="NewCompany" class="btn mr-sm-2" type="submit" ng-click="vm.showNewCompanyForm()" >Create New Company</button>
 			</form>
-		</div>
-	</div><br />
+		</div><br />
 	
 	<!-- show Company List -->
-	<div class="container-fluid">
+	<!-- <div class="container-fluid"> -->
 		<div class="row justify-content-center">
-			<div class="col" ng-show="!vm.companyClick">
+			<div ng-show="!vm.companyClick">
 				<div ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
 					<div id="companyList">
 						{{company.name}}
@@ -22,14 +21,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	
 	<!-- company form -->
-	<div class="container" ng-show="vm.showCompanyForm">
+	<div ng-show="vm.showCompanyForm">
 		<div class="row justify-content-center">
 			<div>
-				<form>
-					<input id="companyName" class="form-control mr-sm-2" type="text" ng-model="company.name" placeholder="Company Name" />
+				<form name="companyForm">
+					<input id="companyName" name="companyName" class="form-control mr-sm-2" type="text" ng-model="company.name" placeholder="Company Name" required />
 					<input id="url" class="form-control mr-sm-2" type="text" ng-model="company.storeUrl" placeholder="Company URL" />
 					
 					<!-- type drop down -->
@@ -39,13 +37,24 @@
 						    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
 					  	</select>
 					  	
-					  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="vm.addCompany(company); company = {}" >Add Company</button>
+					  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="companyForm.companyName.$valid ? vm.addCompany(company) : false; company = {}" >Add Company</button>
 					</div>
 					<!-- <input id="addCompany" type="submit" ng-click="vm.addCompany(company); company = {}" value="Add Company" /> -->
 				</form>
+				<p>{{companyForm.companyName.$valid}}</p>
 			</div>
 		</div>
 	</div>
+	
+	
+	</div>
+	
+	<div ng-show="vm.addedCompany">
+		{{vm.addedCompany.name}}
+		<br />
+		{{vm.addedCompany.storeUrl}}
+	</div>
+	
 	
 	<!-- show locations list based on search result -->
 	<!-- Button - Create new location -->
@@ -75,16 +84,16 @@
 	
 	<!-- address form -->
 	<form ng-show="vm.showAddress">
-		<input type="text" ng-model="address.city" placeholder="City" /><br />
-		<input type="text" ng-model="address.state" placeholder="State" /><br />
-		<input type="text" ng-model="address.street" placeholder="Street" /><br />
-		<input type="text" ng-model="address.zip" placeholder="Zip Code" /><br />
+		<input type="text" ng-model="address.city" placeholder="City" required /><br />
+		<input type="text" ng-model="address.state" placeholder="State" required /><br />
+		<input type="text" ng-model="address.street" placeholder="Street" required /><br />
+		<input type="text" ng-model="address.zip" placeholder="Zip Code" required /><br />
 		<input type="submit" ng-click="vm.addAddress(address); address = {}" value="Add Address" />
 	</form>
 
 	<!-- discount form -->
 	<form ng-show="vm.showDiscount">
-		<input type="text" ng-model="discount.amount" placeholder="Amount" /><br />
+		<input type="text" ng-model="discount.amount" placeholder="Amount" required/><br />
 		<input type="text" ng-model="discount.info" placeholder="Details" /><br />
 		<input type="text" ng-model="discount.startDate" placeholder="Start (mm/dd/yyy)" /><br />
 		<input type="text" ng-model="discount.endDate" placeholder="End (mm/dd/yyy)" /><br />
@@ -93,7 +102,7 @@
 
 	<!-- submit button - Persist all forms -->
 	<div ng-show="vm.showButton">
-		<button ng-click="vm.addAllForms()">Create Discount</button>
+		<button ng-click="vm.addAllForms()">Submit Discount</button>
 	</div>
 
 </form>

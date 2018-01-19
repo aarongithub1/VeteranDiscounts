@@ -41,7 +41,10 @@ angular.module('appModule').component('googleMap', {
 			vm.distance = args.distance;
 			vm.oldzip = vm.zipcode;
 			vm.zipcode = args.zipcode;
-			vm.updateMarkers();
+			setTimeout(function() {
+				vm.updateMarkers();
+				$scope.$apply();
+			}, 100)
 		})
 
 

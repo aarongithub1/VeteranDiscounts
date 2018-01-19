@@ -2,6 +2,7 @@
 
 	<!-- company search bar -->
 	<div class="container-fluid">
+	
 		<div class="row justify-content-center">
 			<form class="form-inline" ng-show="!vm.companyClick">
 				<input id="companySearch" class="form-control mr-sm-2" type="text" ng-change="vm.searchCompany()" ng-model="vm.company" placeholder="Search Company" />
@@ -10,8 +11,8 @@
 			</form>
 		</div><br />
 	
-	<!-- show Company List -->
-	<!-- <div class="container-fluid"> -->
+		<!-- show Company List -->
+		<!-- <div class="container-fluid"> -->
 		<div class="row justify-content-center">
 			<div ng-show="!vm.companyClick">
 				<div ng-repeat="company in vm.companyResults" ng-click="vm.getLocations(company); vm.companyExists = true">
@@ -32,9 +33,9 @@
 					
 					<!-- type drop down -->
 					<div	>
-						<select id="dropDown" name="types" ng-model="vm.typeId" placeholder="Type">
+						<select id="dropDown" name="types" ng-options="type.name for type in vm.typesArr" ng-model="vm.type" placeholder="Type">
 							<option value="">--Types--</option>
-						    <option ng-repeat="type in vm.typesArr" value="{{type.id}}">{{type.name}}</option>
+						  	<!-- <option ng-repeat="type in vm.typesArr" ng-model="vm.type">{{type.name}}</option> -->
 					  	</select>
 					  	
 					  	<button id="addCompany" class="btn mr-sm-2" type="submit" ng-click="companyForm.companyName.$valid ? vm.addCompany(company) : false; company = {}" >Add Company</button>
@@ -45,13 +46,16 @@
 		</div>
 	</div>
 	
-	
+	<div ng-show="vm.addedCompany">
+		<div id="displaySelectedCompany" class="row justify-content-center">
+			Company Name: {{vm.addedCompany.name}}
+			<br />
+			Company Url: {{vm.addedCompany.storeUrl}}
+			<br />
+			Company Type: {{vm.type.name}}
+		</div>
 	</div>
 	
-	<div ng-show="vm.addedCompany">
-		{{vm.addedCompany.name}}
-		<br />
-		{{vm.addedCompany.storeUrl}}
 	</div>
 	
 	

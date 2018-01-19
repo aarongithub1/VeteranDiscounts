@@ -126,6 +126,16 @@ body {
 
 }
 
+#displaySelectedCompany {
+	border-style: solid;
+	boder-color: black;
+	border-width: 1px;
+	border-radius: 5px;
+	width: 300px;
+	background-color: grey;
+	color: white;
+}
+
 #companyList {
 	border-style: solid;
 	border-color: black;

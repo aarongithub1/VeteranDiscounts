@@ -14,7 +14,7 @@ angular.module('appModule')
 		vm.showDiscount = null;
 		vm.showButton = null;
 		vm.companyId = null;
-		vm.typeId = null;
+		vm.type = null;
 		vm.addedCompany = null;
 		
 		vm.company = "";
@@ -37,6 +37,7 @@ angular.module('appModule')
 				vetService.allTypes()
 					.then(function(res) {
 						vm.typesArr = res.data;
+						console.log(vm.typesArr);
 					})
 			})
 		}
@@ -94,7 +95,7 @@ angular.module('appModule')
 			vm.showLocation = company;
 //			vm.showAddress = company;
 			vm.discounts.company = company;
-			console.log(vm.discounts.company);
+			console.log(vm.type);
 		}
 		
 		//on Location form submit - show Discount form / hide Location form
@@ -185,7 +186,7 @@ angular.module('appModule')
 				}
 			}
 			else {
-				vetService.createCompany(vm.discounts.company, vm.typeId).then(function(response) {
+				vetService.createCompany(vm.discounts.company, vm.type.id).then(function(response) {
 					vm.companyId = response.data.id;
 					vetService.createAddress(vm.discounts.address).then(function(response) {
 						vetService.createLocation(vm.discounts.location, vm.companyId, response.data.id).then(function(response) {
@@ -197,7 +198,7 @@ angular.module('appModule')
 					})
 				})
 			}
-			$location.path('/');
+			$location.path('/mypage');
 		}//end of addAllForms method
 		
 

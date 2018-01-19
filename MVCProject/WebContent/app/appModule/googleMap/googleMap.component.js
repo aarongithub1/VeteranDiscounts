@@ -4,8 +4,7 @@ angular.module('appModule').component('googleMap', {
 	controller : function($timeout, geolocator, $scope, $rootScope, NgMap, $filter, vetService) {
 		var vm = this;
 		vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhVMJxcZGC4H1OSLiRbyrRgyZwbpJ7XYs';
-		vm.mapOptions = null;
-		vm.pos = null;
+		vm.pos = {lat : 39.6088537, lng : -104.902828};
 		vm.results = null;
 		vm.markers = [];
 		vm.origin = null;
@@ -14,27 +13,33 @@ angular.module('appModule').component('googleMap', {
 		vm.distance = 1;
 		vm.zipcode = undefined;
 		vm.oldzip = null;
+		vm.mapOptions = {
+			center: vm.pos,
+			markers : [],
+			zoom: 11
+		};
 
 		NgMap.getMap().then(function(map) {
     			vm.map = map;
   		});
 
-		geolocator.geolocate().then(function(position){
-        		vm.mapOptions = {
-              		center: position,
-              		markers : [],
-              		zoom: 11
-          	}
-			vm.pos = position;
-        		$scope.$apply();
-			vm.broadcastOrigin();
-      	})
+		// geolocator.geolocate().then(function(position){
+        	// 	vm.mapOptions = {
+          //     		center: position,
+          //     		markers : [],
+          //     		zoom: 11
+          // 	}
+		// 	vm.pos = position;
+        	// 	$scope.$apply();
+		// 	vm.broadcastOrigin();
+      	// })
 
 		vm.broadcastOrigin = function() {
 			$rootScope.$broadcast('origin', {
 				origin : vm.pos
 			});
 		}
+		vm.broadcastOrigin();
 		$scope.$on('search-event', function(e,args){
 			console.log('map got search');
 			vm.results = args.searchResults;

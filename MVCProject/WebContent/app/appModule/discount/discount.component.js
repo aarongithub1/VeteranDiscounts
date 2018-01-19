@@ -7,8 +7,6 @@ angular.module('appModule').component('discount', {
 		
 		
 		$scope.$on('activeSelection', function(e,arg){
-			//console.log('scope hit in discount');
-			//console.log(arg);
 			vm.location = arg;
 		});
 		

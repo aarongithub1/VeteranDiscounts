@@ -99,9 +99,9 @@ public class LocationController {
 	}
 
 //  Update - PUT - location/{lid}
-	@RequestMapping(path="{cid}/location/{lid}", method=RequestMethod.PUT)
+	@RequestMapping(path="user/{uid}/company/{cid}/location/{lid}", method=RequestMethod.PUT)
 	public Location update(HttpServletRequest req, HttpServletResponse res, 
-			@PathVariable int lid, @PathVariable int cid,
+			@PathVariable int lid, @PathVariable int cid, @PathVariable int uid,
 			@RequestBody String locationJson) {
 		
 		Location location = locationDAO.update(locationJson, lid, cid);

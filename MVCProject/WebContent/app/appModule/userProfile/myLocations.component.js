@@ -5,6 +5,8 @@ angular.module('appModule').component('myLocations', {
 		var vm = this;
 		vm.results = [];
 		vm.active = null;
+		vm.editLocation = null;
+		vm.editLocationAddress=null;
 		
 		
 		var reload = function(){vetService.getLocationsbyUid().then(function(res){
@@ -22,6 +24,24 @@ angular.module('appModule').component('myLocations', {
 		
 		vm.deleteLocation = function(location){
 			vetService.deleteLocation(location).then(reload);
+		}
+		
+		vm.setEditLocation = function(location) {
+			vm.editLocation = location;
+		}
+		
+		vm.setEditLocationAddress = function (address) {
+			vm.editLocationAddress = address;
+			
+		}
+		
+		vm.doEditLocation = function (location) {
+			vetService.updateLocation (location).then(reload);
+		}
+		
+		vm.doEditAddress = function (address) {
+			var lid = vm.editLocation.id;
+			vetService.updateAddress(address,lid).then(reload);
 		}
 		
 		

@@ -116,7 +116,6 @@ public class LocationDAOImpl implements LocationDAO {
 		oldLocation = em.find(Location.class, lid);
 		if (oldLocation.getCompany().getId() == cid) {
 			oldLocation.setHours(updateLocation.getHours());
-			// oldLocation.setOwner(updateLocation.getOwner());
 			oldLocation.setPhoneNumber(updateLocation.getPhoneNumber());
 			return oldLocation;
 		} else {

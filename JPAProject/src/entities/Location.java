@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
@@ -42,6 +43,7 @@ public class Location {
 	private Company company;
 	
 	//@JsonIgnore
+	@JsonManagedReference
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;

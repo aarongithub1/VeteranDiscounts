@@ -17,7 +17,7 @@
                 
 				        <div ng-messages="discounteditform.discountamount.$error">
       					<p ng-message="minlength">Discount Amount must have at least 3 characters.</p>
-      					<p ng-message="maxlength">Company Name may not exceed 60 characters.</p>
+      					<p ng-message="maxlength">Discount Amount may not exceed 60 characters.</p>
       					<p ng-message="required">Providing Discount Amount is mandatory.</p>
    						 </div>
 				</div>
@@ -26,8 +26,8 @@
                   <input type="text" name="startdate" tabindex="1" class="form-control" placeholder="Start Date" ng-model="vm.editDiscount.startDate"
        				ng-minlength="3"  ng-maxlength="30">
        				<div ng-messages="discounteditform.startdate.$error">
-      				<p ng-message="minlength">Link must have at least 3 characters.</p>
-      				<p ng-message="maxlength">Link may not exceed 30 characters.</p>
+      				<p ng-message="minlength">Start Date must have at least 3 characters.</p>
+      				<p ng-message="maxlength">Start Date may not exceed 30 characters.</p>
     					</div>
                 </div>
                   <div class="form-group">
@@ -35,8 +35,8 @@
                   <input type="text" name="enddate" tabindex="1" class="form-control" placeholder="End Date" ng-model="vm.editDiscount.endDate"
        				ng-minlength="3"  ng-maxlength="30">
        				<div ng-messages="discounteditform.enddate.$error">
-      				<p ng-message="minlength">Link must have at least 3 characters.</p>
-      				<p ng-message="maxlength">Link may not exceed 30 characters.</p>
+      				<p ng-message="minlength">End Date must have at least 3 characters.</p>
+      				<p ng-message="maxlength">End Date may not exceed 30 characters.</p>
     					</div>
                 </div>
                 
@@ -45,8 +45,8 @@
                   <input type="text" name="info" tabindex="1" class="form-control" placeholder="Info" ng-model="vm.editDiscount.info"
        				ng-minlength="3"  ng-maxlength="200">
        				<div ng-messages="discounteditform.enddate.$error">
-      				<p ng-message="minlength">Link must have at least 3 characters.</p>
-      				<p ng-message="maxlength">Link may not exceed 200 characters.</p>
+      				<p ng-message="minlength">Discount Information must have at least 3 characters.</p>
+      				<p ng-message="maxlength">Discount Information may not exceed 200 characters.</p>
     					</div>
                 </div>
                        

@@ -109,31 +109,19 @@ body {
 	background-color: #23252e;
 }
 
+
+/* Company List and Form */
 #NewCompany {
 	height: 37px;
 	width: 194px;
-	/* background-color: #284664; */
 	background-color: #7b7b46;
-/* 	background-color: #7f000a; */
 	color: white;
-
 }
 
 #companySearch {
 	height: 37px;
 	width: 194px;
 	margin-left: 6px;
-
-}
-
-#displaySelectedCompany {
-	border-style: solid;
-	boder-color: black;
-	border-width: 1px;
-	border-radius: 5px;
-	width: 300px;
-	background-color: grey;
-	color: white;
 }
 
 #companyList {
@@ -143,31 +131,14 @@ body {
 	border-radius: 5px;
 	width: 396px;
 	padding: 10px;
-	/* margin-left: 111px; */
-	/* background-color: #7f000a; */
 	background-color: #284664;
 	color: white;
 }
 
-#locationList {
-
-}
-
-.redButton{	
-	background-color: #ac090e;
-	color: white;
-}
-
-.redButton:hover{	
-	background-color: #7f000a;
-	color: white;
-}
-
-#dropDown {
+#companyTypeDropDown {
 	background-color: white;
 	height: 40px;
     width: 147px;
-    /* margin-top: 5px; */
 }
 
 #url {
@@ -185,7 +156,160 @@ body {
 	height: 40px;
 	margin-top: 0px;
 	background-color: #7b7b46;
-/* 	background-color: #284664; */
+	color: white;
+}
+
+
+/* Location List and Form */
+#locationList {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 5px;
+	width: 396px;
+	padding: 10px;
+	background-color: #284664;
+	color: white;
+
+}
+
+#NewLocation {
+	height: 37px;
+	width: 194px;
+	background-color: #7b7b46;
+	color: white;
+	margin-bottom: 10px;
+}
+
+#locationHours {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#locationPhone {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addLocation {
+	width: 300px;
+	height: 40px;
+	margin-top: 0px;
+	background-color: #7b7b46;
+	color: white;
+	border-radius: 5px;
+}
+
+
+/* Address form */
+#addressCity {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addressState {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addressStreet {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addressZip {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addAddress {
+	width: 300px;
+	height: 40px;
+	margin-top: 0px;
+	background-color: #7b7b46;
+	color: white;
+	border-radius: 5px;
+}
+
+
+/* Discount form */
+#discountAmt {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#discountInfo {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#discountStart {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#discountEnd {
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+#addDiscount {
+	width: 300px;
+	height: 40px;
+	margin-top: 0px;
+	background-color: #7b7b46;
+	color: white;
+	border-radius: 5px;
+}
+
+
+/* addAllForms Button*/
+#addAllForms {
+	width: 196px;
+	height: 40px;
+	margin-top: 0px;
+	background-color: #7b7b46;
+	color: white;
+	border-radius: 5px;
+	margin-top: 4px;
+}
+
+#cancel {
+	width: 196px;
+	height: 40px;
+	margin-top: 4px;
+	margin-left: 0px;	
+	background-color: #7b7b46;
+	color: white;
+	border-radius: 5px;
+}
+
+/* Display input from forms */
+.displayInput {
+	height: 37px;
+	width: 400px;
+	margin-top: 0px; 
+}
+
+.titles {
+	text-align: center;
+	width: 400px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	background-color: #284664;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+.redButton{	
+	background-color: #ac090e;
+	color: white;
+}
+
+.redButton:hover{	
+	background-color: #7f000a;
 	color: white;
 }
 
@@ -195,8 +319,6 @@ color:white;
 font-size: 1.05em;
 
 }
-
-
 
 ng-map {
 	display : block;

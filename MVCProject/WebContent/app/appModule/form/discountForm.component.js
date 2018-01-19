@@ -15,7 +15,11 @@ angular.module('appModule')
 		vm.showButton = null;
 		vm.companyId = null;
 		vm.type = null;
-		vm.addedCompany = null;
+		
+		vm.displayAddedCompany = null;
+		vm.displayAddedLocation = null;
+		vm.displayAddedAddress = null;
+		vm.displayAddedDiscount = null;
 		
 		vm.company = "";
 		vm.companySearchResult = "";
@@ -44,6 +48,10 @@ angular.module('appModule')
 
 		reload();
 		
+		vm.cancelDiscount = function() {
+			$location.path('/mypage');
+		}
+		
 		// show Company Form
 		vm.showNewCompanyForm = function() {
 			vm.showCompanyForm = "show";
@@ -62,14 +70,13 @@ angular.module('appModule')
 			vetService.searchCompany(vm.company)
 				.then(function(response) {
 					vm.companyResults = response.data;
-//					vm.showCompanySearch = response.data;
+					//vm.showCompanySearch = response.data;
 				})
 		}
 		
 		// on Company Click - get locations by company id
 		vm.getLocations = function(company) {
-			console.log(company);
-			console.log(company.id);
+			vm.displayAddedCompany = company;
 			vm.discounts.company = company;
 			vetService.search(company.name)
 				.then(function(response) {
@@ -78,19 +85,12 @@ angular.module('appModule')
 					console.log(vm.locationResults);
 					vm.companyClick = response.data;
 				})
-//				vetService.getLocations(company.id)
-//				.then(function(response) {
-//					vm.showLocationList = response.data;
-//					vm.locationResults = response.data;
-//					console.log(vm.locationResults);
-//					vm.companyClick = response.data;
-//				})
 			
 		}
 
 		//on Company form submit - show address form / hide company form
 		vm.addCompany = function(company) {
-			vm.addedCompany = company;
+			vm.displayAddedCompany = company;
 			vm.showCompanyForm = null;
 			vm.showLocation = company;
 //			vm.showAddress = company;
@@ -107,6 +107,7 @@ angular.module('appModule')
 						phoneNumber: null
 				}
 			}
+			vm.displayAddedLocation = location;
 			vm.showAddress = location;
 			
 			vm.showLocationList = null;
@@ -119,6 +120,7 @@ angular.module('appModule')
 
 		//on Location form submit - show Discount form / hide Location form
 		vm.addLocationFromList = function(location) {
+			vm.displayAddedLocation = location;
 			vm.showAddress = null;
 			vm.showLocationList = null;
 			vm.showLocation = null;
@@ -134,16 +136,7 @@ angular.module('appModule')
 		
 		//on Address form submit - show Location form / hide Company form
 		vm.addAddress = function(address) {
-//			if(address === undefined) {
-//				address = {
-//						state: "",
-//						city: "",
-//						street: null,
-//						zip: null,
-//						lat: null,
-//						longitude: null
-//				}
-//			}
+			vm.displayAddedAddress = address;
 			vm.showDiscount = location;
 			vm.showAddress = null;
 			vetService.getLatLong(address)
@@ -157,6 +150,7 @@ angular.module('appModule')
 
 		//on Discount form submit - show AddAllButton / hide Discount form
 		vm.addDiscount = function(discount) {
+			vm.displayAddedDiscount = discount;
 			vm.showDiscount = null;
 			vm.showButton = discount;
 			vm.discounts.discount = discount;

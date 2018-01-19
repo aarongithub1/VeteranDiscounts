@@ -270,6 +270,34 @@ angular.module('appModule').factory('vetService', function($http, authService) {
 		});
 	}
 	
+	//update location
+	
+	service.updateLocation = function (location) {
+		var user = checkLogin();
+		return $http({
+			method:'PUT',
+			url:'rest/user/'+ user.id +'/company/' + location.company.id + '/location/' + location.id,
+			headers:{
+				'Content-Type' : 'application/json'
+			},
+			data: location
+		});	
+	}
+	
+	//update address
+	
+	service.updateAddress = function (address,lid) {
+		var user = checkLogin();
+		return $http({
+			method: 'PUT',
+			url: 'rest/user/' + user.id + '/location/'+ lid + '/address/'+address.id,
+			headers:{
+				'Content-Type' : 'application/json'
+			},
+			data: address
+		});
+	}
+	
 
 	return service;
 })

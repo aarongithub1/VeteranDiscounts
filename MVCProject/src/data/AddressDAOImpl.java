@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Address;
+import entities.Location;
 
 
 @Transactional
@@ -66,18 +67,15 @@ public class AddressDAOImpl implements AddressDAO{
 	}
 	
 	@Override
-	public Address update(String json, int id) {
+	public Address update(String json, int aid, int lid) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Address updatedAddress = mapper.readValue(json, Address.class);
-			Address managed = em.find(Address.class, id);
+			Address managed = em.find(Address.class, aid);
 			managed.setStreet(updatedAddress.getStreet());
 			managed.setCity(updatedAddress.getCity());
 			managed.setState(updatedAddress.getState());
 			managed.setZip(updatedAddress.getZip());
-			managed.setLocation(updatedAddress.getLocation());
-			managed.setLat(updatedAddress.getLat());
-			managed.setLongitude(updatedAddress.getLongitude());
 			return managed;
 		} catch (Exception e) {
 			e.printStackTrace();

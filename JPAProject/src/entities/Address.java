@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -26,6 +27,7 @@ public class Address {
 	private String lat;
 	private String longitude;
 	
+	@JsonBackReference
 	@OneToOne(mappedBy="address")
 	private Location location;
 	

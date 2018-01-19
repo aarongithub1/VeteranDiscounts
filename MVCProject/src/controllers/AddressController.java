@@ -48,9 +48,9 @@ public class AddressController {
 		return address;
 	}
 	
-	@RequestMapping(path = "address/{aid}", method = RequestMethod.PUT)
-	public Address update(HttpServletRequest req, HttpServletResponse res, @PathVariable int aid, @RequestBody String stringJson) {
-		Address address = dao.update(stringJson, aid);
+	@RequestMapping(path = "user/{uid}/location/{lid}/address/{aid}", method = RequestMethod.PUT)
+	public Address update(HttpServletRequest req, HttpServletResponse res, @PathVariable int aid, @PathVariable int uid, @PathVariable int lid, @RequestBody String stringJson) {
+		Address address = dao.update(stringJson, aid,lid);
 		if(address == null) {
 			res.setStatus(400);
 		}

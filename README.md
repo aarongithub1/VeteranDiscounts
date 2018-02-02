@@ -1,6 +1,6 @@
 # Veterans Discount API
 Final project for Skill Distillery Full-Stack Java Coding Program
-Created by Jacob Simms, Aaron Ipp, Hunter Kritisis, Alex Perez !!
+Created by Jacob Simms, Aaron Ipp, Hunter Kiritsis, Alex Perez !!
 
 The Application
 

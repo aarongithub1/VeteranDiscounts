@@ -29,25 +29,19 @@ The home page is the search page.
 To do search you do not need an account.
 In order to create a new discount please create an account or
 use the pre made tester account Username: HunterK Password: password123
-![Database Schema](screenshots/index.png)
+
+When you click on a label on the right the panels on the right and the map
+will display information about that location and its discounts
+![Main Page](screenshots/index.png)
+
+You can filter your search by keyword, business type, or distance from your location.
+![Index Page](screenshots/filters.png)
 
 By clicking register the user will see a form to create a new account.
 ![Register](screenshots/register.png)
 
-Once you login you lead to the main page with three options
-![Index Page](screenshots/indexPage.png)
-
-Create brings you to the create event page
-![Create Event Page](screenshots/createEventPage.png)
-
-Attend Event brings you to a page to view all listed events and attend them if you choose
-![Attend Event Page](screenshots/attendEventPage.png)
-
 Database Schema
 ![Database Schema](screenshots/databaseschemea.png)
 
-
-
-When you click details on an event entry it displays a modal with information about that events and other users
-who are attending
-![Event Details Page](screenshots/eventDetails.png)
+Technologies Used
+![Technologies](screenshots/technologies.png)
